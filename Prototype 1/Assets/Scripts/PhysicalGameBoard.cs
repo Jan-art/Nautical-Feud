@@ -6,7 +6,7 @@ public class PhysicalGameBoard : MonoBehaviour
 {
     //Creates all tiles
 
-    public bool fill; 
+    public bool create; 
 
     //Connect to Tile prefab
 
@@ -20,7 +20,7 @@ public class PhysicalGameBoard : MonoBehaviour
     void OnDrawGizmos() 
     {
         //PROTECT BOARD
-        if(tilePrefab != null && fill)
+        if(tilePrefab != null && create)
         {
             //DELETE EXISTING TILES
             for (int i = 0; i < tileList.Count; i++) 
