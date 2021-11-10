@@ -12,8 +12,13 @@ public class TileInfo : MonoBehaviour
     public SpriteRenderer sprite;
     public Sprite[] tileTops;  // 0 = FRAME || 1 = CROSSHAIR || 2 = WATER || 3 = HIT
                                
-    public void ActivateTop(int index) {
+    public void ActivateTop(int index, bool _hit) 
+    {
         sprite.sprite = tileTops[index];
+
+        //COLOUR TILE
+
+        hit = _hit;
 
     }
 
@@ -25,14 +30,28 @@ public class TileInfo : MonoBehaviour
 
     void OnMouseOver()
     {
-        ActivateTop(1);
+        if(GameManager.instance.gameState == GameManager.GameStates.KILL) 
+        {
+            if (!hit)
+            {
+                ActivateTop(1,false);
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                //IDENTIFY CORDINATE
+                GameManager.instance.IdentifyLocation(xPos, zPos, this);
+            }
+        }
+       
 
     }
 
     void OnMouseExit()
     {
-        ActivateTop(0);
-
+        if(!hit)
+        {
+            ActivateTop(0,false);
+        }
     }
 
 }

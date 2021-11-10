@@ -5,13 +5,10 @@ using UnityEngine;
 public class PhysicalGameBoard : MonoBehaviour
 {
     //Creates all tiles
-
     public bool create; 
 
     //Connect to Tile prefab
-
     public GameObject tilePrefab; 
-
 
     //Initializing List storing all our tile prefabs
     List<GameObject> tileList = new List<GameObject>();
@@ -39,8 +36,6 @@ public class PhysicalGameBoard : MonoBehaviour
     public bool RequestTile(TileInfo info)
     {
         return tileInfoList.Contains(info);
-
-       
     }
 
     //Create board

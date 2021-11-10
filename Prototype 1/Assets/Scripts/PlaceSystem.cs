@@ -7,7 +7,7 @@ public class PlaceSystem : MonoBehaviour
 {
     public static PlaceSystem instance;
 
-    public bool isPlacing; //PLACE MODE ON / OFF
+    bool isPlacing; //PLACE MODE ON / OFF
     bool canPlace; // FREE TO PLACE
 
     PhysicalGameBoard pgb;

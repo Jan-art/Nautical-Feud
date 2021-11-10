@@ -24,13 +24,16 @@ public class ShipBehaviour : MonoBehaviour
     return hitCount < shipLength && hitCount > 0;
  }
 
- public void AbsorbDamage()
+ public bool AbsorbDamage()
  {
      hitCount--;
      if(IsSunk())
      {
-        //RE-ENABLE MESH RENDERER TO REPORT TO GAME MANAGER
+       //RE-ENABLE MESH RENDERER > REPORT TO GAME MANAGER
+       GetComponent<MeshRenderer>().enabled = true;
+       return true;
      }
+     return false;
  }
 
 
