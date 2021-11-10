@@ -6,18 +6,19 @@ public class GameManager : MonoBehaviour
 {
   public static GameManager instance;
 
-  void Live()
+  void Awake()
   {
-      instance = this;
+        instance = this;
   }
   
 
-  [System.Serializable] public class Player
+  [System.Serializable]public class Player
   {
      public enum PlayerType //In future versions of the game, can add NPC players that are controlled by AI. 
      {
          HUMAN
      }
+
      public PlayerType playerType;
      public Tile[,] myGrid = new Tile[10,10];
      public bool[,] revealGrid = new bool[10,10];
@@ -59,11 +60,15 @@ public class GameManager : MonoBehaviour
       }
 
       AddShipToList(placedShip);
-      //DebugGrid();
+      DebugGrid();
   }
 
+    public bool CheckIfOccupied(int xPos, int zPos)
+    {
+        return players[activePlayer].myGrid[xPos, zPos].IsOccupied();
+    }
 
-  /*public void DebugGrid()
+  public void DebugGrid()
   {
       string s = "";
       //Separator
@@ -109,7 +114,31 @@ public class GameManager : MonoBehaviour
       }
       print(s);
   }
-  */
+  
+    public void RemoveAllShips()
+    {
+        foreach (GameObject ship in players[activePlayer].placedShipList)
+        {
+            Destroy(ship);
+        }
+        players[activePlayer].placedShipList.Clear();
+
+        InitialiseGrid();
+    }
+
+    void InitialiseGrid()
+    {
+        for (int x = 0; x < 10; x++)
+        {
+            for (int y = 0; y < 10; y++)
+            {
+                OccupationType t = OccupationType.EMPTY;
+                players[activePlayer].myGrid[x, y] = new Tile(t, null);
+                players[activePlayer].revealGrid[x, y] = false;
+            }
+        }
+    }
+
 }
 
 

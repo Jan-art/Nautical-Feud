@@ -19,7 +19,7 @@ public class GhostBehaviour : MonoBehaviour
     {
         info = GetTileInfo();
 
-        if(info != null) 
+        if(info != null && !GameManager.instance.CheckIfOccupied(info.xPos,info.zPos))
         {
             return true;
         }

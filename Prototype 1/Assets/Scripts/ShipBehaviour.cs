@@ -14,7 +14,7 @@ public class ShipBehaviour : MonoBehaviour
  }
 
 //Check if ship has sunk
-bool IsSunk()
+ bool IsSunk()
  {
      return shipLength <= 0;
  }

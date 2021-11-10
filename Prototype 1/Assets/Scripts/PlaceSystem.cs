@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaceSystem : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class PlaceSystem : MonoBehaviour
     {
         public GameObject shipGhost;   //
         public GameObject shipPrefab;  //
-        public int amountToPlace = 1; //
-        [HideInInspector]public int placedAmount = 0;  //
+        public int amountToPlace = 1;  //
+        public Text amountText;
+        [HideInInspector]public int placedAmount = 0;   //
+
 
     }
 
     public List<ShipsToPlace> fleetList = new List<ShipsToPlace>(); //Set of ghost ships
+
+    public Button readyBtn;
 
     int currentShip = 0 ;
 
@@ -31,6 +36,11 @@ public class PlaceSystem : MonoBehaviour
 
     void Start()
     {
+        readyBtn.interactable = false;
+
+        UpdateAmountText();
+
+
         ActivateShipGhost(-1);  //-1?
         //ActivateShipGhost(currentShip);
     }
@@ -70,7 +80,7 @@ public class PlaceSystem : MonoBehaviour
 
     void ActivateShipGhost(int index)
     {
-        if(index!= -1)
+        if(index != -1)
         {
             if(fleetList[index].shipGhost.activeInHierarchy)
             {
@@ -88,6 +98,7 @@ public class PlaceSystem : MonoBehaviour
         {
             return;
         }
+
         //ACTIVATE SELECTED GHOST SHIP
 
         fleetList[index].shipGhost.SetActive(true);
@@ -137,7 +148,7 @@ public class PlaceSystem : MonoBehaviour
 
         //UPDATE GRID MENU
         
-        //GameManager.instance.UpdateGrid(fleetList[currentShip].shipGhost.transform, newShip.GetComponent<ShipBehaviour>(), newShip);
+        GameManager.instance.UpdateGrid(fleetList[currentShip].shipGhost.transform,newShip.GetComponent<ShipBehaviour>(), newShip);
 
         fleetList[currentShip].placedAmount++;
 
@@ -146,6 +157,10 @@ public class PlaceSystem : MonoBehaviour
         //DEACTIVATE ALL GHOST MODELS
         ActivateShipGhost(-1);
         //CHECK IF ALL SHIPS ARE PLACED
+        CheckIfAllPlaced();
+        //UPDATE TEXT COUNT
+        UpdateAmountText();
+
       
     }
 
@@ -167,6 +182,37 @@ public class PlaceSystem : MonoBehaviour
             return fleetList[index].placedAmount == fleetList[index].amountToPlace;
         }
     
+    bool CheckIfAllPlaced() //ALL SHIPS
+    {
+        foreach (var ship in fleetList)  //Change to for loop. 
+        {
+            if(ship.placedAmount != ship.amountToPlace)
+            {
+                return false;
+            }
+        }  
+
+        readyBtn.interactable = true;
+        return true;
+    }
+    void UpdateAmountText()
+    {
+        for (int i = 0; i < fleetList.Count; i++)
+        {
+            fleetList[i].amountText.text = (fleetList[i].amountToPlace - fleetList[i].placedAmount).ToString();
+        }
+    }
+
+    public void ClearAllShips()
+    {
+        GameManager.instance.RemoveAllShips();
+        foreach (var ship in fleetList)
+        {
+            ship.placedAmount = 0;
+        }
+        UpdateAmountText();
+        //DISABLE READY BUTTON
+    }
 }
 
 
