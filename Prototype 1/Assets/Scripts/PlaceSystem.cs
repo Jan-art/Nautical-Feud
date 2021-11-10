@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlaceSystem : MonoBehaviour
 {
+    public static PlaceSystem instance;
+
     public bool isPlacing; //PLACE MODE ON / OFF
     bool canPlace; // FREE TO PLACE
 
@@ -32,6 +34,10 @@ public class PlaceSystem : MonoBehaviour
     RaycastHit hit;
     Vector3 hitPoint;
 
+    void Awake()
+    {
+        instance = this;
+    }
 
 
     void Start()
@@ -45,17 +51,33 @@ public class PlaceSystem : MonoBehaviour
         //ActivateShipGhost(currentShip);
     }
 
+    public void SetPlayerField(PhysicalGameBoard _pgb, string playerType)
+    {
+        pgb = _pgb;
+        readyBtn.interactable = false;
+
+        ClearAllShips();
+
+       /* if(playerType == "/")
+        {
+            
+        }
+       */
+
+    }
    
     void Update()
     {
         if (isPlacing)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray,out hit,Mathf.Infinity,layerToCheck))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerToCheck)) 
             {
                 //If tile hit is not the opponent's tile.
-
-                //RETURN
+                if (!pgb.RequestTile(hit.collider.GetComponent<TileInfo>()))
+                {
+                    return;
+                }
 
                 hitPoint = hit.point;
             }

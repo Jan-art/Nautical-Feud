@@ -16,6 +16,33 @@ public class PhysicalGameBoard : MonoBehaviour
     //Initializing List storing all our tile prefabs
     List<GameObject> tileList = new List<GameObject>();
 
+    List<TileInfo> tileInfoList = new List<TileInfo>();
+
+    void Start()
+    {
+        tileList.Clear();
+        tileInfoList.Clear();
+        //FILL Obj
+        foreach (Transform info in transform)
+        {
+            if(info != transform)
+            {
+                tileList.Add(info.gameObject);
+            }
+        }
+        foreach (GameObject g in tileList)
+        {
+            tileInfoList.Add(g.GetComponent<TileInfo>());
+        }
+    }
+
+    public bool RequestTile(TileInfo info)
+    {
+        return tileInfoList.Contains(info);
+
+       
+    }
+
     //Create board
     void OnDrawGizmos() 
     {

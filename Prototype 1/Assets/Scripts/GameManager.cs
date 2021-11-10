@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour
   int activePlayer; //Track current Turn
   public Player[] players = new Player[2];
 
+  void Start()
+    {
+        PlaceSystem.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+    }
+
   void AddShipToList(GameObject placedShip)
   {
       players[activePlayer].placedShipList.Add(placedShip);
