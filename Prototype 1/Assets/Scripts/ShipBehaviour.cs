@@ -24,7 +24,7 @@ public class ShipBehaviour : MonoBehaviour
     return hitCount < shipLength && hitCount > 0;
  }
 
- public bool AbsorbDamage()
+  public bool AbsorbDamage()
  {
      hitCount--;
      if(IsSunk())
@@ -33,7 +33,7 @@ public class ShipBehaviour : MonoBehaviour
        GetComponent<MeshRenderer>().enabled = true;
        return true;
      }
-     return false;
+        return false;
  }
 
 

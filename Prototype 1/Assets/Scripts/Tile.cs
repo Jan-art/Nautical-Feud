@@ -34,6 +34,5 @@ public class Tile
           type == OccupationType.CORVETTE;
   }
   
-  
 }
 

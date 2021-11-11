@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ///PlaceSystem.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+        
 
         //HIDE PANELS
         HideAllPanels();
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
       print(s);
   }
   
-    public void RemoveAllShips()
+    public void RemoveAllShipsFromList()
     {
         foreach (GameObject ship in players[activePlayer].placedShipList)
         {
@@ -181,7 +181,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    
     ///[GAME BATTLE SCRIPT]
+
     
     void Update()
     {
@@ -285,7 +287,7 @@ public class GameManager : MonoBehaviour
             placingCanvas.SetActive(false);
 
             //Game Start
-            return;
+            
         }
 
     }
@@ -370,6 +372,7 @@ public class GameManager : MonoBehaviour
     public void IdentifyLocation(int x, int z, TileInfo info)
     {
         int rival = Rival();
+     
 
         //IF YOUR TILE
 
@@ -386,23 +389,24 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //CHECK TILE OCCUPATION
-        if(players[rival].myGrid[x,z].IsOccupied()) 
+        //CHECK IF TILE BUSY
+        if(players[rival].myGrid[x,z].IsOccupied())
         {
             //Damage SHIP
 
-            bool sunk = players[rival].myGrid[x,z].placedShip.AbsorbDamage();
-            if(sunk)
+            bool sunk = players[rival].myGrid[x, z].placedShip.AbsorbDamage();
+
+            if (sunk)
             {
                 
                 players[rival].placedShipList.Remove(players[rival].myGrid[x,z].placedShip.gameObject);
-               
+
                 
             }
 
             //HIGHLIGHT TILE
             info.ActivateTop(3, true);
-
+            return;
         }
         else
         {
@@ -414,6 +418,8 @@ public class GameManager : MonoBehaviour
 
         //REVEAL TILE
         players[rival].revealGrid[x,z] = true;
+
+        //CHECK WIN STATUS
 
         //HIDE SHIPS
 

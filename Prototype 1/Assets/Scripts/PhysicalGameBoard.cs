@@ -19,14 +19,15 @@ public class PhysicalGameBoard : MonoBehaviour
     {
         tileList.Clear();
         tileInfoList.Clear();
-        //FILL Obj
-        foreach (Transform info in transform)
+        //FILL GameObj
+        foreach (Transform t in transform)
         {
-            if(info != transform)
+            if(t != transform)
             {
-                tileList.Add(info.gameObject);
+                tileList.Add(t.gameObject);
             }
         }
+        //Fill Tile Info
         foreach (GameObject g in tileList)
         {
             tileInfoList.Add(g.GetComponent<TileInfo>());

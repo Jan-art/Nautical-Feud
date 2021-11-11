@@ -58,12 +58,6 @@ public class PlaceSystem : MonoBehaviour
 
         ClearAllShips();
 
-       /* if(playerType == "/")
-        {
-            
-        }
-       */
-
     }
    
     void Update()
@@ -176,10 +170,13 @@ public class PlaceSystem : MonoBehaviour
 
         //DEACTIVATE ISPLACING()
         isPlacing = false;
+
         //DEACTIVATE ALL GHOST MODELS
         ActivateShipGhost(-1);
+
         //CHECK IF ALL SHIPS ARE PLACED
         CheckIfAllPlaced();
+
         //UPDATE TEXT COUNT
         UpdateAmountText();
 
@@ -227,13 +224,15 @@ public class PlaceSystem : MonoBehaviour
 
     public void ClearAllShips()
     {
-        GameManager.instance.RemoveAllShips();
+        GameManager.instance.RemoveAllShipsFromList();
         foreach (var ship in fleetList)
         {
             ship.placedAmount = 0;
         }
         UpdateAmountText();
-        //DISABLE READY BUTTON
+
+        readyBtn.interactable = false;
+       
     }
 }
 
