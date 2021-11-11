@@ -16,7 +16,7 @@ public class ShipBehaviour : MonoBehaviour
 //Check if ship has sunk
  bool IsSunk()
  {
-     return shipLength <= 0;
+     return hitCount <= 0;
  }
  
  public bool IsHit()

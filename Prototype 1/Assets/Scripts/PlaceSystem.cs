@@ -13,8 +13,7 @@ public class PlaceSystem : MonoBehaviour
     PhysicalGameBoard pgb;
     public LayerMask layerToCheck;  //
 
-    [System.Serializable]
-    public class ShipsToPlace      //
+    [System.Serializable]public class ShipsToPlace      //
     {
         public GameObject shipGhost;   //
         public GameObject shipPrefab;  //
@@ -29,7 +28,7 @@ public class PlaceSystem : MonoBehaviour
 
     public Button readyBtn;
 
-    int currentShip = 0 ;
+    int currentShip ;
 
     RaycastHit hit;
     Vector3 hitPoint;
@@ -62,7 +61,7 @@ public class PlaceSystem : MonoBehaviour
    
     void Update()
     {
-        if (isPlacing)
+        if(isPlacing)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerToCheck)) 
@@ -76,14 +75,14 @@ public class PlaceSystem : MonoBehaviour
                 hitPoint = hit.point;
             }
 
-            if (Input.GetMouseButtonDown(0) && canPlace)
+            if(Input.GetMouseButtonDown(0) && canPlace)
             {
                 //PLACE SHIP
                 PlaceShip();
 
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if(Input.GetMouseButtonDown(1))
             {
                 //ROTATE SHIP
                 RotateShipGhost();
@@ -126,7 +125,6 @@ public class PlaceSystem : MonoBehaviour
         {
             canPlace = CheckIfOccupied();
             fleetList[currentShip].shipGhost.transform.position = new Vector3(Mathf.Round(hitPoint.x), 0, Mathf.Round(hitPoint.z));
-
         }
         else
         {
@@ -187,7 +185,7 @@ public class PlaceSystem : MonoBehaviour
     {
         if(CheckIfAllPlaced(index))
         {
-            print("ALL AVAILABLE SHIPS HAVE BEEN PLACED ALREADY !!!");
+            //print("ALL AVAILABLE SHIPS HAVE BEEN PLACED ALREADY !!!");
             return;
         }
         //Activate Ghost 

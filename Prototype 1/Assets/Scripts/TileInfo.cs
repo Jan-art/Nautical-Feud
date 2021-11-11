@@ -39,7 +39,7 @@ public class TileInfo : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //IDENTIFY CORDINATE
-                GameManager.instance.IdentifyLocation(xPos, zPos, this);
+                GameManager.instance.CheckShot(xPos, zPos, this);
             }
         }
        

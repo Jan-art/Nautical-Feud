@@ -19,13 +19,14 @@ public class GameManager : MonoBehaviour
      public Tile[,] myGrid = new Tile[10,10];
      public bool[,] revealGrid = new bool[10,10];
      public PhysicalGameBoard pgb;
-     public LayerMask layerToPlaceOn;
+     //public LayerMask layerToPlaceOn;
 
         [Space]
         public GameObject cameraPos;
         public GameObject placePanel;
         public GameObject shootPanel;
-
+        [Space]
+        public GameObject WinPanel;
      //SHOW & HIDE SHIPS
 
      public Player()
@@ -62,6 +63,15 @@ public class GameManager : MonoBehaviour
     bool CamMoved;
     public GameObject placingCanvas;
 
+    //MISSILE
+    public GameObject missilePrefab;
+    float altitude = 3f;
+    float Timer;
+
+    //ADD SPEED float
+
+    bool isShooting;
+
     void Awake()
     {
         instance = this;
@@ -75,6 +85,10 @@ public class GameManager : MonoBehaviour
         HideAllPanels();
 
         //
+
+        players[0].WinPanel.SetActive(false);
+        players[1].WinPanel.SetActive(false);
+
         //ACTIVATE PLACE PANEL P1
 
         players[activePlayer].placePanel.SetActive(true);
@@ -102,7 +116,7 @@ public class GameManager : MonoBehaviour
       }
 
       AddShipToList(placedShip);
-      DebugGrid();
+      //DebugGrid();
   }
 
     public bool CheckIfOccupied(int xPos, int zPos)
@@ -369,28 +383,55 @@ public class GameManager : MonoBehaviour
         return rival;
     }
 
-    public void IdentifyLocation(int x, int z, TileInfo info)
+    public void CheckShot(int x, int z, TileInfo info)
     {
+        StartCoroutine(IdentifyLocation(x, z, info));
+    }
+
+    IEnumerator IdentifyLocation(int x, int z, TileInfo info)
+    {
+        if (isShooting)
+        {
+            yield break;
+        }
+        isShooting = true;
+
         int rival = Rival();
-     
+
 
         //IF YOUR TILE
 
-        if(!players[rival].pgb.RequestTile(info))
+        if (!players[rival].pgb.RequestTile(info))
         {
-            print("LOL");
-            return;
+            //print("LOL");
+            isShooting = false;
+            yield break;
         }
 
         //IF TILE IS ALREADY HIT
-        if(players[rival].revealGrid[x,z] == true)
+        if (players[rival].revealGrid[x, z] == true)
         {
-            print("Location already Hit");
-            return;
+            //print("Location already Hit");
+            isShooting = false;
+            yield break;
         }
 
+        //MISSILE
+        Vector3 startPos = Vector3.zero;
+        Vector3 aimPos = info.gameObject.transform.position;
+
+        GameObject missile = Instantiate(missilePrefab, startPos, Quaternion.identity);
+
+        while(MoveToTile(startPos,aimPos,0.5f, missile))
+        {
+            yield return null;
+        }
+
+        Destroy(missile);
+        Timer = 0; //Reset missile timer
+
         //CHECK IF TILE BUSY
-        if(players[rival].myGrid[x,z].IsOccupied())
+        if (players[rival].myGrid[x, z].IsOccupied())
         {
             //Damage SHIP
 
@@ -398,40 +439,59 @@ public class GameManager : MonoBehaviour
 
             if (sunk)
             {
-                
-                players[rival].placedShipList.Remove(players[rival].myGrid[x,z].placedShip.gameObject);
-
-                
+                players[rival].placedShipList.Remove(players[rival].myGrid[x, z].placedShip.gameObject);
             }
 
             //HIGHLIGHT TILE
+            //ADD [EXPLOSION + SOUND HERE]
             info.ActivateTop(3, true);
-            return;
+
         }
         else
-        {
+        {   //HIGHLIGHT TILE
+            //ADD [EXPLOSION + SOUND HERE]
+
             //NOT HIT
             info.ActivateTop(2, true);
         }
-     
-
 
         //REVEAL TILE
-        players[rival].revealGrid[x,z] = true;
+        players[rival].revealGrid[x, z] = true;
 
         //CHECK WIN STATUS
 
+        if (players[rival].placedShipList.Count == 0)
+        {
+            //print("You Win!!");
+            //LOGIC
+            players[activePlayer].WinPanel.SetActive(true);
+        
+            yield break;
+        }
+        yield return new WaitForSeconds(1f);
+
+
         //HIDE SHIPS
-
+        HideAllShips();
         //SWITCH PLAYER
-
+        SwitchPlayer();
         //ACTIVATE PANEL
-
+        players[activePlayer].shootPanel.SetActive(true);
         //SET IDLE STATE
+        gameState = GameStates.IDLE;
 
-
+        isShooting = false;
     }
 
+    bool MoveToTile(Vector3 startPos, Vector3 aimPos, float speed, GameObject missile)
+    {
+        Timer += speed * Time.deltaTime;
+        Vector3 nextPos = Vector3.Lerp(startPos, aimPos, Timer);
+        nextPos.y = altitude * Mathf.Sin(Mathf.Clamp01(Timer) * Mathf.PI);
+        missile.transform.LookAt(nextPos);
+
+        return aimPos != (missile.transform.position = Vector3.Lerp(missile.transform.position,nextPos,Timer));
+    }
 }
 
 
