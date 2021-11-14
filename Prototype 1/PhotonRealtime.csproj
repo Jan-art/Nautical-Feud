@@ -47,25 +47,25 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\LoadbalancingPeer.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\PhotonAppSettings.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\SupportLogger.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\FriendInfo.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\AppSettings.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\PhotonPingClasses.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\Extensions.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\ConnectionHandler.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\Region.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\WebRpc.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\CustomTypesUnity.cs" />
      <Compile Include="Assets\Photon\PhotonRealtime\Code\RegionHandler.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\Editor\AccountService.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\LoadBalancingClient.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\Extensions.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\WebRpc.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\LoadbalancingPeer.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\Region.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\SupportLogger.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\AppSettings.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\FriendInfo.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\PhotonPingClasses.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\Room.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\PhotonAppSettings.cs" />
      <Compile Include="Assets\Photon\PhotonRealtime\Code\PhotonPing.cs" />
      <Compile Include="Assets\Photon\PhotonRealtime\Code\RoomInfo.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\Room.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\Editor\AccountService.cs" />
      <Compile Include="Assets\Photon\PhotonRealtime\Code\Player.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\ConnectionHandler.cs" />
+     <Compile Include="Assets\Photon\PhotonRealtime\Code\CustomTypesUnity.cs" />
      <Compile Include="Assets\Photon\PhotonRealtime\Code\Unity\Editor\PhotonEditorUtils.cs" />
-     <Compile Include="Assets\Photon\PhotonRealtime\Code\LoadBalancingClient.cs" />
      <None Include="Assets\Photon\PhotonRealtime\Code\changes-realtime.txt" />
      <None Include="Assets\Photon\PhotonRealtime\Code\PhotonRealtime.asmdef" />
  <Reference Include="UnityEngine">
@@ -297,25 +297,25 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Newtonsoft.Json">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Antlr3.Runtime">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
- </Reference>
- <Reference Include="unityplastic">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
- </Reference>
- <Reference Include="log4netPlastic">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
- </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
- </Reference>
- <Reference Include="Photon3Unity3D">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll</HintPath>
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+ </Reference>
+ <Reference Include="unityplastic">
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
+ </Reference>
+ <Reference Include="Photon3Unity3D">
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll</HintPath>
+ </Reference>
+ <Reference Include="log4netPlastic">
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
+ </Reference>
+ <Reference Include="Newtonsoft.Json">
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -662,11 +662,11 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.UI">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Users Backup/Daniel Price/Documents/Work files/Unity files/Unity-Course-work/Prototype 1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>D:/Users Backup/Daniel Price/GitF/UCW/Prototype 1/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
