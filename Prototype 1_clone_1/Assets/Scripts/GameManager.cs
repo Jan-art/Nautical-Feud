@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
@@ -216,7 +217,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 {
                     //DEACTIVATE PANEL
                     players[activePlayer].placePanel.SetActive(false);
-                    PlaceSystem.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                    PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
                     StartCoroutine(MoveCamera(players[activePlayer].cameraPos));
                     gameState = GameStates.IDLE;
                 }
@@ -230,7 +231,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 {
                     //DEACTIVATE PANEL
                     players[activePlayer].placePanel.SetActive(false);
-                    PlaceSystem.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                    PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
                     gameState = GameStates.IDLE;
                 }
                 break;
@@ -269,7 +270,6 @@ public class GameManager : MonoBehaviour, IOnEventCallback
     //READY BTN
     public void SelectReady()
     {
-        PhotonView photonView = PhotonView.Get(this);
         if (activePlayer == 0)
         {
 
@@ -289,23 +289,8 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             //PROTON EVENT TO NOTIFIY OTHER PLAYER
             if (PhotonNetwork.IsMasterClient)
             {
-                object[] content = new object[1];
-                /*
-                for (Tile t in players[0].myGrid)
-                {
-                    if (t.IsOccupied())
-                    {
-                        OccupationType temp = t.getOccupation();
-                        TileInfo tempTileInfo = t.getComponent<TileInfo>();
-                        if (temp == CARRIER)
-                        {
-
-                        }
-                    }
-                } 
-                */
-                List<object> locations = new List<object>();
-
+                object[] content = new object[51];
+                int index = 0;
                 //Checks all tiles to see if they are empty
                 for (int i = 0; i < 10; i++)
                 {
@@ -314,15 +299,16 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                         if (players[0].myGrid[i, k].IsOccupied())
                         {
                             //If a tile is occupied adds what occupies it and the tile coordinates to the locations list
-                            locations.Add(players[0].myGrid[i, k].getOccupation());
-                            locations.Add(i);
-                            locations.Add(k);
-                            Debug.Log("Location added to list. Occupied by" + players[0].myGrid[i, k].getOccupation());
+                            content[index] = players[0].myGrid[i, k].getOccupationString();
+                            index++;
+                            content[index] = i;
+                            index++;
+                            content[index] = k;
+                            index++;
+                            Debug.Log("Location added to list. Occupied by" + content[index-3] + content[index-2]+content[index-1]);
                         } 
                     }
                 }
-                //Adds locations to the content being sent and raises the event
-                content[0] = locations;
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Event 'OnShipPlacementFinished' raised");
@@ -570,7 +556,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         return aimPos != (missile.transform.position = Vector3.Lerp(missile.transform.position, nextPos, Timer));
     }
 
-    #region PhotonRaiseEvents
+    #region Photon Raise Events
 
     private void OnEnable()
     {
@@ -585,12 +571,11 @@ public class GameManager : MonoBehaviour, IOnEventCallback
     public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
-
+        object[] data = (object[])photonEvent.CustomData;
         if (eventCode == OnTileSelected)
         {
             Debug.Log("Event 'OnTileSelected' recieved");
             //Converts information recieved from event into correct data types
-            object[] data = (object[])photonEvent.CustomData;
             int x = (int)data[0];
             int z = (int)data[1];
             int playerIndex = (int)data[2];
@@ -603,19 +588,18 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         else if (eventCode == OnShipPlacementFinished)
         {
             Debug.Log("Event 'OnShipPlacementFinished' recieved");
-            object[] data = (object[])photonEvent.CustomData;
             if (activePlayer == 0)
             {
                 Debug.Log("'if (activePlayer == 0)' hit on 'OnShipPlacementFinished'");
-
-                List<object> locations = (List<object>)data[0];
+                PlaceSystemEvent.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString(), data);
+                PlaceSystemEvent.instance.PlaceShip();
                 Debug.Log("P2PlaceShips run");
-                this.SelectReady();
+                instance.SelectReady();
             } 
             else
             {
                 Debug.Log("Else hit in 'OnShipPlacementFinished'");
-                this.SelectReady();
+                instance.SelectReady();
             }
             
         }

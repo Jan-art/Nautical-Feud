@@ -39,6 +39,31 @@ public class Tile
     {
         return type;
     }
+
+    // Assumes getOccupation() has been called to make sure it isn't empty
+  public string getOccupationString()
+    {
+        if (type == OccupationType.CORVETTE)
+        {
+            return "CORVETTE";
+        }
+        else if (type == OccupationType.CARRIER)
+        {
+            return "CARRIER";
+        }
+        else if (type == OccupationType.BATTLESHIP)
+        {
+            return "BATTLESHIP";
+        }
+        else if (type == OccupationType.CRUISER)
+        {
+            return "CRUISER";
+        } 
+        else
+        {
+            return "SUBMARINE";
+        }
+    }
   
 }
 

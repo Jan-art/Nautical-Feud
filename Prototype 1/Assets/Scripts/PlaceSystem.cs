@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlaceSystem : MonoBehaviour
+abstract public class PlaceSystem : MonoBehaviour
 {
-    public static PlaceSystem instance;
+    protected bool isPlacing; //PLACE MODE ON / OFF
+    protected bool canPlace; // FREE TO PLACE
 
-    bool isPlacing; //PLACE MODE ON / OFF
-    bool canPlace; // FREE TO PLACE
-
-    PhysicalGameBoard pgb;
+    protected PhysicalGameBoard pgb;
     public LayerMask layerToCheck;  //
 
     [System.Serializable]public class ShipsToPlace      //
@@ -26,74 +24,27 @@ public class PlaceSystem : MonoBehaviour
 
     public List<ShipsToPlace> fleetList = new List<ShipsToPlace>(); //Set of ghost ships
 
-    public Button readyBtn;
+    protected int currentShip ;
 
-    int currentShip ;
-
-    RaycastHit hit;
-    Vector3 hitPoint;
+    protected RaycastHit hit;
+    protected Vector3 hitPoint;
 
     void Awake()
     {
-        instance = this;
     }
 
 
     void Start()
     {
-        readyBtn.interactable = false;
-
-        UpdateAmountText();
-
-
-        ActivateShipGhost(-1);  //-1?
-        //ActivateShipGhost(currentShip);
     }
 
-    public void SetPlayerField(PhysicalGameBoard _pgb, string playerType)
-    {
-        pgb = _pgb;
-        readyBtn.interactable = false;
+    abstract public void SetPlayerField(PhysicalGameBoard _pgb, string playerType);
 
-        ClearAllShips();
+    abstract public void SetPlayerField(PhysicalGameBoard _pgb, string playerType, object[] _locations);
 
-    }
-   
-    void Update()
-    {
-        if(isPlacing)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerToCheck)) 
-            {
-                //If tile hit is not the opponent's tile.
-                if (!pgb.RequestTile(hit.collider.GetComponent<TileInfo>()))
-                {
-                    return;
-                }
+    abstract public void Update(); 
 
-                hitPoint = hit.point;
-            }
-
-            if(Input.GetMouseButtonDown(0) && canPlace)
-            {
-                //PLACE SHIP
-                PlaceShip();
-
-            }
-
-            if(Input.GetMouseButtonDown(1))
-            {
-                //ROTATE SHIP
-                RotateShipGhost();
-            }
-
-            //Place Ghost
-            PlaceGhost();
-        }
-    }   
-
-    void ActivateShipGhost(int index)
+    protected void ActivateShipGhost(int index)
     {
         if(index != -1)
         {
@@ -119,7 +70,7 @@ public class PlaceSystem : MonoBehaviour
         fleetList[index].shipGhost.SetActive(true);
     }
 
-    void PlaceGhost()
+    protected void PlaceGhost()
     {
         if (isPlacing)
         {
@@ -133,12 +84,12 @@ public class PlaceSystem : MonoBehaviour
         }
     }
 
-    void RotateShipGhost()
+    protected void RotateShipGhost()
     {
         fleetList[currentShip].shipGhost.transform.localEulerAngles += new Vector3(0, 90f, 0);
     }
 
-    bool CheckIfOccupied()
+    protected bool CheckIfOccupied()
     {
             foreach(Transform child in fleetList[currentShip].shipGhost.transform)
             {
@@ -153,33 +104,8 @@ public class PlaceSystem : MonoBehaviour
 
             return true;
     }
-    
-    void PlaceShip()
-    {
-        Vector3 pos = new Vector3(Mathf.Round(hitPoint.x), 0, Mathf.Round(hitPoint.z));
-        Quaternion rot = fleetList[currentShip].shipGhost.transform.rotation;
-        GameObject newShip = Instantiate(fleetList[currentShip].shipPrefab, pos, rot );
 
-        //UPDATE GRID MENU
-        
-        GameManager.instance.UpdateGrid(fleetList[currentShip].shipGhost.transform,newShip.GetComponent<ShipBehaviour>(), newShip);
-
-        fleetList[currentShip].placedAmount++;
-
-        //DEACTIVATE ISPLACING()
-        isPlacing = false;
-
-        //DEACTIVATE ALL GHOST MODELS
-        ActivateShipGhost(-1);
-
-        //CHECK IF ALL SHIPS ARE PLACED
-        CheckIfAllPlaced();
-
-        //UPDATE TEXT COUNT
-        UpdateAmountText();
-
-      
-    }
+    abstract public void PlaceShip();
 
     public void PlaceShipBtn(int index) //Menu Buttons
     {
@@ -194,25 +120,15 @@ public class PlaceSystem : MonoBehaviour
         isPlacing = true;
     }
 
-    bool CheckIfAllPlaced(int index) 
+    protected bool CheckIfAllPlaced(int index) 
         {
             return fleetList[index].placedAmount == fleetList[index].amountToPlace;
         }
-    
-    bool CheckIfAllPlaced() //ALL SHIPS
-    {
-        foreach (var ship in fleetList)  //Change to for loop. 
-        {
-            if(ship.placedAmount != ship.amountToPlace)
-            {
-                return false;
-            }
-        }  
 
-        readyBtn.interactable = true;
-        return true;
-    }
-    void UpdateAmountText()
+    abstract protected bool CheckIfAllPlaced(); //ALL SHIPS
+
+
+    protected void UpdateAmountText()
     {
         for (int i = 0; i < fleetList.Count; i++)
         {
@@ -220,18 +136,7 @@ public class PlaceSystem : MonoBehaviour
         }
     }
 
-    public void ClearAllShips()
-    {
-        GameManager.instance.RemoveAllShipsFromList();
-        foreach (var ship in fleetList)
-        {
-            ship.placedAmount = 0;
-        }
-        UpdateAmountText();
-
-        readyBtn.interactable = false;
-       
-    }
+    abstract public void ClearAllShips();
 }
 
 

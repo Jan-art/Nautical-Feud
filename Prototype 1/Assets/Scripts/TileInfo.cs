@@ -5,9 +5,7 @@ using UnityEngine;
 public class TileInfo : MonoBehaviour
 {
     public int xPos;
-    //public xPos => XPos;
     public int zPos;
-    //public zPos => ZPos;
 
     bool hit;
 

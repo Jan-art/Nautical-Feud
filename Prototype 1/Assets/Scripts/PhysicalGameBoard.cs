@@ -45,15 +45,23 @@ public class PhysicalGameBoard : MonoBehaviourPunCallbacks
     public TileInfo TileInfoRequest(int x, int z)
     {
         TileInfo info;
-        if (x == 0)
+        /*if (x == 0)
         {
             info = tileInfoList[x + z];
         }
         else
         {
+        */
            info = tileInfoList[(x * 10) + z];
-        }
+        //}
         return info;
+    }
+
+    public GameObject TileRequest(int x, int z)
+    {
+        GameObject temp;
+        temp = tileList[(x * 10) + z];
+        return temp;
     }
 
     //Create board
