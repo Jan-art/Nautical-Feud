@@ -28,17 +28,6 @@ public class TileInfo : MonoBehaviour
         zPos = _zPos;
     }
 
-    /*
-    public int GetTilexPos()
-    {
-        return xPos;
-    }
-
-    public int GetTilezPos()
-    {
-        return zPos;
-    }
-    */
 
     void OnMouseOver()
     {

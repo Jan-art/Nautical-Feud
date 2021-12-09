@@ -38,34 +38,67 @@ public class PlaceSystemEvent : PlaceSystem
     override public void PlaceShip()
     {
         Debug.Log("Now running 'PlaceShip'"+locations.Length);
-        for (int i = 0; i < (locations.Length)/3; i += 3)
+        int x = 0;
+        int z = 0;
+        GameObject newShip = null;
+        bool battleshipPlaced = false;
+        bool carrierPlaced = false;
+        bool submarinePlaced = false;
+        bool cruiserPlaced = false;
+
+        for (int i = 0; i < (locations.Length); i += 3)
         {
             Debug.Log("Looping through locations in 'PlaceShip'");
+            x = (int)locations[i+1];
+            z = (int)locations[i + 2];
+            GameObject temp = pgb.TileRequest(x, z);
+            Debug.Log("Tile Position " + pgb.TileRequest(x, z).GetComponent<Transform>().position);
+            Ray ray = Camera.main.ScreenPointToRay(temp.GetComponent<Transform>().position);
+            Debug.Log("Ray: " + ray);
+            Vector3 pos = temp.GetComponent<Transform>().position;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, temp.layer))
+            {
+                hitPoint = hit.point;
+            }
+
             if (locations[i].Equals("CORVETTE"))
             {
                 Debug.Log("Placing Corvette now");
                 //TileInfo info = pgb.TileInfoRequest((int)locations[i+1],(int)locations[i+2];
-                GameObject temp = pgb.TileRequest((int)locations[i + 1], (int)locations[i + 2]);
-                Debug.Log(pgb.TileRequest((int)locations[i + 1], (int)locations[i + 2]).GetComponent<Transform>().position);
-                Ray ray = Camera.main.ScreenPointToRay(temp.GetComponent<Transform>().position);
-                Debug.Log(ray);
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, temp.layer))
-                {
-                    hitPoint = hit.point;
-                    Debug.Log("if statement in 'PlaceShip' has run" + hitPoint);
-                }
+
                 //Maybe functional calculation for the position of the ship
-                Vector3 pos = temp.GetComponent<Transform>().position;
+
                 //Vector3 pos = new Vector3(Mathf.Round(hitPoint.x), 0, Mathf.Round(hitPoint.z));
                 Quaternion rot = fleetList[currentShip].shipGhost.transform.rotation;
-                GameObject newShip = Instantiate(fleetList[4].shipPrefab, pos, rot);
+                newShip = Instantiate(fleetList[4].shipPrefab, pos, rot);
             }
             else
             {
-                Debug.Log("Else run in 'PlaceShip' function");
-                // Code for other ship types as the rotation of them needs to be considered as it can be different
-            }
+                Quaternion rot = fleetList[currentShip].shipGhost.transform.rotation;
+                if (locations[i].Equals("CARRIER") && carrierPlaced == false){
+                    newShip = Instantiate(fleetList[0].shipPrefab, pos, rot);
+                    carrierPlaced = true;
+                }
+                else if (locations[i].Equals("BATTLESHIP") && battleshipPlaced == false)
+                {
+                    newShip = Instantiate(fleetList[1].shipPrefab, pos, rot);
+                    battleshipPlaced = true;
+                }
+                else if (locations[i].Equals("SUBMARINE") && submarinePlaced == false)
+                {
+                    newShip = Instantiate(fleetList[2].shipPrefab, pos, rot);
+                    submarinePlaced = true;
+                }
+                else if (locations[i].Equals("CRUISER") && cruiserPlaced == false)
+                {
+                    newShip = Instantiate(fleetList[3].shipPrefab, pos, rot);
+                    cruiserPlaced = true;
+                }
 
+
+            }
+            GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z);
             CheckIfAllPlaced();
         }
         /* KEEPING THIS HERE FOR NOW TO HELP WITH IMPLEMENTING NEW VERSION

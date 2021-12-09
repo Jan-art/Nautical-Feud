@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         players[activePlayer].placedShipList.Add(placedShip);
     }
 
+    //Used by PlaceSystemManual to set which tiles a ship is on
     public void UpdateGrid(Transform shipTransform, ShipBehaviour ship, GameObject placedShip)
     {
         foreach (Transform child in shipTransform)
@@ -129,11 +130,39 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         //DebugGrid();
     }
 
+    //Used by PlaceSystemEvent to set which tiles a ship is on
+    public void UpdateGrid(Transform shipTransform, ShipBehaviour ship, GameObject placedShip, int xTile, int zTile)
+    {
+        Debug.Log("UpdateGrid running for PlaceSystemEvent");
+        
+        /*
+        foreach (Transform child in shipTransform)
+            Debug.Log("foreach loop run in UpdateGrid");
+        {
+            TileInfo tInfo = players[activePlayer].pgb.TileInfoRequest(x, z);
+            players[activePlayer].myGrid[tInfo.xPos, tInfo.zPos] = new Tile(ship.type, ship);
+        }
+        */
+
+        // Probably the source of the code issue for ships placing too far down or not at all
+        for (int i = 0; i < ship.shipLength; i++)
+        {
+            TileInfo tInfo = players[activePlayer].pgb.TileInfoRequest(xTile, zTile);
+            players[activePlayer].myGrid[tInfo.xPos, tInfo.zPos] = new Tile(ship.type, ship);
+
+            //Needs changing to account for rotation
+            xTile += 1;
+        }
+        AddShipToList(placedShip);
+        //DebugGrid();
+    }
+
     public bool CheckIfOccupied(int xPos, int zPos)
     {
         return players[activePlayer].myGrid[xPos, zPos].IsOccupied();
     }
 
+    /*
     public void DebugGrid()
     {
         string s = "";
@@ -180,6 +209,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         }
         print(s);
     }
+    */
 
     public void RemoveAllShipsFromList()
     {

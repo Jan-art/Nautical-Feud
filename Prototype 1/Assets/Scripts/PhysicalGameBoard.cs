@@ -52,7 +52,7 @@ public class PhysicalGameBoard : MonoBehaviourPunCallbacks
         else
         {
         */
-           info = tileInfoList[(x * 10) + z];
+        info = tileInfoList[(x * 10) + z];
         //}
         return info;
     }
