@@ -1,0 +1,16 @@
+Features requireing implementation:
+
+MAJOR FEATURE - There needs to be a way to prevent you acting on an enemy turn. I (Daniel) think this could be implemented by creating an overlay similar to the your turn ones and using it to block player input. 
+MAJOR FEATURE - The overlays denoting which turn it is needs to be changed to state whether its player 1's or 2's go. Additionally the win and lose pop ups need to be corrected so it correctly states whether you won or not.
+
+MAJOR FEATURE - The menu button on the victory screen does not correctly link back to the original menu as photon trys to connect again and crashes. This either needs LobbyManager to be fixed or if we are going to copy and paste in the room system Jan madewe need to check it works with that.
+
+MAJOR FEATURE - Enemy ships need to be hidden. This just requires commenting out and adding in some calls for UnhideAllShips and HideAllShips
+
+On the receiving client for an attack the missle animation is not played. This needs fixing for consistency
+
+
+
+Features that have been implemented:
+
+Tiles selected and ships placed get sent successfully between both clients. Basic multiplayer is functional and as long as the game isn't played by anyone it probably looks fine for the MVP showcase.
