@@ -35,8 +35,10 @@ public class PlaceSystemEvent : PlaceSystem
 
     }
 
+    //USED TO PLACE SHIPS BASED ON INFORMATION RECIEVED FROM THE OTHER PLAYER
     override public void PlaceShip()
     {
+        //Defines variables that will be used to place ships
         Debug.Log("Now running 'PlaceShip'"+locations.Length);
         int x = 0;
         int z = 0;
@@ -54,55 +56,48 @@ public class PlaceSystemEvent : PlaceSystem
 
         for (int i = 0; i < (locations.Length); i += 4)
         {
-            Debug.Log("Looping through locations in 'PlaceShip'");
+            //Re-intialises variables that will change each loop
             x = (int)locations[i + 1];
             z = (int)locations[i + 2];
             shipRotation = (string)locations[i + 3];
             temp = pgb.TileRequest(x, z);
             ray = Camera.main.ScreenPointToRay(temp.GetComponent<Transform>().position);
             pos = temp.GetComponent<Transform>().position;
-
-            //temp section to test
-            Debug.Log("Tile selection finished" + (shipRotation.Equals("down") || shipRotation.Equals("up")));
-
+            //May not be necessary to use ray
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, temp.layer))
             {
                 hitPoint = hit.point;
             }
 
+            //If statement for whether or not it is a corvette being placed. Longer ships need code for deciding their rotation and to
+            //prevent multiple copies being placed
             if (locations[i].Equals("CORVETTE"))
             {
-                Debug.Log("Placing Corvette now");
                 newShip = Instantiate(fleetList[4].shipPrefab, pos, rot);
                 GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
             }
             else
             {
-                Debug.Log("Placing Longer Ship Now");
-
+                //Each one instantiates a ship, flips a flag to prevent a second being placed and calls updateGrid to register the ship with it's tiles
                 if (locations[i].Equals("CARRIER") && carrierPlaced == false){
-                    //Quaternion rot = fleetList[0].shipGhost.transform.rotation;
                     newShip = Instantiate(fleetList[0].shipPrefab, pos, rot);
                     carrierPlaced = true;
                     GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
                 }
                 else if (locations[i].Equals("BATTLESHIP") && battleshipPlaced == false)
                 {
-                    //Quaternion rot = fleetList[1].shipGhost.transform.rotation;
                     newShip = Instantiate(fleetList[1].shipPrefab, pos, rot);
                     battleshipPlaced = true;
                     GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
                 }
                 else if (locations[i].Equals("SUBMARINE") && submarinePlaced == false)
                 {
-                    //Quaternion rot = fleetList[2].shipGhost.transform.rotation;
                     newShip = Instantiate(fleetList[2].shipPrefab, pos, rot);
                     submarinePlaced = true;
                     GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
                 }
                 else if (locations[i].Equals("CRUISER") && cruiserPlaced == false)
                 {
-                    //Quaternion rot = fleetList[3].shipGhost.transform.rotation;
                     newShip = Instantiate(fleetList[3].shipPrefab, pos, rot);
                     cruiserPlaced = true;
                     GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
@@ -115,31 +110,6 @@ public class PlaceSystemEvent : PlaceSystem
             
             CheckIfAllPlaced();
         }
-        /* KEEPING THIS HERE FOR NOW TO HELP WITH IMPLEMENTING NEW VERSION
-        Vector3 pos = new Vector3(Mathf.Round(hitPoint.x), 0, Mathf.Round(hitPoint.z));
-        Quaternion rot = fleetList[currentShip].shipGhost.transform.rotation;
-        GameObject newShip = Instantiate(fleetList[currentShip].shipPrefab, pos, rot);
-
-        //UPDATE GRID MENU
-
-        GameManager.instance.UpdateGrid(fleetList[currentShip].shipGhost.transform, newShip.GetComponent<ShipBehaviour>(), newShip);
-
-        fleetList[currentShip].placedAmount++;
-
-        //DEACTIVATE ISPLACING()
-        isPlacing = false;
-
-        //DEACTIVATE ALL GHOST MODELS
-        ActivateShipGhost(-1);
-
-        //CHECK IF ALL SHIPS ARE PLACED
-        CheckIfAllPlaced();
-
-        //UPDATE TEXT COUNT
-        UpdateAmountText();
-        */
-
-
     }
     
     override public void SetPlayerField(PhysicalGameBoard _pgb, string playerType, object[] _locations)
@@ -150,9 +120,9 @@ public class PlaceSystemEvent : PlaceSystem
         ClearAllShips();
     }
 
-    override public void SetPlayerField(PhysicalGameBoard _pgb, string playerType) { }
-
     override protected bool CheckIfAllPlaced() { return true; } //ALL SHIPS
 
+    //NECESSARY TO PREVENT ERRORS WITH NOT HAVING IMPLEMENTED ALL METHODS
+    override public void SetPlayerField(PhysicalGameBoard _pgb, string playerType) { }
     override public void Update() { }
 }

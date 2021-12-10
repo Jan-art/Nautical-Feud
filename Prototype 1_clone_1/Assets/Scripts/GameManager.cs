@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
     public static GameManager instance;
 
     
-    //Proton Events
+    //Proton Event Codes used to identify what reaction needs to be taken to the information recieved
     public const byte OnTileSelected = 1;
     public const byte OnShipPlacementFinished = 2;
     
@@ -135,12 +135,13 @@ public class GameManager : MonoBehaviour, IOnEventCallback
     {
         Debug.Log("UpdateGrid running for PlaceSystemEvent");
 
+        //Loops through the tiles the ship will be on to register the ship with them
         for (int i = 0; i < ship.shipLength; i++)
         {
             TileInfo tInfo = players[activePlayer].pgb.TileInfoRequest(xTile, zTile);
             players[activePlayer].myGrid[tInfo.xPos, tInfo.zPos] = new Tile(ship.type, ship);
 
-            //Needs changing to account for rotation
+            //Changes whether the row or column number is incremented to account for the rotation of the ship
             if (shipRotation.Equals("down") || shipRotation.Equals("up"))
             {
                 zTile ++;
@@ -159,7 +160,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         return players[activePlayer].myGrid[xPos, zPos].IsOccupied();
     }
 
-    /*
+    
     public void DebugGrid()
     {
         string s = "";
@@ -206,7 +207,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         }
         print(s);
     }
-    */
+    
 
     public void RemoveAllShipsFromList()
     {
@@ -313,7 +314,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             players[activePlayer].placePanel.SetActive(true);
 
             
-            //PROTON EVENT TO NOTIFIY OTHER PLAYER
+            //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 1 (MASTER CLIENT)
             if (PhotonNetwork.IsMasterClient)
             {
                 object[] content = new object[68];
@@ -321,14 +322,15 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 string rotated = "";
                 string occupationType;
                 bool flag;
-                //Checks all tiles to see if they are empty
+
+                //Loops through all tiles and if they are occupied adds the information to a object array that will be sent to the other player
                 for (int i = 0; i < 10; i++)
                 {
                     for (int k = 0; k < 10; k++)
                     {
                         if (players[0].myGrid[i, k].IsOccupied())
                         {
-                            //If a tile is occupied adds what occupies it and the tile coordinates to the locations list
+                            //If a tile is occupied adds what occupies it, tile coordinates and its rotation to the locations list 
                             flag = false;
                             occupationType = players[0].myGrid[i, k].getOccupationString();
                             content[index] = occupationType;
@@ -337,6 +339,8 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                             index++;
                             content[index] = k;
                             index++;
+                            /*If occupied by a corvette has the systemregister it as rotated down otherwise looks at surronding tiles to figure out
+                              the ships rotation */
                             if (!occupationType.Equals("CORVETTE")){
                                 if (i+1 < 10)
                                 {
@@ -377,6 +381,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                         } 
                     }
                 }
+                //Sets the recivers (other player) and information (object array formed above) and then sends them using RaiseEvent
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Event 'OnShipPlacementFinished' raised");
@@ -403,7 +408,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             players[activePlayer].shootPanel.SetActive(true);
 
 
-            //PROTON EVENT TO NOTIFIY OTHER PLAYER
+            //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 2 (NOT MASTER CLIENT)
             if (!PhotonNetwork.IsMasterClient)
             {
                 object[] content = new object[68];
@@ -411,14 +416,14 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 string rotated = "";
                 string occupationType;
                 bool flag;
-                //Checks all tiles to see if they are empty
+                //Loops through all tiles and if they are occupied adds the information to a object array that will be sent to the other player
                 for (int i = 0; i < 10; i++)
                 {
                     for (int k = 0; k < 10; k++)
                     {
                         if (players[1].myGrid[i, k].IsOccupied())
                         {
-                            //If a tile is occupied adds what occupies it and the tile coordinates to the locations list
+                            //If a tile is occupied adds what occupies it, tile coordinates and its rotation to the locations list
                             flag = false;
                             occupationType = players[1].myGrid[i, k].getOccupationString();
                             content[index] = occupationType;
@@ -427,6 +432,8 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                             index++;
                             content[index] = k;
                             index++;
+                            /*If occupied by a corvette has the systemregister it as rotated down otherwise looks at surronding tiles to figure out
+                              the ships rotation */
                             if (!occupationType.Equals("CORVETTE"))
                             {
                                 if (i + 1 < 10)
@@ -468,6 +475,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                         }
                     }
                 }
+                //Sets the recivers (other player) and information (object array formed above) and then sends them using RaiseEvent
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Event 'OnShipPlacementFinished' raised");
@@ -550,6 +558,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         // Should be commented out for actual release
         UnHideAllShips();
         // Should be commented out for actual release
+
         players[activePlayer].shootPanel.SetActive(false);
         gameState = GameStates.KILL;
     }
@@ -566,9 +575,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
 
     public void CheckShot(int x, int z, TileInfo info)
     {
-        Debug.Log("CheckShot running");
         StartCoroutine(IdentifyLocation(x, z, info));
-        Debug.Log("CheckShot finished");
     }
 
     IEnumerator IdentifyLocation(int x, int z, TileInfo info)
@@ -599,9 +606,10 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             yield break;
         }
 
-      
+      //IF SHOT IS FIRED AT THE RIVAL
         if (!(players[activePlayer]==players[rival]))
         {
+            //Stores information about the tile hit and sends it to the other player so they can update their version
             object[] content = new object[] {x, z, rival};
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
             PhotonNetwork.RaiseEvent(OnTileSelected, content, raiseEventOptions, SendOptions.SendReliable);
@@ -666,8 +674,9 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         // Should be commented out for actual release
         //HIDE SHIPS
         HideAllShips();
-        //SWITCH PLAYER
         // Should be commented out for actual release
+
+        //SWITCH PLAYER
         SwitchPlayer();
         //ACTIVATE PANEL
         players[activePlayer].shootPanel.SetActive(true);
@@ -699,26 +708,28 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         PhotonNetwork.RemoveCallbackTarget(this);
     }
 
+    //RUNS WHEN A EVENT IS RECIVED FROM THE NETWORK
     public void OnEvent(EventData photonEvent)
     {
+        //Sets the information recieved to local variables to be manipulated
         byte eventCode = photonEvent.Code;
         object[] data = (object[])photonEvent.CustomData;
+
         if (eventCode == OnTileSelected)
         {
-            Debug.Log("Event 'OnTileSelected' recieved");
             //Converts information recieved from event into correct data types
             int x = (int)data[0];
             int z = (int)data[1];
             int playerIndex = (int)data[2];
             TileInfo info = players[playerIndex].pgb.TileInfoRequest(x, z);     //Gets TileInfo based on the coordinates sent through
-            //Runs methods to check shot on recieving client, thus creating a hit marker on their board
+            //Runs methods to check shot on recieving client, thus creating a hit marker on their board, no missile fires however
             this.CheckShot(x, z, info);
-            Debug.Log("Event 'OnTileSelected' completed");
             
         }
         else if (eventCode == OnShipPlacementFinished)
         {
             Debug.Log("Event 'OnShipPlacementFinished' recieved");
+            //If sent to 2nd player by 1st player
             if (activePlayer == 0)
             {
                 PlaceSystemEvent.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString(), data);
@@ -726,6 +737,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 Debug.Log("P1 ships placed based on event recieved");
                 instance.SelectReady();
             } 
+            //If sent to 1st player by 2nd player
             else
             {
                 PlaceSystemEvent.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString(), data);
