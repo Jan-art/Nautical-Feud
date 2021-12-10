@@ -16,3 +16,4 @@ FIXED ERRORS
 Player two doesn't send ships to player one. This just needs adding in the shipPlacement method in Gamemanager of P2PlaceShips
 
 Excluding the Corvette: Ship's hitboxes arn't correct, they get shifted down shipLength - 1 spaces, no implementation for rotation. Issues located either in PlaceSystemEvent.PlaceShip or GameManager.UpdateGrid (second version with more arguments). 
+
