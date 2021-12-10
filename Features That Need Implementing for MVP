@@ -2,8 +2,9 @@ FEATURES REQUIREING IMPLEMENTATION:
 
 MAJOR FEATURE - There needs to be a way to prevent you acting on an enemy turn. I (Daniel) think this could be implemented by creating an overlay 
 similar to the your turn ones and using it to block player input. This would need to pop up every time your opppoent goes to shoot telling you 
-its the enemy turn and preventing any inputs from being registered. Something similar would be needed to tell you your opponent is placing
-ships.
+its the enemy turn and preventing any inputs from being registered. 
+Something similar would be needed to tell you your opponent is placing ships. Maybe be done in the switch case in update line 194 however no overlay has
+been added.
 
 MAJOR FEATURE - The overlays denoting which turn it is needs to be changed to state whether its player 1's or 2's go. 
 Additionally the win and lose pop ups need to be corrected so it correctly states whether you won or not.
