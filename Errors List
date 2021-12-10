@@ -5,12 +5,13 @@ This needs fixing but it should just be changing a line of code somewhere that c
 
 MAJOR ERROR - Clear all button broke. Probably just deselected something on accident.
 
-Issues are caused with the 'Your turn' overlays if a photon event is sent, sometimes freezes.
+MAJOR ERROR - Issues are caused with the 'Your turn' overlays if a photon event is sent, sometimes freezes.
 
-Rotations, while functional, do not reflect the true direction a ship is facing. To implement this it would be necessary to change the
-tile selected based on the direction the ship is facing and the ship length and then rotate it so it faces the correct direction.
+Minor error - Rotations, while functional, do not reflect the true direction a ship is facing. To implement this it would be necessary 
+to change the tile selected based on the direction the ship is facing and the ship length and then rotate it so it faces the 
+correct direction.
 
-In relation to rotations being slightly dodgy corvettes rotate as well when they arn't supposed to.
+Minor error - In relation to rotations being slightly dodgy corvettes rotate as well when they arn't supposed to.
 
 
 FIXED ERRORS
