@@ -10,6 +10,8 @@ This either needs LobbyManager to be fixed or if we are going to copy and paste 
 
 MAJOR FEATURE - Enemy ships need to be hidden. This just requires commenting out and adding in some calls for UnhideAllShips and HideAllShips
 
+Prevent the place menu appearing on the recieving client while the main client is trying to place ships.
+
 On the receiving client for an attack the missle animation is not played. This needs fixing for consistency
 
 
