@@ -131,27 +131,24 @@ public class GameManager : MonoBehaviour, IOnEventCallback
     }
 
     //Used by PlaceSystemEvent to set which tiles a ship is on
-    public void UpdateGrid(Transform shipTransform, ShipBehaviour ship, GameObject placedShip, int xTile, int zTile)
+    public void UpdateGrid(Transform shipTransform, ShipBehaviour ship, GameObject placedShip, int xTile, int zTile, string shipRotation)
     {
         Debug.Log("UpdateGrid running for PlaceSystemEvent");
-        
-        /*
-        foreach (Transform child in shipTransform)
-            Debug.Log("foreach loop run in UpdateGrid");
-        {
-            TileInfo tInfo = players[activePlayer].pgb.TileInfoRequest(x, z);
-            players[activePlayer].myGrid[tInfo.xPos, tInfo.zPos] = new Tile(ship.type, ship);
-        }
-        */
 
-        // Probably the source of the code issue for ships placing too far down or not at all
         for (int i = 0; i < ship.shipLength; i++)
         {
             TileInfo tInfo = players[activePlayer].pgb.TileInfoRequest(xTile, zTile);
             players[activePlayer].myGrid[tInfo.xPos, tInfo.zPos] = new Tile(ship.type, ship);
 
             //Needs changing to account for rotation
-            xTile += 1;
+            if (shipRotation.Equals("down") || shipRotation.Equals("up"))
+            {
+                zTile ++;
+            }
+            else
+            {
+                xTile ++;
+            }
         }
         AddShipToList(placedShip);
         //DebugGrid();
@@ -319,8 +316,11 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             //PROTON EVENT TO NOTIFIY OTHER PLAYER
             if (PhotonNetwork.IsMasterClient)
             {
-                object[] content = new object[51];
+                object[] content = new object[68];
                 int index = 0;
+                string rotated = "";
+                string occupationType;
+                bool flag;
                 //Checks all tiles to see if they are empty
                 for (int i = 0; i < 10; i++)
                 {
@@ -329,13 +329,51 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                         if (players[0].myGrid[i, k].IsOccupied())
                         {
                             //If a tile is occupied adds what occupies it and the tile coordinates to the locations list
-                            content[index] = players[0].myGrid[i, k].getOccupationString();
+                            flag = false;
+                            occupationType = players[0].myGrid[i, k].getOccupationString();
+                            content[index] = occupationType;
                             index++;
                             content[index] = i;
                             index++;
                             content[index] = k;
                             index++;
-                            Debug.Log("Location added to list. Occupied by" + content[index-3] + content[index-2]+content[index-1]);
+                            if (!occupationType.Equals("CORVETTE")){
+                                if (i+1 < 10)
+                                {
+                                    if (occupationType.Equals(players[0].myGrid[i + 1, k].getOccupationString()))
+                                    {
+                                        rotated = "right";
+                                        flag = true;
+                                    }
+                                }
+                                if (i-1 > -1)
+                                {
+                                    if (occupationType.Equals(players[0].myGrid[i - 1, k].getOccupationString()))
+                                    {
+                                        rotated = "left";
+                                        flag = true;
+                                    }
+                                }
+                                if (k+1 < 10)
+                                {
+                                    if (occupationType.Equals(players[0].myGrid[i, k + 1].getOccupationString()))
+                                    {
+                                        rotated = "up";
+                                        flag = true;
+                                    }
+                                }
+                                if (flag == false)
+                                {
+                                    rotated = "down";
+                                }
+                            }
+                            else
+                            {
+                                rotated = "down";
+                            }
+                            content[index] = rotated;
+                            index++;
+                            Debug.Log("Location added to list. Occupied by" + content[index-4] + content[index-3]+ content[index-2] + content[index-1]);
                         } 
                     }
                 }
@@ -364,25 +402,85 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             //ACTIVATE P1 KILL PANELS
             players[activePlayer].shootPanel.SetActive(true);
 
-            
+
             //PROTON EVENT TO NOTIFIY OTHER PLAYER
             if (!PhotonNetwork.IsMasterClient)
             {
-                object[] content = new object[1];
+                object[] content = new object[68];
+                int index = 0;
+                string rotated = "";
+                string occupationType;
+                bool flag;
+                //Checks all tiles to see if they are empty
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int k = 0; k < 10; k++)
+                    {
+                        if (players[1].myGrid[i, k].IsOccupied())
+                        {
+                            //If a tile is occupied adds what occupies it and the tile coordinates to the locations list
+                            flag = false;
+                            occupationType = players[1].myGrid[i, k].getOccupationString();
+                            content[index] = occupationType;
+                            index++;
+                            content[index] = i;
+                            index++;
+                            content[index] = k;
+                            index++;
+                            if (!occupationType.Equals("CORVETTE"))
+                            {
+                                if (i + 1 < 10)
+                                {
+                                    if (occupationType.Equals(players[1].myGrid[i + 1, k].getOccupationString()))
+                                    {
+                                        rotated = "right";
+                                        flag = true;
+                                    }
+                                }
+                                if (i - 1 > -1)
+                                {
+                                    if (occupationType.Equals(players[1].myGrid[i - 1, k].getOccupationString()))
+                                    {
+                                        rotated = "left";
+                                        flag = true;
+                                    }
+                                }
+                                if (k + 1 < 10)
+                                {
+                                    if (occupationType.Equals(players[1].myGrid[i, k + 1].getOccupationString()))
+                                    {
+                                        rotated = "up";
+                                        flag = true;
+                                    }
+                                }
+                                if (flag == false)
+                                {
+                                    rotated = "down";
+                                }
+                            }
+                            else
+                            {
+                                rotated = "down";
+                            }
+                            content[index] = rotated;
+                            index++;
+                            Debug.Log("Location added to list. Occupied by" + content[index - 4] + content[index - 3] + content[index - 2] + content[index - 1]);
+                        }
+                    }
+                }
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Event 'OnShipPlacementFinished' raised");
+
+
+                //UNHIDE P1 SHIPS
+                //UnHideAllShips(); //Not needed anymore 
+
+                //TURN_OFF PLACING CANVAS
+                placingCanvas.SetActive(false);
+
+                //Game Start
             }
-            
-
-            //UNHIDE P1 SHIPS
-            //UnHideAllShips(); //Not needed anymore 
-
-            //TURN_OFF PLACING CANVAS
-            placingCanvas.SetActive(false);
-
-            //Game Start
-
         }
 
     }
@@ -449,7 +547,9 @@ public class GameManager : MonoBehaviour, IOnEventCallback
 
     public void KillBtn()
     {
+        // Should be commented out for actual release
         UnHideAllShips();
+        // Should be commented out for actual release
         players[activePlayer].shootPanel.SetActive(false);
         gameState = GameStates.KILL;
     }
@@ -563,10 +663,11 @@ public class GameManager : MonoBehaviour, IOnEventCallback
         }
         yield return new WaitForSeconds(1f);
 
-
+        // Should be commented out for actual release
         //HIDE SHIPS
         HideAllShips();
         //SWITCH PLAYER
+        // Should be commented out for actual release
         SwitchPlayer();
         //ACTIVATE PANEL
         players[activePlayer].shootPanel.SetActive(true);
@@ -620,15 +721,16 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             Debug.Log("Event 'OnShipPlacementFinished' recieved");
             if (activePlayer == 0)
             {
-                Debug.Log("'if (activePlayer == 0)' hit on 'OnShipPlacementFinished'");
                 PlaceSystemEvent.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString(), data);
                 PlaceSystemEvent.instance.PlaceShip();
-                Debug.Log("P2PlaceShips run");
+                Debug.Log("P1 ships placed based on event recieved");
                 instance.SelectReady();
             } 
             else
             {
-                Debug.Log("Else hit in 'OnShipPlacementFinished'");
+                PlaceSystemEvent.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString(), data);
+                PlaceSystemEvent.instance.PlaceShip();
+                Debug.Log("P2 ships placed based on event recieved");
                 instance.SelectReady();
             }
             

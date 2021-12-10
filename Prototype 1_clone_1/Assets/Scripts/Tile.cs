@@ -59,9 +59,13 @@ public class Tile
         {
             return "CRUISER";
         } 
-        else
+        else if(type == OccupationType.SUBMARINE)
         {
             return "SUBMARINE";
+        }
+        else
+        {
+            return "";
         }
     }
   
