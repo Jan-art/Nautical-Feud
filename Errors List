@@ -3,8 +3,6 @@ CURRENT ERRORS
 MAJOR ERROR - Player 1 gets stuck with the Place menu on their screen after player 2 sends them the information for ship locations. 
 This needs fixing but it should just be changing a line of code somewhere that calls for the menu to be used.
 
-MAJOR ERROR - Clear all button broke. Probably just deselected something on accident.
-
 MAJOR ERROR - Issues are caused with the 'Your turn' overlays if a photon event is sent, sometimes freezes.
 
 Minor error - Rotations, while functional, do not reflect the true direction a ship is facing. To implement this it would be necessary 
@@ -15,6 +13,8 @@ Minor error - In relation to rotations being slightly dodgy corvettes rotate as 
 
 
 FIXED ERRORS
+
+MAJOR ERROR - Clear all button broke. Probably just deselected something on accident.
 
 Player two doesn't send ships to player one. This just needs adding in the shipPlacement method in Gamemanager of P2PlaceShips
 
