@@ -5,6 +5,7 @@ Additionally the win and lose pop ups need to be corrected so it correctly state
 
 MAJOR FEATURE - Enemy ships need to be hidden. This just requires commenting out and adding in some calls for UnhideAllShips and HideAllShips
 
+Change overlays so that a different overlay is displayed for when the opponent is placing ships rather than the generic 'enemy turn' one.
 
 FEATURES THAT HAVE BEEN IMPLEMENTED:
 
