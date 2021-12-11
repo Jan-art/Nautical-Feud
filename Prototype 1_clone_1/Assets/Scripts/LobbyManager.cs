@@ -14,11 +14,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        Debug.Log("Start running from LobbyManager");
         Searching.SetActive(false);
-        MainMenu.SetActive(false);
-        PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("Start finished from LobbyManager");
+        if (PhotonNetwork.IsConnected)
+        {
+            MainMenu.SetActive(true);
+        }
+        else
+        {
+            MainMenu.SetActive(false);
+            PhotonNetwork.ConnectUsingSettings();
+        }
+
     }
 
     //On connection to server reveals the play button to allow players to search for matches

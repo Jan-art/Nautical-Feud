@@ -11,31 +11,33 @@ public class GameManager : MonoBehaviour, IOnEventCallback
 {
     public static GameManager instance;
 
-    
+
     //Proton Event Codes used to identify what reaction needs to be taken to the information recieved
     public const byte OnTileSelected = 1;
     public const byte OnShipPlacementFinished = 2;
-    
 
-    [System.Serializable] public class Player
+
+    [System.Serializable]
+    public class Player
     {
         public enum PlayerType //In future versions of the game, can add NPC players that are controlled by AI. 
         {
             HUMAN
         }
 
-
-
+        public List<GameObject> placedShipList = new List<GameObject>();
         public PlayerType playerType;
         public Tile[,] myGrid = new Tile[10, 10];
         public bool[,] revealGrid = new bool[10, 10];
         public PhysicalGameBoard pgb;
+        public int rival;
         //public LayerMask layerToPlaceOn;
 
         [Space]
         public GameObject cameraPos;
         public GameObject placePanel;
         public GameObject shootPanel;
+        public GameObject enemyTurn;
         [Space]
         public GameObject WinPanel;
         //SHOW & HIDE SHIPS
@@ -51,10 +53,22 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                     revealGrid[x, y] = false;
                 }
             }
-        }
+            if (PhotonNetwork.IsConnected)
+            {
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    rival = 1;
+                }
+                else
+                {
+                    rival = 0;
+                }
+            }
 
-        public List<GameObject> placedShipList = new List<GameObject>();
+            
+        }
     }
+
 
     int activePlayer; //Track current Turn
     public Player[] players = new Player[2];
@@ -98,10 +112,21 @@ public class GameManager : MonoBehaviour, IOnEventCallback
 
         players[0].WinPanel.SetActive(false);
         players[1].WinPanel.SetActive(false);
+        placingCanvas.SetActive(false);
 
         //ACTIVATE PLACE PANEL P1
+        if (PhotonNetwork.IsConnected)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                players[activePlayer].placePanel.SetActive(true);
+            }
+        }
+        else
+        {
+            players[activePlayer].placePanel.SetActive(true);
+        }
 
-        players[activePlayer].placePanel.SetActive(true);
         gameState = GameStates.IDLE;
 
         //MOVE CAMERA
@@ -245,29 +270,77 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 {
                     //DEACTIVATE PANEL
                     players[activePlayer].placePanel.SetActive(false);
-                    PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                    if (PhotonNetwork.IsConnected)
+                    {
+                        if (PhotonNetwork.IsMasterClient)
+                        {
+                            placingCanvas.SetActive(true);
+                            PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                        }
+                    }
+                    else
+                    {
+                        PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                    }
                     StartCoroutine(MoveCamera(players[activePlayer].cameraPos));
                     gameState = GameStates.IDLE;
                 }
                 break;
             case GameStates.IDLE: //WAIT-TIME
                 {
-
+                    if(PhotonNetwork.IsConnected)
+                    {
+                        if (!PhotonNetwork.IsMasterClient)
+                        {
+                            if(activePlayer == players[0].rival)
+                            {
+                                players[0].enemyTurn.SetActive(true);
+                            }
+                            else
+                            {
+                                players[0].enemyTurn.SetActive(false);
+                            }
+                        }
+                        else
+                        {
+                            if (activePlayer == players[1].rival)
+                            {
+                                players[1].enemyTurn.SetActive(true);
+                            }
+                            else
+                            {
+                                players[1].enemyTurn.SetActive(false);
+                            }
+                        }
+                    }
                 }
                 break;
             case GameStates.P2_PLACE_SHIPS:
                 {
                     //DEACTIVATE PANEL
                     players[activePlayer].placePanel.SetActive(false);
-                    PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                    if (PhotonNetwork.IsConnected)
+                    {
+                        if (!PhotonNetwork.IsMasterClient)
+                        {
+                            players[0].placePanel.SetActive(false);
+                            PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                        }
+                        else
+                        {
+                            placingCanvas.SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        PlaceSystemManual.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString());
+                    }
                     gameState = GameStates.IDLE;
                 }
                 break;
             case GameStates.KILL:
                 {
                     //WARFARE
-
-
                 }
                 break;
         }
@@ -309,10 +382,6 @@ public class GameManager : MonoBehaviour, IOnEventCallback
 
             //MOVE CAM
             StartCoroutine(MoveCamera(players[activePlayer].cameraPos));
-
-            //ACTIVATE P2 PANELS
-            players[activePlayer].placePanel.SetActive(true);
-
             
             //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 1 (MASTER CLIENT)
             if (PhotonNetwork.IsMasterClient)
@@ -385,6 +454,14 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Event 'OnShipPlacementFinished' raised");
+
+                placingCanvas.SetActive(false);
+            }
+            else
+            {
+                //ACTIVATE P2 PANELS
+                players[activePlayer].placePanel.SetActive(true);
+                placingCanvas.SetActive(true);
             }
             
 
@@ -403,10 +480,6 @@ public class GameManager : MonoBehaviour, IOnEventCallback
 
             //MOVE CAM
             StartCoroutine(MoveCamera(WarCamPos));
-
-            //ACTIVATE P1 KILL PANELS
-            players[activePlayer].shootPanel.SetActive(true);
-
 
             //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 2 (NOT MASTER CLIENT)
             if (!PhotonNetwork.IsMasterClient)
@@ -488,6 +561,12 @@ public class GameManager : MonoBehaviour, IOnEventCallback
                 placingCanvas.SetActive(false);
 
                 //Game Start
+            }
+            else
+            {
+                //ACTIVATE P1 KILL PANELS
+                players[activePlayer].shootPanel.SetActive(true);
+                placingCanvas.SetActive(false);
             }
         }
 
@@ -678,8 +757,29 @@ public class GameManager : MonoBehaviour, IOnEventCallback
 
         //SWITCH PLAYER
         SwitchPlayer();
-        //ACTIVATE PANEL
-        players[activePlayer].shootPanel.SetActive(true);
+
+        if (PhotonNetwork.IsConnected)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                if (activePlayer == 0)
+                {
+                    players[activePlayer].shootPanel.SetActive(true);
+                }
+            }
+            else
+            {
+                if (activePlayer == 1)
+                {
+                    players[activePlayer].shootPanel.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            players[activePlayer].shootPanel.SetActive(true);
+        }
+
         //SET IDLE STATE
         gameState = GameStates.IDLE;
 
@@ -724,6 +824,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
             TileInfo info = players[playerIndex].pgb.TileInfoRequest(x, z);     //Gets TileInfo based on the coordinates sent through
             //Runs methods to check shot on recieving client, thus creating a hit marker on their board, no missile fires however
             this.CheckShot(x, z, info);
+            players[activePlayer].enemyTurn.SetActive(false);
             
         }
         else if (eventCode == OnShipPlacementFinished)
@@ -751,6 +852,7 @@ public class GameManager : MonoBehaviour, IOnEventCallback
     
     #endregion
     
+
 }
 
 
