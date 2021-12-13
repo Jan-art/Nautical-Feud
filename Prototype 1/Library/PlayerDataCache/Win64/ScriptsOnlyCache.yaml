@@ -87,6 +87,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 3046}
     - Class: 114
       Script: {instanceID: 3140}
+    - Class: 114
+      Script: {instanceID: 3414}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -407,6 +409,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 3046}
     - Class: 114
       Script: {instanceID: 3140}
+    - Class: 114
+      Script: {instanceID: 3414}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1980,7 +1984,7 @@ ScriptsOnlyBuild:
     className: CameraWork
   - hash:
       serializedVersion: 2
-      Hash: c0eb3357d31b2c87a14f6475fe5e3a3c
+      Hash: e31f441cc380508d810becdef5d35bbf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1997,4 +2001,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Win.Scene.unity
   - Assets/Scenes/Defeat.Scene.unity
   - Assets/Scenes/PlayerDisconnected.unity
-  playerPath: C:/Users/alfa0/Desktop/DanielNewBuild/Version 0.9/Build/Prototype 1.exe
+  playerPath: C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Build/Prototype 1.exe

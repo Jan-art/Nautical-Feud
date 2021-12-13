@@ -67,6 +67,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log("Room created. Waiting for another player...");
     }
 
+     public override void OnJoinedRoom(){
+        Debug.Log("Joined Room");
+    }
+
     //Starts the match once another player enters the room
     public override void OnPlayerEnteredRoom(Player secondPlayer)
     {
@@ -76,6 +80,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             PhotonNetwork.LoadLevel(1);
         }
     }
+
 
     public void StopSearch()
     {

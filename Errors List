@@ -1,15 +1,16 @@
-CURRENT ERRORS
-
-Error - Missile does not fire on reciving client. 
+[CURRENT ERRORS]
 
 Minor error - Rotations, while functional, do not reflect the true direction a ship is facing. To implement this it would be necessary 
 to change the tile selected based on the direction the ship is facing and the ship length and then rotate it so it faces the 
 correct direction.
 
-Minor error - In relation to rotations being slightly dodgy corvettes rotate as well when they arn't supposed to.
 
 
-FIXED ERRORS
+[FIXED ERRORS]
+
+Error - Missile does not fire on reciving client.
+
+Minor error - In relation to rotations being slightly dodgy corvettes rotate as well when they aren't supposed to.
 
 EFFECTIVLY FIXED AS INPUTS ARE BLOCKED ON YOUR TURN
 MAJOR ERROR - Issues are caused with the 'Your turn' overlays if a photon event is sent, sometimes freezes.

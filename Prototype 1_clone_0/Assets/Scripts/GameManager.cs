@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         public GameObject shootPanel;
         public GameObject enemyTurn;
 
-        [Space]
-        public GameObject WinPanel;
-        public GameObject LossPanel;
+        // [Space]
+        // public GameObject WinPanel;
+        // public GameObject LossPanel;
 
 
 
@@ -711,26 +711,36 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //players[activePlayer].WinPanel.SetActive(true);
             if (PhotonNetwork.IsMasterClient && players[1].placedShipList.Count == 0)
             {
+                
                 object[] content = new object[0];
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
+                Debug.Log("Called N1");
+                PhotonNetwork.AutomaticallySyncScene = false;
                 SceneManager.LoadScene("Win.Scene");
+                
+                
             }
             else if (!PhotonNetwork.IsMasterClient && players[0].placedShipList.Count == 0)
             {
+                
                 object[] content = new object[0];
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
+                Debug.Log("Called N2");
+                PhotonNetwork.AutomaticallySyncScene = false;
                 SceneManager.LoadScene("Win.Scene");
+                
             }
 
 
             yield break;
         }
-        else if(players[rival].placedShipList.Count == 0 && players[rival].placedShipList.Count >= 0)
-        {
-            players[activePlayer].LossPanel.SetActive(true);
-        }
+         else if(players[rival].placedShipList.Count == 0 && players[rival].placedShipList.Count >= 0)
+         {
+             PhotonNetwork.AutomaticallySyncScene = false;
+             SceneManager.LoadScene("Defeat.Scene");
+         }
 
         yield return new WaitForSeconds(1f);
 
@@ -834,13 +844,13 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         }
         else if (eventCode == OnShipPlacementFinished)
         {
-            Debug.Log("Event 'OnShipPlacementFinished' recieved");
+            Debug.Log("Event 'OnShipPlacementFinished' received");
             //If sent to 2nd player by 1st player
             if (activePlayer == 0)
             {
                 PlaceSystemEvent.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString(), data);
                 PlaceSystemEvent.instance.PlaceShip();
-                Debug.Log("P1 ships placed based on event recieved");
+                Debug.Log("P1 ships placed based on event received");
                 HideAllShips();
                 instance.SelectReady();
 
@@ -850,7 +860,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 PlaceSystemEvent.instance.SetPlayerField(players[activePlayer].pgb, players[activePlayer].playerType.ToString(), data);
                 PlaceSystemEvent.instance.PlaceShip();
-                Debug.Log("P2 ships placed based on event recieved");
+                Debug.Log("P2 ships placed based on event received");
                 HideAllShips();
                 instance.SelectReady();
 
@@ -860,6 +870,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         else if (eventCode == OnVictory)
         {
             Debug.Log("Event 'OnVictory' received");
+            PhotonNetwork.AutomaticallySyncScene = false;
             SceneManager.LoadScene("Defeat.Scene");
 
         }
