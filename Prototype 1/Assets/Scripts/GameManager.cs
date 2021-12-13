@@ -648,7 +648,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         }
 
       //IF SHOT IS FIRED AT THE RIVAL
-        if (!(players[activePlayer]==players[rival]))
+        if (!(players[activePlayer]==players[rival]) && players[rival].placedShipList.Count != 0)
         {
             //Stores information about the tile hit and sends it to the other player so they can update their version
             object[] content = new object[] {x, z, rival};
@@ -705,16 +705,26 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
         if (players[rival].placedShipList.Count == 0)
         {
+            Debug.Log("Victory code run");
             //print("You Win!!");
             //LOGIC
-            players[activePlayer].WinPanel.SetActive(true);
+            //players[activePlayer].WinPanel.SetActive(true);
+            if (PhotonNetwork.IsMasterClient && players[1].placedShipList.Count == 0)
+            {
+                object[] content = new object[0];
+                RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+                PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
+                SceneManager.LoadScene("Win.Scene");
+            }
+            else if (!PhotonNetwork.IsMasterClient && players[0].placedShipList.Count == 0)
+            {
+                object[] content = new object[0];
+                RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+                PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
+                SceneManager.LoadScene("Win.Scene");
+            }
 
 
-            //Debug.Log("Victory code run");
-            //object[] content = new object[0];
-            //RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
-            //PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
-            //SceneManager.LoadScene("Win.Scene");
             yield break;
         }
         else if(players[rival].placedShipList.Count == 0 && players[rival].placedShipList.Count >= 0)
@@ -774,12 +784,12 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     #region Photon Raise Events
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         PhotonNetwork.AddCallbackTarget(this);
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
         PhotonNetwork.RemoveCallbackTarget(this);
     }
@@ -847,12 +857,12 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             }
             
         }
-        //else if (eventCode == OnVictory)
-        //{
-        //    Debug.Log("Event 'OnVictory' received");
-        //    PhotonNetwork.AutomaticallySyncScene = false;
-        //    SceneManager.LoadScene("Defeat.Scene");
-        //}
+        else if (eventCode == OnVictory)
+        {
+            Debug.Log("Event 'OnVictory' received");
+            SceneManager.LoadScene("Defeat.Scene");
+
+        }
     }
     
     #endregion
