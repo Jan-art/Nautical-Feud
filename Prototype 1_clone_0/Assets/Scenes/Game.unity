@@ -12084,8 +12084,6 @@ MonoBehaviour:
     placePanel: {fileID: 2138473471}
     shootPanel: {fileID: 1758636062}
     enemyTurn: {fileID: 1173575124}
-    WinPanel: {fileID: 385280886}
-    LossPanel: {fileID: 634880111}
   - placedShipList: []
     playerType: 0
     pgb: {fileID: 1023006429}
@@ -12094,8 +12092,6 @@ MonoBehaviour:
     placePanel: {fileID: 1369750150}
     shootPanel: {fileID: 223998706}
     enemyTurn: {fileID: 1173575124}
-    WinPanel: {fileID: 196557575}
-    LossPanel: {fileID: 634880111}
   gameState: 3
   WarCamPos: {fileID: 784589759}
   placingCanvas: {fileID: 1448317371}
