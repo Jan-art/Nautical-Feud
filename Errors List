@@ -1,4 +1,12 @@
-[CURRENT ERRORS]
+=====[CURRENT ERRORS]======
+
+
+[MAJOR ERROR]
+-Random Ship Desync on one of the clients.
+
+[MODERATE ERROR]
+- Game not Switching to "Disconnected.Scene" when Player leaves while other client is placing their ships.
+  - Allows people to still re-enter the game, but both players get stuck on "Enemy Turn" screen or Top Camera-view.
 
 Minor error - Rotations, while functional, do not reflect the true direction a ship is facing. To implement this it would be necessary 
 to change the tile selected based on the direction the ship is facing and the ship length and then rotate it so it faces the 
@@ -6,7 +14,7 @@ correct direction.
 
 
 
-[FIXED ERRORS]
+=====[FIXED ERRORS]======
 
 Error - Missile does not fire on reciving client.
 

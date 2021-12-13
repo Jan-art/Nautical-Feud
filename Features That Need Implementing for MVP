@@ -1,11 +1,14 @@
 [FEATURES REQUIREING IMPLEMENTATION:]
 
-- Fix Win/Loss Screens
- - Remove "Turn" TEXT from Win Screen.
+Umm....
 
 
 =======================================================================================================================================================
 [FEATURES THAT HAVE BEEN IMPLEMENTED:]
+
+[FIXED]
+- Fix Win/Loss Screens
+ - Remove "Turn" TEXT from Win Screen.
 
 [FIXED]
 MAJOR FEATURE - The overlays denoting which turn it is needs to be changed to state whether its player 1's or 2's go. 
