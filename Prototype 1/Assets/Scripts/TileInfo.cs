@@ -28,6 +28,7 @@ public class TileInfo : MonoBehaviour
         zPos = _zPos;
     }
 
+
     void OnMouseOver()
     {
         if(GameManager.instance.gameState == GameManager.GameStates.KILL) 

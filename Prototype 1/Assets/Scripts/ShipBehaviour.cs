@@ -36,5 +36,4 @@ public class ShipBehaviour : MonoBehaviour
         return false;
  }
 
-
 }

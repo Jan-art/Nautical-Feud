@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PhysicalGameBoard : MonoBehaviour
+public class PhysicalGameBoard : MonoBehaviourPunCallbacks
 {
     //Creates all tiles
     public bool create; 
@@ -13,7 +15,7 @@ public class PhysicalGameBoard : MonoBehaviour
     //Initializing List storing all our tile prefabs
     List<GameObject> tileList = new List<GameObject>();
 
-    List<TileInfo> tileInfoList = new List<TileInfo>();
+    public List<TileInfo> tileInfoList = new List<TileInfo>();
 
     void Start()
     {
@@ -37,6 +39,29 @@ public class PhysicalGameBoard : MonoBehaviour
     public bool RequestTile(TileInfo info)
     {
         return tileInfoList.Contains(info);
+    }
+
+    
+    public TileInfo TileInfoRequest(int x, int z)
+    {
+        TileInfo info;
+        /*if (x == 0)
+        {
+            info = tileInfoList[x + z];
+        }
+        else
+        {
+        */
+        info = tileInfoList[(x * 10) + z];
+        //}
+        return info;
+    }
+
+    public GameObject TileRequest(int x, int z)
+    {
+        GameObject temp;
+        temp = tileList[(x * 10) + z];
+        return temp;
     }
 
     //Create board
