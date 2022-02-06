@@ -15,11 +15,11 @@ C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Prototype 1
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49596
+56473
 Successfully changed project path to: C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Prototype 1
 C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Prototype 1
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 36.68 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 41.12 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.21f1 (a38c86f6690f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -35,39 +35,39 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56740
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56636
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005019 seconds.
+Registered in 0.002768 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 32.42 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 32.12 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.964 seconds
+- Completed reload, in  2.149 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3964ms)
-		BeginReloadAssembly (56ms)
+	ReloadAssembly (2149ms)
+		BeginReloadAssembly (57ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (390ms)
-			LoadAssemblies (56ms)
+		EndReloadAssembly (373ms)
+			LoadAssemblies (55ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (143ms)
+			SetupTypeCache (127ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (27ms)
-			SetupLoadedEditorAssemblies (134ms)
+			SetupLoadedEditorAssemblies (135ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (33ms)
+				RefreshPlugins (32ms)
 				BeforeProcessingInitializeOnLoad (8ms)
-				ProcessInitializeOnLoadAttributes (65ms)
+				ProcessInitializeOnLoadAttributes (67ms)
 				ProcessInitializeOnLoadMethodAttributes (24ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -75,71 +75,69 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010259 seconds.
+Registered in 0.008437 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-00000185F554CE20 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Assembly-CSharp.dll
+Symbol file data-0000022173E22E60 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\ParrelSync.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F5F88860 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\ParrelSync.dll
+Symbol file data-00000221781442E0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08997B0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file data-000002217811C540 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F0865610 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-00000221780E1C30 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08F5440 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-00000221781442E0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08997B0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
+Symbol file data-0000022179367290 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F6499230 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
+Symbol file data-0000022178A98020 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4E35020 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-00000221780F7240 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08F5440 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-0000022178283020 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F06F3010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-00000221788E6E20 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08F5440 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-0000022173EA0220 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4D66E40 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
+Symbol file data-0000022173EA0220 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08F5440 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll
+Symbol file data-00000221780FF250 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4BCBC30 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-00000221798D3E40 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4BCBC30 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
+Symbol file data-000002217840C220 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F5061A20 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F509A010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
+Symbol file data-0000022178439010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.915 seconds
+- Completed reload, in  0.914 seconds
 Domain Reload Profiling:
-	ReloadAssembly (916ms)
-		BeginReloadAssembly (131ms)
+	ReloadAssembly (915ms)
+		BeginReloadAssembly (129ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (16ms)
 		EndReloadAssembly (730ms)
-			LoadAssemblies (109ms)
+			LoadAssemblies (88ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (244ms)
+			SetupTypeCache (254ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (41ms)
-			SetupLoadedEditorAssemblies (264ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (276ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (54ms)
-				ProcessInitializeOnLoadAttributes (186ms)
-				ProcessInitializeOnLoadMethodAttributes (10ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (56ms)
+				ProcessInitializeOnLoadAttributes (198ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (5ms)
@@ -147,14 +145,14 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1815 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1816 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 80.8 MB.
 System memory in use after: 80.9 MB.
 
-Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2245.
-Total: 3.146800 ms (FindLiveObjects: 0.149700 ms CreateObjectMapping: 0.057600 ms MarkObjects: 2.851000 ms  DeleteObjects: 0.087000 ms)
+Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2246.
+Total: 2.838900 ms (FindLiveObjects: 0.150000 ms CreateObjectMapping: 0.049800 ms MarkObjects: 2.577200 ms  DeleteObjects: 0.060800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -168,316 +166,17 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts
-  artifactKey: Guid(d60c056e184def54aa7075988aefac17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts using Guid(d60c056e184def54aa7075988aefac17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47ca6d9521c61c9f85f859760a3c56a4') in 0.007916 seconds 
-  Import took 0.013547 seconds .
+  path: Assets/Scenes/Game.unity
+  artifactKey: Guid(a4bc9a519621ae342865d3a0a5b3ee14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Game.unity using Guid(a4bc9a519621ae342865d3a0a5b3ee14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1b6218581ca7cba54b72f7908d96afc') in 0.013661 seconds 
+  Import took 0.016048 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 16.237622 seconds.
-  path: Assets/Scripts/AdvancedMode.cs
-  artifactKey: Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/AdvancedMode.cs using Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '974349a41616ba8206908129e92e78a0') in 0.079863 seconds 
-  Import took 0.084964 seconds .
+  Time since last request: 550.309951 seconds.
+  path: Assets/Scenes
+  artifactKey: Guid(6e3a37aca05ed9142949a338c4f9a046) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes using Guid(6e3a37aca05ed9142949a338c4f9a046) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f2cfda98cdfec0f3ad1281f888d16ab') in 0.002913 seconds 
+  Import took 0.005832 seconds .
 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008227 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-00000185F9222240 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\ParrelSync.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F8C32020 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08BB8E0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F618D030 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F89EC360 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F89D8010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F5374010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F618D030 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F6471010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F89D8010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F0B135A0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F0721220 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F89EC360 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F89EC360 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F900C850 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F0426020 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.35 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.846 seconds
-Domain Reload Profiling:
-	ReloadAssembly (846ms)
-		BeginReloadAssembly (100ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (3ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (26ms)
-		EndReloadAssembly (692ms)
-			LoadAssemblies (93ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (255ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (31ms)
-			SetupLoadedEditorAssemblies (243ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (49ms)
-				ProcessInitializeOnLoadAttributes (170ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.57 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1796 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.3 MB.
-System memory in use after: 79.4 MB.
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2249.
-Total: 2.861000 ms (FindLiveObjects: 0.150800 ms CreateObjectMapping: 0.054200 ms MarkObjects: 2.632400 ms  DeleteObjects: 0.022800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.009703 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-00000185F085F3F0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\ParrelSync.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F838D010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F89E1E40 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4896010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F882A010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F47CA010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F0589F90 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4896010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F6471010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F46CC670 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4F69030 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4896010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F882A010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F838D010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F9208030 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4FF2010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.974 seconds
-Domain Reload Profiling:
-	ReloadAssembly (975ms)
-		BeginReloadAssembly (107ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (30ms)
-		EndReloadAssembly (770ms)
-			LoadAssemblies (101ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (274ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (33ms)
-			SetupLoadedEditorAssemblies (291ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (58ms)
-				ProcessInitializeOnLoadAttributes (207ms)
-				ProcessInitializeOnLoadMethodAttributes (11ms)
-				AfterProcessingInitializeOnLoad (9ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1796 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.3 MB.
-System memory in use after: 79.4 MB.
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2252.
-Total: 2.859400 ms (FindLiveObjects: 0.150100 ms CreateObjectMapping: 0.058500 ms MarkObjects: 2.625200 ms  DeleteObjects: 0.024300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 244.269789 seconds.
-  path: Assets/Scripts/AdvancedMode.cs
-  artifactKey: Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/AdvancedMode.cs using Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27564ccf78ab156fe8e3755ca846cc12') in 0.005726 seconds 
-  Import took 0.011117 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1690.857338 seconds.
-  path: Assets/Scripts/AdvancedMode.cs
-  artifactKey: Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/AdvancedMode.cs using Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de5800b1ea9e263a0a69ce8b18fca268') in 0.002924 seconds 
-  Import took 0.008196 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 34.400558 seconds.
-  path: Assets/Scripts/AdvancedMode.cs
-  artifactKey: Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/AdvancedMode.cs using Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b43216714ae7049434b7a7d81648a15') in 0.003486 seconds 
-  Import took 0.008941 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 154.262147 seconds.
-  path: Assets/Scripts/AdvancedMode.cs
-  artifactKey: Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/AdvancedMode.cs using Guid(33f89c39f8f627745acb820564343acc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee6dfd71eb90cc86831522e359c7afce') in 0.002972 seconds 
-  Import took 0.008235 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008198 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file data-00000185F0528020 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\ParrelSync.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F8E0B010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F08BB8E0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4F8D020 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F7E499E0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4896010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F090DCB0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4896010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Timeline.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F9090EF0 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.TextMeshPro.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4896010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F886A030 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.TestRunner.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F4896010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F882A010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEditor.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F8E0B010 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.Rider.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F9208030 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\UnityEngine.UI.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-00000185F6A4E030 doesn't match image C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll
-Symbol file LoadedFromMemory is not a mono symbol file
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.40 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.866 seconds
-Domain Reload Profiling:
-	ReloadAssembly (867ms)
-		BeginReloadAssembly (103ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (29ms)
-		EndReloadAssembly (704ms)
-			LoadAssemblies (96ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (235ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (40ms)
-			SetupLoadedEditorAssemblies (253ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (49ms)
-				ProcessInitializeOnLoadAttributes (179ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.38 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1796 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 79.3 MB.
-System memory in use after: 79.4 MB.
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2255.
-Total: 2.728800 ms (FindLiveObjects: 0.148300 ms CreateObjectMapping: 0.046400 ms MarkObjects: 2.515400 ms  DeleteObjects: 0.017400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
