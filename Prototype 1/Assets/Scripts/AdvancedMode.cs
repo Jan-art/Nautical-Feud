@@ -25,8 +25,22 @@ public class PowerUps {
     private List<PowerUpsBehaviour> behaviour;
     private bool requiresT;
     private int cooldown; 
+    float activeTime;
+
+    enum PowerUpState{
+        ready,
+        active,
+        cooldown
+    }
+    //"PowerUpState state = ready (if required condition is met)";
     
-    //Different Constructors for Different Abilitie (Just the Current Approach)
+    
+    
+    //============================================================================
+    //Different Constructors for Different PowerUps (Just the Current Approach)
+    // You can change the variables names to something you feel more relevant 
+    //============================================================================
+
     public PowerUps(string aname, sprite ic, List<PowerUpsBehaviour> abehaviour )
     {
        name = aname;
