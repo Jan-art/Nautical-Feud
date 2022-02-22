@@ -339,90 +339,22 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //HIDE SHIPS
             //HideAllShips();
 
-            //SWITCH Player 
-            SwitchPlayer();
-            
+
+
             //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 1 (MASTER CLIENT)
             if (PhotonNetwork.IsMasterClient)
             {
-                object[] content = new object[28];
-                int index = 0;
-                string rotated = "";
-                string occupationType;
-                bool flag;
-
-                //Loops through all tiles and if they are occupied adds the information to a object array that will be sent to the other player
-                for (int i = 0; i < 10; i++)
-                {
-                    for (int k = 0; k < 10; k++)
-                    {
-                        if (players[0].myGrid[i, k].IsOccupied())
-                        {
-                            //If a tile is occupied adds what occupies it, tile coordinates and its rotation to the locations list 
-                            flag = false;
-                            occupationType = players[0].myGrid[i, k].getOccupationString();
-                            content[index] = occupationType;
-                            index++;
-                            content[index] = i;
-                            index++;
-                            content[index] = k;
-                            index++;
-                            /*If occupied by a corvette has the systemregister it as rotated down otherwise looks at surronding tiles to figure out
-                              the ships rotation */
-                            if (!occupationType.Equals("CORVETTE")){
-                                if (i+1 < 10)
-                                {
-                                    if (occupationType.Equals(players[0].myGrid[i + 1, k].getOccupationString()))
-                                    {
-                                        rotated = "right";
-                                        flag = true;
-                                    }
-                                }
-                                if (i-1 > -1)
-                                {
-                                    if (occupationType.Equals(players[0].myGrid[i - 1, k].getOccupationString()))
-                                    {
-                                        rotated = "left";
-                                        flag = true;
-                                    }
-                                }
-                                if (k+1 < 10)
-                                {
-                                    if (occupationType.Equals(players[0].myGrid[i, k + 1].getOccupationString()))
-                                    {
-                                        rotated = "up";
-                                        flag = true;
-                                    }
-                                }
-                                if (flag == false)
-                                {
-                                    rotated = "down";
-                                }
-                            }
-                            else
-                            {
-                                rotated = "down";
-                            }
-                            content[index] = rotated;
-                            index++;
-                            Debug.Log("Location added to list. Occupied by" + content[index-4] + content[index-3]+ content[index-2] + content[index-1]);
-                        } 
-                    }
-                }
-                //Sets the recivers (other player) and information (object array formed above) and then sends them using RaiseEvent
-                RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
-                PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
-                Debug.Log("Event 'OnShipPlacementFinished' raised");
+                sendOnShipPlacementFinishedEvent();
                 StartCoroutine(MoveCamera(WarCamPos));
                 placingCanvas.SetActive(false);
-
+                SwitchPlayer();
             }
             else
             {
-
+                //SWITCH Player 
+                SwitchPlayer();
                 //ACTIVATE P2 PANELS
                 players[activePlayer].placePanel.SetActive(true);
-                
             }
 
             //RETURN
@@ -434,105 +366,106 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //HIDE SHIPS
             //HideAllShips();
 
-            //SWITCH Player
-            SwitchPlayer();
-
             //MOVE CAM
             StartCoroutine(MoveCamera(WarCamPos));
 
             //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 2 (NOT MASTER CLIENT)
             if (!PhotonNetwork.IsMasterClient)
             {
-                object[] content = new object[28]; //NEEDS TO BE CHANGED FOR ACTUAL CODE
-                int index = 0;
-                string rotated = "";
-                string occupationType;
-                bool flag;
-                //Loops through all tiles and if they are occupied adds the information to a object array that will be sent to the other player
-                for (int i = 0; i < 10; i++)
-                {
-                    for (int k = 0; k < 10; k++)
-                    {
-                        if (players[1].myGrid[i, k].IsOccupied())
-                        {
-                            //If a tile is occupied adds what occupies it, tile coordinates and its rotation to the locations list
-                            flag = false;
-                            occupationType = players[1].myGrid[i, k].getOccupationString();
-                            content[index] = occupationType;
-                            index++;
-                            content[index] = i;
-                            index++;
-                            content[index] = k;
-                            index++;
-                            /*If occupied by a corvette has the systemregister it as rotated down otherwise looks at surronding tiles to figure out
-                              the ships rotation */
-                            if (!occupationType.Equals("CORVETTE"))
-                            {
-                                if (i + 1 < 10)
-                                {
-                                    if (occupationType.Equals(players[1].myGrid[i + 1, k].getOccupationString()))
-                                    {
-                                        rotated = "right";
-                                        flag = true;
-                                    }
-                                }
-                                if (i - 1 > -1)
-                                {
-                                    if (occupationType.Equals(players[1].myGrid[i - 1, k].getOccupationString()))
-                                    {
-                                        rotated = "left";
-                                        flag = true;
-                                    }
-                                }
-                                if (k + 1 < 10)
-                                {
-                                    if (occupationType.Equals(players[1].myGrid[i, k + 1].getOccupationString()))
-                                    {
-                                        rotated = "up";
-                                        flag = true;
-                                    }
-                                }
-                                if (flag == false)
-                                {
-                                    rotated = "down";
-                                }
-                            }
-                            else
-                            {
-                                rotated = "down";
-                            }
-                            content[index] = rotated;
-                            index++;
-                            Debug.Log("Location added to list. Occupied by" + content[index - 4] + content[index - 3] + content[index - 2] + content[index - 1]);
-                        }
-                    }
-                }
-                //Sets the recivers (other player) and information (object array formed above) and then sends them using RaiseEvent
-                RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
-                PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
-                Debug.Log("Event 'OnShipPlacementFinished' raised");
-
-
-                //UNHIDE P1 SHIPS
-                //UnHideAllShips(); //Not needed anymore 
-
+                sendOnShipPlacementFinishedEvent();
                 //TURN_OFF PLACING CANVAS
                 placingCanvas.SetActive(false);
-
-                //Game Start
+                SwitchPlayer();
             }
             else
             {
+                //SWITCH Player
+                SwitchPlayer();
                 //ACTIVATE P1 KILL PANELS
                 players[activePlayer].shootPanel.SetActive(true);
                 //placingCanvas.SetActive(false);
             }
         }
-
-        
-
-
     }
+
+
+    void sendOnShipPlacementFinishedEvent()
+    {
+        object[] content = new object[28]; //NEEDS TO BE CHANGED FOR ACTUAL CODE
+        int index = 0;
+        string rotated = "";
+        Vector3 shipRotation = new Vector3(0, 0, 0);
+        string occupationType;
+        bool flag;
+        //Loops through all tiles and if they are occupied adds the information to a object array that will be sent to the other player
+        for (int i = 0; i < 10; i++)
+        {
+            for (int k = 0; k < 10; k++)
+            {
+                if (players[activePlayer].myGrid[i, k].IsOccupied())
+                {
+                    //If a tile is occupied adds what occupies it, tile coordinates and its rotation to the locations list
+                    flag = false;
+                    occupationType = players[activePlayer].myGrid[i, k].getOccupationString();
+                    content[index] = occupationType;
+                    index++;
+                    content[index] = i;
+                    index++;
+                    content[index] = k;
+                    index++;
+                    /*If occupied by a corvette has the systemregister it as rotated down otherwise looks at surrounding tiles to figure out
+                        the ships rotation */
+                    if (!occupationType.Equals("CORVETTE"))
+                    {
+
+                        for (int ships = 0; ships < players[activePlayer].placedShipList.Count; ships++)
+                        {
+                            if (players[activePlayer].placedShipList[ships].GetComponent<ShipBehaviour>().type == players[activePlayer].myGrid[i, k].getOccupation())
+                            {
+                                shipRotation = players[activePlayer].placedShipList[ships].GetComponent<Transform>().rotation * new Vector3(1, 1, 1);
+                                Debug.Log("shipRotation: " + shipRotation);
+                                break;
+                            }
+                        }
+                        if (shipRotation == new Vector3(1f, 1f, 1f))
+                        {
+                            rotated = "up";
+                        }
+                        else if (shipRotation == new Vector3(-1.0f, 1.0f, 1.0f))
+                        {
+                            rotated = "left";
+                        }
+                        else if (shipRotation == new Vector3(-1f, 1f, -1f))
+                        {
+                            rotated = "down";
+                        }
+                        else if (shipRotation == new Vector3(1.0f, 1.0f, -1.0f))
+                        {
+                            rotated = "right";
+                        }
+                        else
+                        {
+                            //Important debug
+                            Debug.Log("Else hit in sending ship rotations, error has occurred");
+                            rotated = "down";
+                        }
+                    }
+                    else
+                    {
+                        rotated = "down";
+                    }
+                    content[index] = rotated;
+                    index++;
+                    Debug.Log("Location added to list. Occupied by" + content[index - 4] + content[index - 3] + content[index - 2] + content[index - 1]);
+                }
+            }
+        }
+        //Sets the recivers (other player) and information (object array formed above) and then sends them using RaiseEvent
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
+        PhotonNetwork.RaiseEvent(OnShipPlacementFinished, content, raiseEventOptions, SendOptions.SendReliable);
+        Debug.Log("Event 'OnShipPlacementFinished' raised");
+    }
+
 
     void HideAllShips()
     {
