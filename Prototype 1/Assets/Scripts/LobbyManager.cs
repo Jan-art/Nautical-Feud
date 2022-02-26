@@ -12,6 +12,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     GameObject MainMenu;
     [SerializeField]
     GameObject Searching;
+    [SerializeField]
+    GameObject AdvModeCheck;
 
     void Start()
     {
@@ -40,7 +42,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         Searching.SetActive(true);
         MainMenu.SetActive(false);
+
+        //Will need to be removed in the final version when we have seperate searching for normal and adv mode
+        AdvModeCheck.GetComponent<AdvanceMC>().setAMC(true);
         PhotonNetwork.JoinRandomRoom();
+
         Debug.Log("Searching for a game");
     }
 

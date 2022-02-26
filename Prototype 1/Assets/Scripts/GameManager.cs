@@ -95,6 +95,10 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     bool CamMoved;
     public GameObject placingCanvas;
 
+    //
+    public GameObject TempAttempt;
+    public GameObject AdvModeCheck;
+
     //MISSILE
     public GameObject missilePrefab;
     float altitude = 3f;
@@ -107,11 +111,22 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     void Awake()
     {
         instance = this;
+        AdvModeCheck = GameObject.FindGameObjectWithTag("AdvModeCheck");
     }
 
     void Start()
     {
-
+        if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
+        {
+            TempAttempt.SetActive(true);
+            Debug.Log("Game loaded in advanced mode");
+        }
+        else
+        {
+            TempAttempt.SetActive(false);
+            Debug.Log("Game loaded in classic mode");
+        }
+        
         //HIDE PANELS
         HideAllPanels();
 
