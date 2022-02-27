@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     public GameObject placingCanvas;
 
     //
-    public GameObject TempAttempt;
+    public GameObject PowerUpToggle;
     public GameObject AdvModeCheck;
 
     //MISSILE
@@ -116,14 +116,15 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void Start()
     {
+        //Can be commented out and code should run classic mode fine
         if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
         {
-            TempAttempt.SetActive(true);
+            PowerUpToggle.SetActive(true);
             Debug.Log("Game loaded in advanced mode");
         }
         else
         {
-            TempAttempt.SetActive(false);
+            PowerUpToggle.SetActive(false);
             Debug.Log("Game loaded in classic mode");
         }
         
