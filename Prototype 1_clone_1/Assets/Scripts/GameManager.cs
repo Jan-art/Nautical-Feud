@@ -153,9 +153,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         gameState = GameStates.IDLE;
 
         //MOVE CAMERA
-
-
-
     }
 
 
@@ -357,7 +354,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 
 
-            //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 1 (MASTER CLIENT)
+            //PHOTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 1 (MASTER CLIENT)
             if (PhotonNetwork.IsMasterClient)
             {
                 sendOnShipPlacementFinishedEvent();
@@ -385,7 +382,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //MOVE CAM
             StartCoroutine(MoveCamera(WarCamPos));
 
-            //PROTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 2 (NOT MASTER CLIENT)
+            //PHOTON EVENT TO NOTIFIY OTHER PLAYER, ONLY USED BY PLAYER 2 (NOT MASTER CLIENT)
             if (!PhotonNetwork.IsMasterClient)
             {
                 sendOnShipPlacementFinishedEvent();
@@ -412,7 +409,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         string rotated = "";
         Vector3 shipRotation = new Vector3(0, 0, 0);
         string occupationType;
-        bool flag;
+        bool flag = false;
         //Loops through all tiles and if they are occupied adds the information to a object array that will be sent to the other player
         for (int i = 0; i < 10; i++)
         {
