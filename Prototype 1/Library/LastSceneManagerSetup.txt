@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/PlayerDisconnected.unity
+- path: Assets/Scenes/Not Yet Used/ExampleToCompare.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
