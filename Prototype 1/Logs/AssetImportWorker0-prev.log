@@ -15,11 +15,11 @@ C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Prototype 1
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55585
+54109
 Successfully changed project path to: C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Prototype 1
 C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Prototype 1
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 37.36 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 40.07 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.21f1 (a38c86f6690f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -35,92 +35,92 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56672
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56292
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002982 seconds.
+Registered in 0.005014 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 32.44 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 50.26 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.110 seconds
+- Completed reload, in  2.410 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2111ms)
-		BeginReloadAssembly (55ms)
+	ReloadAssembly (2411ms)
+		BeginReloadAssembly (61ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (371ms)
-			LoadAssemblies (53ms)
+		EndReloadAssembly (514ms)
+			LoadAssemblies (60ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (126ms)
+			SetupTypeCache (162ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (135ms)
+			RebuildScriptCaches (90ms)
+			SetupLoadedEditorAssemblies (163ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (33ms)
+				RefreshPlugins (51ms)
 				BeforeProcessingInitializeOnLoad (8ms)
-				ProcessInitializeOnLoadAttributes (66ms)
-				ProcessInitializeOnLoadMethodAttributes (23ms)
+				ProcessInitializeOnLoadAttributes (74ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.008583 seconds.
+Registered in 0.009288 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.039 seconds
+- Completed reload, in  1.160 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1040ms)
-		BeginReloadAssembly (129ms)
+	ReloadAssembly (1161ms)
+		BeginReloadAssembly (142ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (16ms)
-		EndReloadAssembly (856ms)
-			LoadAssemblies (88ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (961ms)
+			LoadAssemblies (101ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (263ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (42ms)
-			SetupLoadedEditorAssemblies (386ms)
+			SetupTypeCache (303ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (46ms)
+			SetupLoadedEditorAssemblies (433ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (56ms)
-				ProcessInitializeOnLoadAttributes (308ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (349ms)
 				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (7ms)
+				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1944 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 87.6 MB.
-System memory in use after: 87.7 MB.
+System memory in use before: 87.7 MB.
+System memory in use after: 87.8 MB.
 
 Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 2377.
-Total: 2.868000 ms (FindLiveObjects: 0.156600 ms CreateObjectMapping: 0.055800 ms MarkObjects: 2.597000 ms  DeleteObjects: 0.057500 ms)
+Total: 3.794400 ms (FindLiveObjects: 0.196300 ms CreateObjectMapping: 0.092500 ms MarkObjects: 3.410400 ms  DeleteObjects: 0.093500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,81 +134,265 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/Win.Scene.unity
-  artifactKey: Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Win.Scene.unity using Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '293fd9ee6b8bd226662addc4c1dca7f8') in 0.010494 seconds 
-  Import took 0.014580 seconds .
+  path: Assets/Scenes/Scoreboard.unity
+  artifactKey: Guid(bda97104cc07ba744a0d7a26fa57f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Scoreboard.unity using Guid(bda97104cc07ba744a0d7a26fa57f386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ebe0bb27a8c952865cc1a4c14e121c5') in 0.014287 seconds 
+  Import took 0.018974 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 45.900010 seconds.
-  path: Assets/Scenes/PlayerDisconnected.unity
-  artifactKey: Guid(805c2ba991935914087afb7622f83b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/PlayerDisconnected.unity using Guid(805c2ba991935914087afb7622f83b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff80e255d6945fc6f8909abbb05696d6') in 0.003426 seconds 
-  Import took 0.007804 seconds .
+  Time since last request: 23.595058 seconds.
+  path: Assets/Scenes/Tutorial.unity
+  artifactKey: Guid(d1020b9fe2b808941894113e99ef59ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Tutorial.unity using Guid(d1020b9fe2b808941894113e99ef59ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aba595251cedd23214a000e54186be07') in 0.004584 seconds 
+  Import took 0.009346 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.476732 seconds.
-  path: Assets/Scenes/Win.Scene.unity
-  artifactKey: Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Win.Scene.unity using Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbebb88f8fcc66b5a9308ec6e65eeb61') in 0.003463 seconds 
-  Import took 0.007800 seconds .
+  Time since last request: 87.371609 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-Bold SDF.asset
+  artifactKey: Guid(313ecacb397c6904baa45977a8c20302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-Bold SDF.asset using Guid(313ecacb397c6904baa45977a8c20302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf25b88fdce043b6a371f525b0c85d5e') in 0.148817 seconds 
+  Import took 0.153360 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.862493 seconds.
+  Time since last request: 0.000457 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset
+  artifactKey: Guid(8a89fa14b10d46a99122fd4f73fca9a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset using Guid(8a89fa14b10d46a99122fd4f73fca9a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ab8a19a566c9c99187ac5931e6e924e') in 0.026697 seconds 
+  Import took 0.031443 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000533 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Electronic Highway Sign SDF.asset
+  artifactKey: Guid(dc36b3fdc14f47ebb36fd484a67e268a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Electronic Highway Sign SDF.asset using Guid(dc36b3fdc14f47ebb36fd484a67e268a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26c1c283b7eade4c4698e53e74730846') in 0.027605 seconds 
+  Import took 0.032721 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000499 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-LightItalic SDF.asset
+  artifactKey: Guid(894a1c8f77b87854b9aaed880ba7a4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-LightItalic SDF.asset using Guid(894a1c8f77b87854b9aaed880ba7a4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0326d2241d564bf1b4aa069c044b66a') in 0.025792 seconds 
+  Import took 0.030172 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000363 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-Light SDF.asset
+  artifactKey: Guid(6c0d141cec476654aa27c27c9f2ab8a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-Light SDF.asset using Guid(6c0d141cec476654aa27c27c9f2ab8a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fb8f215d5ec7f4d500c3ea6449a3abc') in 0.025626 seconds 
+  Import took 0.030624 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000378 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Bangers SDF.asset
+  artifactKey: Guid(125cb55b44b24c4393181402bc6200e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Bangers SDF.asset using Guid(125cb55b44b24c4393181402bc6200e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c78c12a7a81418d1ec7249551c4a7351') in 0.026044 seconds 
+  Import took 0.030649 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000452 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+  artifactKey: Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset using Guid(2e498d1c8094910479dc3e1b768306a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f64e2accfed7236586a18ea6c8221b89') in 0.019167 seconds 
+  Import took 0.023854 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000541 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-Medium SDF.asset
+  artifactKey: Guid(3025bfb016f121a48a2fac1bf7f5e425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-Medium SDF.asset using Guid(3025bfb016f121a48a2fac1bf7f5e425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20f84306f50de158249fba8aed70e2c3') in 0.028558 seconds 
+  Import took 0.033201 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000461 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-ThinItalic SDF.asset
+  artifactKey: Guid(bbda9cff01187ab49b48409a5ec78f3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-ThinItalic SDF.asset using Guid(bbda9cff01187ab49b48409a5ec78f3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6038e458649dd771a861d9c8a351bd8a') in 0.024962 seconds 
+  Import took 0.029355 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000513 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-ExtraBold SDF.asset
+  artifactKey: Guid(b448a0eee3dbd9848b341ce749250e92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-ExtraBold SDF.asset using Guid(b448a0eee3dbd9848b341ce749250e92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be1d70012ad7728d094e697dfac9c4ec') in 0.027841 seconds 
+  Import took 0.032144 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000414 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset
+  artifactKey: Guid(5302535af1044152a457ed104f1f4b91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset using Guid(5302535af1044152a457ed104f1f4b91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35cbd7f3f4caf66969f2d2545f17aabe') in 0.025247 seconds 
+  Import took 0.029636 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000434 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Oswald Bold SDF.asset
+  artifactKey: Guid(0161d805a3764c089bef00bfe00793f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Oswald Bold SDF.asset using Guid(0161d805a3764c089bef00bfe00793f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f379a4d3485248647f8fa9479fc37664') in 0.031041 seconds 
+  Import took 0.036840 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000436 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-ExtraBoldItalic SDF.asset
+  artifactKey: Guid(fdc7611a481efa24bb168fd2c47d28dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-ExtraBoldItalic SDF.asset using Guid(fdc7611a481efa24bb168fd2c47d28dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17f41b56defc4e27564b0a561a351f6b') in 0.029164 seconds 
+  Import took 0.033566 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000581 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-BoldItalic SDF.asset
+  artifactKey: Guid(6862b838f183dc449ba5bcf7d9522771) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-BoldItalic SDF.asset using Guid(6862b838f183dc449ba5bcf7d9522771) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f102665154b887acce8ff2b6e0aa0fd') in 0.027363 seconds 
+  Import took 0.032235 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 83.990668 seconds.
   path: Assets/Scenes/Win.Scene 1.unity
-  artifactKey: Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Win.Scene 1.unity using Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d39246fc111395da55dc0d4113c24d8') in 0.003486 seconds 
-  Import took 0.007866 seconds .
+  artifactKey: Guid(9828527b927d740488c457942ea7161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Win.Scene 1.unity using Guid(9828527b927d740488c457942ea7161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '200a27d16799d2dbec3027f81b1f778f') in 0.004266 seconds 
+  Import took 0.009205 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 213.575583 seconds.
+  path: Assets/Scenes/Tutorial.unity
+  artifactKey: Guid(d1020b9fe2b808941894113e99ef59ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Tutorial.unity using Guid(d1020b9fe2b808941894113e99ef59ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8894aea308ca40cdc25548598ba1c01') in 0.003609 seconds 
+  Import took 0.008455 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.946560 seconds.
+  path: Assets/Scenes/Win.Scene.unity
+  artifactKey: Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Win.Scene.unity using Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ad2650bbd1ad385b813fb0c2032f995') in 0.003101 seconds 
+  Import took 0.007596 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.433977 seconds.
+  path: Assets/Scenes/Win.Scene 1.unity
+  artifactKey: Guid(9828527b927d740488c457942ea7161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Win.Scene 1.unity using Guid(9828527b927d740488c457942ea7161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a990728a3e17c30a7576548ca70fc589') in 0.003688 seconds 
+  Import took 0.008422 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 158.338693 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-Bold SDF.asset
+  artifactKey: Guid(313ecacb397c6904baa45977a8c20302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-Bold SDF.asset using Guid(313ecacb397c6904baa45977a8c20302) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dafedb5718a0c365fd52899bb60074e') in 0.028775 seconds 
+  Import took 0.033420 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000405 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-LightItalic SDF.asset
+  artifactKey: Guid(894a1c8f77b87854b9aaed880ba7a4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-LightItalic SDF.asset using Guid(894a1c8f77b87854b9aaed880ba7a4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ca606dee50c8982952ddf11150e70d9') in 0.026241 seconds 
+  Import took 0.031465 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000465 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-Light SDF.asset
+  artifactKey: Guid(6c0d141cec476654aa27c27c9f2ab8a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-Light SDF.asset using Guid(6c0d141cec476654aa27c27c9f2ab8a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1a28c8cecd01785856850562214e88d') in 0.026046 seconds 
+  Import took 0.030601 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000451 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-Medium SDF.asset
+  artifactKey: Guid(3025bfb016f121a48a2fac1bf7f5e425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-Medium SDF.asset using Guid(3025bfb016f121a48a2fac1bf7f5e425) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3104d75675bd29f76f31f520872f17fd') in 0.024193 seconds 
+  Import took 0.029028 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000461 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset
+  artifactKey: Guid(5302535af1044152a457ed104f1f4b91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset using Guid(5302535af1044152a457ed104f1f4b91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2e8f4f80eb96e41e214f436377db6fb') in 0.025407 seconds 
+  Import took 0.030127 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000423 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-ExtraBoldItalic SDF.asset
+  artifactKey: Guid(fdc7611a481efa24bb168fd2c47d28dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-ExtraBoldItalic SDF.asset using Guid(fdc7611a481efa24bb168fd2c47d28dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd051a8ab3f28e5eaa448ea3c804a89e4') in 0.024575 seconds 
+  Import took 0.029499 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000424 seconds.
+  path: Assets/CustomFonts/AlegreyaSansSC-BoldItalic SDF.asset
+  artifactKey: Guid(6862b838f183dc449ba5bcf7d9522771) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/CustomFonts/AlegreyaSansSC-BoldItalic SDF.asset using Guid(6862b838f183dc449ba5bcf7d9522771) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d238d7842e89161fd33e8ffa08894aa') in 0.025856 seconds 
+  Import took 0.030326 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.008602 seconds.
+Registered in 0.008305 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.43 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.973 seconds
+- Completed reload, in  0.990 seconds
 Domain Reload Profiling:
-	ReloadAssembly (974ms)
-		BeginReloadAssembly (117ms)
+	ReloadAssembly (990ms)
+		BeginReloadAssembly (121ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (32ms)
-		EndReloadAssembly (801ms)
+			CreateAndSetChildDomain (34ms)
+		EndReloadAssembly (812ms)
 			LoadAssemblies (90ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (254ms)
+			SetupTypeCache (253ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (33ms)
-			SetupLoadedEditorAssemblies (345ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (349ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (49ms)
-				ProcessInitializeOnLoadAttributes (273ms)
+				BeforeProcessingInitializeOnLoad (51ms)
+				ProcessInitializeOnLoadAttributes (276ms)
 				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (7ms)
+				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.40 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.38 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1922 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 86.1 MB.
-System memory in use after: 86.2 MB.
+System memory in use before: 89.3 MB.
+System memory in use after: 89.4 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2381.
-Total: 2.846700 ms (FindLiveObjects: 0.164900 ms CreateObjectMapping: 0.059100 ms MarkObjects: 2.602100 ms  DeleteObjects: 0.019700 ms)
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2423.
+Total: 3.102600 ms (FindLiveObjects: 0.173600 ms CreateObjectMapping: 0.059400 ms MarkObjects: 2.848700 ms  DeleteObjects: 0.019700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -222,42 +406,34 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 78.271369 seconds.
-  path: Assets/Scenes/Win.Scene 1.unity
-  artifactKey: Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Win.Scene 1.unity using Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9733dcc585bba05d8938c1cbfe0cc0b') in 0.013555 seconds 
-  Import took 0.017742 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.133537 seconds.
-  path: Assets/Scenes/OLD DEFEAT SCREEN RIP.unity
-  artifactKey: Guid(6e226a51b4920d14aa163d71a5d1f007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/OLD DEFEAT SCREEN RIP.unity using Guid(6e226a51b4920d14aa163d71a5d1f007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dd6dfc50ca8556b3935e9ec3c7befea') in 0.003742 seconds 
-  Import took 0.008239 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.869530 seconds.
-  path: Assets/Scenes/Defeat.Scene.unity
-  artifactKey: Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Defeat.Scene.unity using Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a04c4ff14c9ae759d3ed28fe490a833') in 0.003182 seconds 
-  Import took 0.007433 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.071634 seconds.
+  Time since last request: 158.589782 seconds.
   path: Assets/Scenes/Win.Scene.unity
   artifactKey: Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Win.Scene.unity using Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad94f5758a2d90c0c02602b1259be58d') in 0.003618 seconds 
-  Import took 0.008158 seconds .
+Start importing Assets/Scenes/Win.Scene.unity using Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f565c3403017164fe9a1430e76392e9') in 0.010699 seconds 
+  Import took 0.014938 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 18.017292 seconds.
+  Time since last request: 11.508430 seconds.
+  path: Assets/Scenes/Tutorial.Scene.unity
+  artifactKey: Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Tutorial.Scene.unity using Guid(b3eec5369588104448b7f4abbbb22d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f894891824faf3ec0d8d0985689da56a') in 0.003185 seconds 
+  Import took 0.007814 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.331701 seconds.
+  path: Assets/Scenes/Win.Scene.unity
+  artifactKey: Guid(9828527b927d740488c457942ea7161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Win.Scene.unity using Guid(9828527b927d740488c457942ea7161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f43a21d710bbb0ab1840e20db0b6c2a9') in 0.003533 seconds 
+  Import took 0.008786 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 27.905792 seconds.
   path: Assets/Scenes/Defeat.Scene.unity
   artifactKey: Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Defeat.Scene.unity using Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5842a75447c4d499b84a5c04117c423') in 0.003168 seconds 
-  Import took 0.007588 seconds .
+Start importing Assets/Scenes/Defeat.Scene.unity using Guid(4775b46cd09738846949f34a560b5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b8f19815133036d88784e8b289e6940') in 0.003568 seconds 
+  Import took 0.008181 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
