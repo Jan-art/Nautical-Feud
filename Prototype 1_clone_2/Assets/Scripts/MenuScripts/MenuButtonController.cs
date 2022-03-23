@@ -27,6 +27,7 @@ public class MenuButtonController : MonoBehaviour {
 					if(index < maxIndex){
 						index++;
 					}else{
+
 						index = 0;
 					}
 				} else if(Input.GetAxis ("Vertical") > 0){
@@ -45,6 +46,11 @@ public class MenuButtonController : MonoBehaviour {
 		//Mouse Input...
 
 
+	}
+
+	public void mousePressed(int buttonIndex)
+	{
+		index = buttonIndex;
 	}
 
 

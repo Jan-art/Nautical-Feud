@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 //This script controls the "select" and "pressed" animations for the menu buttons.
 
@@ -14,29 +15,43 @@ public class MenuButton : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (menuButtonController.index == thisIndex)
+		//Bugged - Highlights all buttons as active, should in theory only be triggered by the buttons it is hovering over.
+		if (EventSystem.current.IsPointerOverGameObject())
 		{
-			animator.SetBool("selected", true);
-			if (Input.GetAxis("Submit") == 1)
-			{
-				animator.SetBool("pressed", true);
-			}
-			else if (animator.GetBool("pressed"))
-			{
-				animator.SetBool("pressed", false);
-				animatorFunctions.disableOnce = true;
-			}
+			Debug.Log("EventSystem triggered");
+			menuButtonController.mousePressed(thisIndex);
 		}
-		else
-		{
-			animator.SetBool("selected", false);
-		}
+			if (menuButtonController.index == thisIndex)
+			{
+				animator.SetBool("selected", true);
+				if (Input.GetAxis("Submit") == 1)
+				{
+					animator.SetBool("pressed", true);
+				}
+				else if (animator.GetBool("pressed"))
+				{
+					animator.SetBool("pressed", false);
+					animatorFunctions.disableOnce = true;
+				}
+			}
+			else
+			{
+				animator.SetBool("selected", false);
+			}
+
 	}
 
-	//Experimentation for getting mouse working
-	/*void OnMouseOver()
+	void setPressedFalse()
+    {
+		animator.SetBool("pressed", false);
+    }
+
+
+
+
+	void OnMouseEnter()
 	{
-		menuButtonController.index = thisIndex;
+		Debug.Log("OnMouseOver running");
+		menuButtonController.mousePressed(thisIndex);
 	}
-	*/
 }
