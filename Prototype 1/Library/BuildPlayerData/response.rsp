@@ -5,6 +5,7 @@
 -a="C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\PlayerScriptAssemblies\Unity.Timeline.dll"
 -a="C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\PlayerScriptAssemblies\PhotonUnityNetworking.Demos.dll"
 -a="C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\PlayerScriptAssemblies\Unity.TextMeshPro.dll"
+-a="C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\PlayerScriptAssemblies\PlayFab.dll"
 -a="C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\PlayerScriptAssemblies\PhotonRealtime.dll"
 -a="C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\PlayerScriptAssemblies\UnityEngine.UI.dll"
 -a="C:\Users\alfa0\Documents\GitHub\Unity-Course-work\Prototype 1\Library\PlayerScriptAssemblies\PhotonUnityNetworking.Utilities.dll"
