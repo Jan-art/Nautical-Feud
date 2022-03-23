@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
     public void PreviousSlide()
     {
           SceneManager.LoadScene("Tutorial.Scene");
-        Debug.Log("Slide 1 Loaded");
+          Debug.Log("Slide 1 Loaded");
     }
 
     public void Restart()
