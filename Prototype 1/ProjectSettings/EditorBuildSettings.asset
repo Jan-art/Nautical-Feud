@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Win.Scene.unity
     guid: 9828527b927d740488c457942ea7161c
   - enabled: 1
-    path: Assets/Scenes/OLD/OLD DEFEAT SCREEN RIP.unity
-    guid: 6e226a51b4920d14aa163d71a5d1f007
+    path: Assets/Scenes/Defeat.Scene.unity
+    guid: 4775b46cd09738846949f34a560b5e66
   m_configObjects: {}
