@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 //This script controls the keyboard input for the Menu animations
 
-public class MenuButtonController : MonoBehaviour {
+public class MenuButtonController : MonoBehaviour
+{
 
 //Initialization
 	public int index;

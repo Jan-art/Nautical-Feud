@@ -5,22 +5,20 @@ using UnityEngine.EventSystems;
 
 //This script controls the "select" and "pressed" animations for the menu buttons.
 
-public class MenuButton : MonoBehaviour
+public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
 	[SerializeField] MenuButtonController menuButtonController;
 	[SerializeField] Animator animator;
 	[SerializeField] AnimatorFunctions animatorFunctions;
 	[SerializeField] int thisIndex;
+	[SerializeField] bool cursorOnElement;
 
 	// Update is called once per frame
 	void Update()
 	{
-		//Bugged - Highlights all buttons as active, should in theory only be triggered by the buttons it is hovering over.
-		if (EventSystem.current.IsPointerOverGameObject())
+		//If the cursor is not on the element check whether the button should be highlighted
+		if (!cursorOnElement || animator.GetBool("pressed"))
 		{
-			Debug.Log("EventSystem triggered");
-			menuButtonController.mousePressed(thisIndex);
-		}
 			if (menuButtonController.index == thisIndex)
 			{
 				animator.SetBool("selected", true);
@@ -38,20 +36,35 @@ public class MenuButton : MonoBehaviour
 			{
 				animator.SetBool("selected", false);
 			}
-
+		}
+        else
+        {
+			animator.SetBool("selected", true);
+        }
 	}
 
-	void setPressedFalse()
+	//When a cursor enter the object
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		Debug.Log("The cursor entered the selectable UI element.");
+		animator.SetBool("selected", true);
+		cursorOnElement = true;
+		menuButtonController.index = thisIndex;
+	}
+
+	//When a cursor presses on the object
+	public void OnPointerDown(PointerEventData eventData)
     {
-		animator.SetBool("pressed", false);
+		//Doesn't play animation like pressing enter via keyboard does
+		Debug.Log("The cursor was pressed");
+		animator.SetBool("pressed", true);
+	}
+
+	//When a pointer exits the object
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		Debug.Log("The cursor has left the UI element");
+		cursorOnElement = false;
     }
 
-
-
-
-	void OnMouseEnter()
-	{
-		Debug.Log("OnMouseOver running");
-		menuButtonController.mousePressed(thisIndex);
-	}
 }
