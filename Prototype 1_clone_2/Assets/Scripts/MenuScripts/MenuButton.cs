@@ -13,6 +13,8 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 	[SerializeField] int thisIndex;
 	[SerializeField] bool cursorOnElement;
 
+	public GameObject LobbyManager;
+
 	// Update is called once per frame
 	void Update()
 	{
@@ -58,6 +60,15 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 		//Doesn't play animation like pressing enter via keyboard does
 		Debug.Log("The cursor was pressed");
 		animator.SetBool("pressed", true);
+
+		if (thisIndex == 0)
+        {
+			LobbyManager.GetComponent<LobbyManager>().setAdvancedMode(false);
+		}
+		else if (thisIndex == 1)
+        {
+			LobbyManager.GetComponent<LobbyManager>().setAdvancedMode(true);
+		}
 	}
 
 	//When a pointer exits the object

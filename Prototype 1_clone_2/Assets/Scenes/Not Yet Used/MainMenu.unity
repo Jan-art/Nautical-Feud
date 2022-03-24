@@ -140,6 +140,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
+      propertyPath: LobbyManager
+      value: 
+      objectReference: {fileID: 603273589}
+    - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 974711402}
@@ -464,6 +468,10 @@ PrefabInstance:
       propertyPath: thisIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
+      propertyPath: LobbyManager
+      value: 
+      objectReference: {fileID: 603273589}
     - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
       propertyPath: menuButtonController
       value: 
@@ -1307,6 +1315,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
+      propertyPath: LobbyManager
+      value: 
+      objectReference: {fileID: 603273589}
+    - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 974711402}
@@ -1604,6 +1616,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
+      propertyPath: LobbyManager
+      value: 
+      objectReference: {fileID: 603273589}
+    - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
       propertyPath: menuButtonController
       value: 
       objectReference: {fileID: 974711402}
@@ -1838,6 +1854,10 @@ PrefabInstance:
       propertyPath: thisIndex
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
+      propertyPath: LobbyManager
+      value: 
+      objectReference: {fileID: 603273589}
     - target: {fileID: 1120576110, guid: 3c614e9cd35bf468b8d2f1689cc4cca8, type: 3}
       propertyPath: ButtonAttachedTo
       value: 

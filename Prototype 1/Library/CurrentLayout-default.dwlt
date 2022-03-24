@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1366
     height: 685
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 192}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 170
+  controlID: 144
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 62
+  controlID: 143
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 63
+  controlID: 62
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 64
+  controlID: 63
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -448,9 +448,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: e84a0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 76d4ffffaad4ffffa6d5ffff4ed9fffff6d9ffffcef9ffff48fbffff524600006646000086460000b2700000d270000094830000a4830000a8830000c8830000
+      m_ExpandedIDs: e6f1ffff48fbffff9c440000bc440000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -510,9 +510,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1920, y: 1062.55, z: 0}
+    m_Target: {x: 412.39792, y: 240, z: 0}
     speed: 2
-    m_Value: {x: 1920, y: 1062.55, z: 0}
+    m_Value: {x: 412.39792, y: 240, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -563,9 +563,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.076733574, y: 0.002986681, z: -0.00023063745, w: 0.9970471}
   m_Size:
-    m_Target: 1362.2834
+    m_Target: 725.6069
     speed: 2
-    m_Value: 1362.2834
+    m_Value: 725.6069
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -628,23 +628,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/MenuScripts
+    - Assets/Scenes/Not Yet Used
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/MenuScripts
+  - Assets/Scenes/Not Yet Used
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Users Backup\Daniel Price\GitF\UCWX\Unity-Course-work\Prototype
     1
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 139}
-    m_SelectedIDs: 2e460000
-    m_LastClickedID: 17966
-    m_ExpandedIDs: 0000000000460000024600000446000006460000084600000a4600000c4600000e4600001046000012460000004700000247000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 126}
+    m_SelectedIDs: 28460000
+    m_LastClickedID: 17960
+    m_ExpandedIDs: 0000000000460000024600000446000006460000084600000a4600000c4600000e460000104600001246000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 33684
+  m_LastSelectedObjectID: 17544
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
