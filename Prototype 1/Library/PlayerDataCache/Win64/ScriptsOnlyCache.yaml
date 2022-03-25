@@ -2,6 +2,8 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AdvanceMC
+    - AuthSystem
+    - FieldControl
     - GameManager
     - GhostBehaviour
     - LobbyManager
@@ -10,6 +12,7 @@ ScriptsOnlyBuild:
     - PlaceSystemEvent
     - PlaceSystemManual
     - PowerUps
+    - SceneControl
     - ShipBehaviour
     - TileInfo
     - ToggleScript
@@ -23,8 +26,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -44,6 +45,14 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -56,6 +65,8 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
+    - UnityEngine.UI.RawImage
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
@@ -223,6 +234,81 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 225
+      Script: {instanceID: 0}
+    Assets/Scenes/Login.Scene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1482}
+    - Class: 114
+      Script: {instanceID: 1484}
+    - Class: 114
+      Script: {instanceID: 1838}
+    - Class: 114
+      Script: {instanceID: 2340}
+    - Class: 114
+      Script: {instanceID: 2568}
+    - Class: 114
+      Script: {instanceID: 2706}
+    - Class: 114
+      Script: {instanceID: 2760}
+    - Class: 114
+      Script: {instanceID: 2806}
+    - Class: 114
+      Script: {instanceID: 2924}
+    - Class: 114
+      Script: {instanceID: 2976}
+    - Class: 114
+      Script: {instanceID: 3170}
+    - Class: 114
+      Script: {instanceID: 3268}
+    - Class: 114
+      Script: {instanceID: 3562}
+    - Class: 114
+      Script: {instanceID: 3928}
+    - Class: 114
+      Script: {instanceID: 5254}
+    - Class: 114
+      Script: {instanceID: 23748}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     Assets/Scenes/OLD/Menu.unity:
     - Class: 1
@@ -419,6 +505,81 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Register.Scene.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1482}
+    - Class: 114
+      Script: {instanceID: 1484}
+    - Class: 114
+      Script: {instanceID: 1838}
+    - Class: 114
+      Script: {instanceID: 2340}
+    - Class: 114
+      Script: {instanceID: 2568}
+    - Class: 114
+      Script: {instanceID: 2706}
+    - Class: 114
+      Script: {instanceID: 2760}
+    - Class: 114
+      Script: {instanceID: 2806}
+    - Class: 114
+      Script: {instanceID: 2924}
+    - Class: 114
+      Script: {instanceID: 2976}
+    - Class: 114
+      Script: {instanceID: 3170}
+    - Class: 114
+      Script: {instanceID: 3268}
+    - Class: 114
+      Script: {instanceID: 3562}
+    - Class: 114
+      Script: {instanceID: 3928}
+    - Class: 114
+      Script: {instanceID: 5254}
+    - Class: 114
+      Script: {instanceID: 23748}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -2194,7 +2355,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 2ae037af92afec45147e2e313a493858
+      Hash: 06ade723c791588d37e162bf7cc0528d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AuthSystem
@@ -2246,6 +2407,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SceneControl
   platform: 19
   scenePathNames:
   - Assets/Scenes/OLD/Menu.unity
@@ -2255,4 +2422,6 @@ ScriptsOnlyBuild:
   - Assets/Scenes/PlayerDisconnected.unity
   - Assets/Scenes/Win.Scene.unity
   - Assets/Scenes/Defeat.Scene.unity
+  - Assets/Scenes/Login.Scene.unity
+  - Assets/Scenes/Register.Scene.unity
   playerPath: C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Build/Nautical Feud.exe
