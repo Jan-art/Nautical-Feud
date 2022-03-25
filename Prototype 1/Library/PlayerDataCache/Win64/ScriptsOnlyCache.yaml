@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - PhysicalGameBoard
     - PlaceSystemEvent
     - PlaceSystemManual
+    - PlayFabManager
     - PowerUps
     - SceneControl
     - ShipBehaviour
@@ -206,9 +207,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4216}
     - Class: 114
-      Script: {instanceID: 4568}
+      Script: {instanceID: 4570}
     - Class: 114
-      Script: {instanceID: 5324}
+      Script: {instanceID: 5326}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 123
@@ -291,9 +292,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3928}
     - Class: 114
-      Script: {instanceID: 5254}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 23748}
+      Script: {instanceID: 5256}
+    - Class: 114
+      Script: {instanceID: 19296}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -410,13 +413,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4470}
     - Class: 114
-      Script: {instanceID: 4788}
-    - Class: 114
       Script: {instanceID: 4790}
     - Class: 114
-      Script: {instanceID: 4960}
+      Script: {instanceID: 4792}
     - Class: 114
-      Script: {instanceID: 5318}
+      Script: {instanceID: 4962}
+    - Class: 114
+      Script: {instanceID: 5320}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 123
@@ -568,9 +571,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3928}
     - Class: 114
-      Script: {instanceID: 5254}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 23748}
+      Script: {instanceID: 5256}
+    - Class: 114
+      Script: {instanceID: 19296}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2085,6 +2090,12 @@ ScriptsOnlyBuild:
     className: ConnectionHandler
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SceneControl
+  - hash:
+      serializedVersion: 2
       Hash: f237c636bedad1229a2c01b2946fa520
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -2409,10 +2420,10 @@ ScriptsOnlyBuild:
     className: UserIdUiForm
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: da3ca247e1fce10b535970bfb9f188ee
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: SceneControl
+    className: PlayFabManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/OLD/Menu.unity
