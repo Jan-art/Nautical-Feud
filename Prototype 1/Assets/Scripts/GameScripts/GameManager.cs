@@ -101,6 +101,16 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     public GameObject AdvModeCheck;
     public GameObject PowerUpBar;
 
+    //Game Objects related to HUD
+    [Space]
+    public GameObject hudCanvasP1;
+    public Text ownShipsP1;
+    public Text enemyShipsP1;
+
+    public GameObject hudCanvasP2;
+    public Text ownShipsP2;
+    public Text enemyShipsP2;
+
     //MISSILE
     public GameObject missilePrefab;
     float altitude = 3f;
@@ -400,6 +410,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 //TURN_OFF PLACING CANVAS
                 placingCanvas.SetActive(false);
                 SwitchPlayer();
+                hudCanvasP2.SetActive(true);
             }
             else
             {
@@ -641,6 +652,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 if (sunk)
                 {
                     players[rival].placedShipList.Remove(players[rival].myGrid[x, z].placedShip.gameObject);
+                    shipTextUpdate(rival);
                 }
 
                 //HIGHLIGHT TILE
@@ -882,6 +894,33 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         //PowerUpBar.GetComponent<PowerUps>().EnableButton(listPosition);
     }
 
+    public void shipTextUpdate(int index)
+    {
+        int shipsLeft = players[index].placedShipList.Count;
+        if (PhotonNetwork.IsMasterClient)
+        { 
+            if (index == 0)
+            {
+                ownShipsP1.text = shipsLeft.ToString();
+            }
+            else if (index == 1)
+            {
+                enemyShipsP1.text = shipsLeft.ToString();
+            }
+        }
+        else if (!PhotonNetwork.IsMasterClient)
+        {
+            if (index == 0)
+            {
+                enemyShipsP2.text = shipsLeft.ToString();
+            }
+            else if (index == 1)
+            {
+                ownShipsP2.text = shipsLeft.ToString();
+            }
+        }
+    }
+
     #region Photon Raise Events
 
     public override void OnEnable()
@@ -956,6 +995,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
                 {
                     PowerUpToggle.SetActive(true);
+                    hudCanvasP1.SetActive(true);
                 }
 
             }

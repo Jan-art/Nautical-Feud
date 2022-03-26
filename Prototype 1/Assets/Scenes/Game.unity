@@ -12851,6 +12851,12 @@ MonoBehaviour:
   PowerUpToggle: {fileID: 1141380686}
   AdvModeCheck: {fileID: 0}
   PowerUpBar: {fileID: 1373597558}
+  hudCanvasP1: {fileID: 174958951}
+  ownShipsP1: {fileID: 482880278}
+  enemyShipsP1: {fileID: 1072905924}
+  hudCanvasP2: {fileID: 124111968}
+  ownShipsP2: {fileID: 837684170}
+  enemyShipsP2: {fileID: 1908997845}
   missilePrefab: {fileID: 110720253814798679, guid: 1d21b4a400285364b8f5514156fa930d, type: 3}
   isPowerUpActive: 0
 --- !u!4 &572201545
@@ -19467,7 +19473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 347.9, y: 440}
+  m_AnchoredPosition: {x: 328.7, y: 440}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &837684170
@@ -40072,7 +40078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 421.9, y: 470}
+  m_AnchoredPosition: {x: -314.1, y: 470}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1764180090
@@ -43961,7 +43967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 706.1, y: 440}
+  m_AnchoredPosition: {x: -31.4, y: 440}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1908997845

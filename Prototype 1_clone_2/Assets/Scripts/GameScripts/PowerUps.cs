@@ -171,6 +171,7 @@ public class PowerUps : MonoBehaviour
             if (sunk)
             {
                 GameManager.GetComponent<GameManager>().players[rival].placedShipList.Remove(GameManager.GetComponent<GameManager>().players[rival].myGrid[x, z].placedShip.gameObject);
+                GameManager.GetComponent<GameManager>().shipTextUpdate(rival);
             }
             else
             {
@@ -258,6 +259,7 @@ public class PowerUps : MonoBehaviour
                             if (sunk)
                             {
                                 GameManager.GetComponent<GameManager>().players[rival].placedShipList.Remove(GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].placedShip.gameObject);
+                                GameManager.GetComponent<GameManager>().shipTextUpdate(rival);
                             }
 
                             //HIGHLIGHT TILE
