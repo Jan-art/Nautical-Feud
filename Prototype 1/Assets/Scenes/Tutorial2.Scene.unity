@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074002, b: 0.3587271, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,7 +180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOREM IPSOLM
+  m_text: "Radar\nCost: 100 points\nReveals all ships \nwithin a 3x3 grid \naround
+    the cursor"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
   m_sharedMaterial: {fileID: -3621391256529682589, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
@@ -207,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 60.15
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -314,7 +315,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOREM IPSOLM
+  m_text: "Satellite\nCost: 70 points\nHits a single tile. \nIf it hits a ship that
+    ship \nis immediately sunk"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
   m_sharedMaterial: {fileID: -3621391256529682589, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
@@ -341,7 +343,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 60.15
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -590,7 +592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOREM IPSOLM
+  m_text: "Coming Soon\nArmour\nProtects a ship from \nthe next hit it would \nsustain"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
   m_sharedMaterial: {fileID: -3621391256529682589, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
@@ -617,7 +619,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 60.15
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1580,7 +1582,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOREM IPSOLM
+  m_text: "Nuke\nCost: 200 points\nHits a 3x3 grid around \nthe cursor damaging \nany
+    ships struck"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
   m_sharedMaterial: {fileID: -3621391256529682589, guid: 6c0d141cec476654aa27c27c9f2ab8a2, type: 2}
@@ -1607,7 +1610,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 60.15
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1

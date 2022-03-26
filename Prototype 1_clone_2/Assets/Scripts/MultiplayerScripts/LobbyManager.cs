@@ -114,6 +114,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         Searching.SetActive(false);
         MainMenu.SetActive(true);
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+        PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.LeaveRoom();
         Debug.Log("Search Stopped");
     }
@@ -125,4 +127,3 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
 }
-

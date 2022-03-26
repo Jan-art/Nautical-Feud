@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/OLD/Menu.unity
     guid: 318a46743acfac64a97e90fdca33535e
@@ -24,6 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Win.Scene.unity
     guid: 9828527b927d740488c457942ea7161c
   - enabled: 1
-    path: Assets/Scenes/OLD/OLD DEFEAT SCREEN RIP.unity
-    guid: 6e226a51b4920d14aa163d71a5d1f007
+    path: Assets/Scenes/Defeat.Scene.unity
+    guid: 4775b46cd09738846949f34a560b5e66
+  - enabled: 1
+    path: Assets/Scenes/Login.Scene.unity
+    guid: 88524bcb852c5804f99a83515c09c8f0
+  - enabled: 1
+    path: Assets/Scenes/Register.Scene.unity
+    guid: 322399967d801f144930b688366d6d1c
   m_configObjects: {}

@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 }
             }
 
-            
+
         }
     }
 
@@ -129,8 +129,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         //Can be commented out and code should run classic mode fine
         if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
         {
-            PowerUpToggle.SetActive(true);
             PowerUpBar.GetComponent<PowerUps>().InitialiseUsable();
+            PowerUpToggle.SetActive(false);
             Debug.Log("Game loaded in advanced mode");
         }
         else
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PowerUpToggle.SetActive(false);
             Debug.Log("Game loaded in classic mode");
         }
-        
+
         //HIDE PANELS
         HideAllPanels();
 
@@ -200,11 +200,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //Changes whether the row or column number is incremented to account for the rotation of the ship
             if (shipRotation.Equals("down") || shipRotation.Equals("up"))
             {
-                zTile ++;
+                zTile++;
             }
             else
             {
-                xTile ++;
+                xTile++;
             }
         }
         AddShipToList(placedShip);
@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         return players[activePlayer].myGrid[xPos, zPos].IsOccupied();
     }
-    
+
 
     public void RemoveAllShipsFromList()
     {
@@ -271,11 +271,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 break;
             case GameStates.IDLE: //WAIT-TIME
                 {
-                    if(PhotonNetwork.IsConnected)
+                    if (PhotonNetwork.IsConnected)
                     {
                         if (!PhotonNetwork.IsMasterClient)
                         {
-                            if(activePlayer == players[0].rival)
+                            if (activePlayer == players[0].rival)
                             {
                                 players[0].enemyTurn.SetActive(true);
                             }
@@ -647,6 +647,14 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 //ADD [EXPLOSION + SOUND HERE]
                 info.ActivateTop(3, true);
 
+                if (PhotonNetwork.IsMasterClient && activePlayer == 0)
+                {
+                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(20);
+                }
+                else if (!(PhotonNetwork.IsMasterClient) && activePlayer == 1)
+                {
+                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(20);
+                }
             }
             else
             {   //HIGHLIGHT TILE
@@ -654,6 +662,15 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
                 //NOT HIT
                 info.ActivateTop(2, true);
+
+                if (PhotonNetwork.IsMasterClient && activePlayer == 0)
+                {
+                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(10);
+                }
+                else if (!(PhotonNetwork.IsMasterClient) && activePlayer == 1)
+                {
+                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(10);
+                }
             }
 
             //REVEAL TILE
@@ -674,9 +691,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             //SWITCH PLAYER
             SwitchPlayer();
-
+            PowerUpToggle.SetActive(false);
+            PowerUpBar.SetActive(false);
             PlayerShootingSwitch();
-
         }
         else
         {
@@ -738,6 +755,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 SwitchPlayer();
                 PlayerShootingSwitch();
+                PowerUpToggle.SetActive(false);
+                PowerUpBar.SetActive(false);
             }
         }
 
@@ -795,7 +814,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N1");
-                PhotonNetwork.AutomaticallySyncScene = false;
                 SceneManager.LoadScene("Win.Scene");
 
 
@@ -807,7 +825,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N2");
-                PhotonNetwork.AutomaticallySyncScene = false;
                 SceneManager.LoadScene("Win.Scene");
 
             }
@@ -817,6 +834,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         else if (players[rival].placedShipList.Count == 0 && players[rival].placedShipList.Count >= 0)
         {
             PhotonNetwork.AutomaticallySyncScene = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene("Defeat.Scene");
         }
 
@@ -830,16 +850,20 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 if (activePlayer == 0)
                 {
-                    PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
+                    PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
+                    // PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
                     players[activePlayer].shootPanel.SetActive(true);
+                    PowerUpToggle.SetActive(true);
                 }
             }
             else
             {
                 if (activePlayer == 1)
                 {
-                    PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
+                    PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
+                    //PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
                     players[activePlayer].shootPanel.SetActive(true);
+                    PowerUpToggle.SetActive(true);
                 }
             }
         }
@@ -906,7 +930,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //Runs methods to check shot on recieving client, thus creating a hit marker on their board, no missile fires however
             this.CheckShot(x, z, info);
             players[activePlayer].enemyTurn.SetActive(false);
-            
+
         }
         else if (eventCode == OnShipPlacementFinished)
         {
@@ -920,7 +944,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 HideAllShips();
                 instance.SelectReady();
 
-            } 
+            }
             //If sent to 1st player by 2nd player
             else
             {
@@ -929,14 +953,21 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 Debug.Log("P2 ships placed based on event received");
                 HideAllShips();
                 instance.SelectReady();
+                if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
+                {
+                    PowerUpToggle.SetActive(true);
+                }
 
             }
-            
+
         }
         else if (eventCode == OnVictory)
         {
             Debug.Log("Event 'OnVictory' received");
             PhotonNetwork.AutomaticallySyncScene = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene("Defeat.Scene");
 
         }
@@ -955,10 +986,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             }
         }
     }
-    
-    #endregion
-    
 
+    #endregion
 }
 
 

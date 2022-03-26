@@ -59,6 +59,7 @@ public class PowerUps : MonoBehaviour
         public bool definitive;
         public int cooldown;
         public int startCooldown;
+        public int scoreCost;
 
         public string getStringAlignment()
         {
@@ -93,9 +94,17 @@ public class PowerUps : MonoBehaviour
 
     public int numberOfPowerUps = 3;
     public PowerUp[] powerups = new PowerUp[3];
-    public Button[] buttons = new Button[3];
+    public Button[] powerUpButtons = new Button[3];
+    public Button[] purchaseButtons = new Button[3];
     public bool[] usable = new bool[3];
     public int lastDisabled = -1;
+    public int score;
+    public Text scoreText;
+
+    void Start()
+    {
+        InitialiseUsable();
+    }
 
     public void ToGameManager(int listPosition)
     {
@@ -105,10 +114,10 @@ public class PowerUps : MonoBehaviour
         Debug.Log("String created and being sent to GameManager" + alignment + hitable);
         if (lastDisabled != -1)
         {
-            buttons[lastDisabled].interactable = true;
+            powerUpButtons[lastDisabled].interactable = true;
         }
         lastDisabled = listPosition;
-        buttons[listPosition].interactable = false;
+        powerUpButtons[listPosition].interactable = false;
         GameManager.GetComponent<GameManager>().EnablePowerUp(listPosition, alignment, hitable, powerups[listPosition].definitive);
     }
 
@@ -286,11 +295,11 @@ public class PowerUps : MonoBehaviour
 
     public void ActivatePowerUp(int x, int z, int listPosition, int rival)
     {
-        if (listPosition == 0)
+        if (listPosition == 1)
         {
             this.RadarFunctionality(x, z, listPosition, rival);
         }
-        else if (listPosition == 1)
+        else if (listPosition == 0)
         {
             this.SateliteFunctionality(x, z, listPosition, rival);
         }
@@ -302,14 +311,15 @@ public class PowerUps : MonoBehaviour
 
     public void EnableButton(int listPosition)
     {
-        buttons[listPosition].interactable = true;
+        powerUpButtons[listPosition].interactable = true;
     }
 
     public void DisableButton(int listPosition)
     {
-        buttons[listPosition].interactable = false;
+        powerUpButtons[listPosition].interactable = false;
     }
 
+    /*
     public void TickCooldowns()
     {
         for (int i = 0; i < powerups.Length; i++)
@@ -329,26 +339,74 @@ public class PowerUps : MonoBehaviour
             }
         }
     }
+    */
 
     //Will be called to intialise setUsable and change PowerUp cooldowns. Any powers-up not permitted due to low level should have cooldowns changed to -1 and usable set to false
     public void InitialiseUsable()
     {
         for (int i = 0; i < usable.Length; i++)
         {
-            EnablePower(i);
+            DisablePower(i);
+        }
+        SetPurchaseButtons();
+    }
+
+    public void SetPurchaseButtons()
+    {
+        for (int p = 0; p < usable.Length; p++)
+        {
+            if (score >= powerups[p].scoreCost && usable[p] == false)
+            {
+                purchaseButtons[p].interactable = true;
+            }
+            else
+            {
+                purchaseButtons[p].interactable = false;
+            }
         }
     }
 
     public void DisablePower(int listPosition)
     {
+        Debug.Log("DisablePower called for powerup" + listPosition);
         usable[listPosition] = false;
-        buttons[listPosition].interactable = false;
+        powerUpButtons[listPosition].interactable = false;
     }
 
     public void EnablePower(int listPosition)
     {
         usable[listPosition] = true;
-        buttons[listPosition].interactable = true;
-        powerups[listPosition].cooldown = powerups[listPosition].startCooldown;
+        powerUpButtons[listPosition].interactable = true;
+        //powerups[listPosition].cooldown = powerups[listPosition].startCooldown;
+    }
+
+    public void IncreaseScore(int increase)
+    {
+        Debug.Log("Score increased by" + increase);
+        score += increase;
+        ChangeScoreText();
+    }
+
+    public void DecreaseScore(int decrease)
+    {
+        Debug.Log("Score decreased by" + decrease);
+        score -= decrease;
+        ChangeScoreText();
+    }
+
+    public void PurchaseButtonPressed(int index)
+    {
+        DecreaseScore(powerups[index].scoreCost);
+        SetPurchaseButtons();
+        purchaseButtons[index].interactable = false;
+        powerUpButtons[index].interactable = true;
+        usable[index] = true;
+
+    }
+
+    public void ChangeScoreText()
+    {
+        Debug.Log("ChangeScoreText running");
+        scoreText.text = "Score: " + score.ToString();
     }
 }
