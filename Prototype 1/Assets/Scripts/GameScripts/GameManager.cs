@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using PlayFab;
+using PlayFab.ClientModels;
+
 
 public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
@@ -33,6 +36,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         public bool[,] revealGrid = new bool[10, 10];
         public PhysicalGameBoard pgb;
         public int rival;
+
+
         //public LayerMask layerToPlaceOn;
 
         [Space]
@@ -41,10 +46,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         public GameObject shootPanel;
         public GameObject enemyTurn;
 
-        // [Space]
-        // public GameObject WinPanel;
-        // public GameObject LossPanel;
-
+        public int winScore;
+        public int defeatScore;
+        public int killScore;
 
 
         //SHOW & HIDE SHIPS
@@ -827,6 +831,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N1");
                 SceneManager.LoadScene("Win.Scene");
+                
 
 
             }
@@ -838,7 +843,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N2");
                 SceneManager.LoadScene("Win.Scene");
-
+                
+                //PlayFabManager.SendLeaderboard(winScore);
             }
 
 
@@ -920,6 +926,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             }
         }
     }
+
+   /* void AddWinScore()
+    {
+        winScore++;
+    }*/
 
     #region Photon Raise Events
 
@@ -1028,6 +1039,66 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     }
 
     #endregion
+
+    /*
+    #region PlayFab Script
+
+    public Text messageText;
+
+    //======================================================
+
+    void OnError(PlayFabError error)
+    {
+        messageText.text = error.ErrorMessage;
+        Debug.Log(error.GenerateErrorReport());
+    }
+
+    //======================================================
+
+    public void SendLeaderboard(int Wins)
+    {
+        var request = new UpdatePlayerStatisticsRequest
+        {
+            Statistics = new List<StatisticUpdate>
+            {
+                new StatisticUpdate
+                {
+                    StatisticName = "Matches Won",
+                    Value = Wins
+
+                }
+            }
+        };
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnError);
+
+    }
+
+    void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
+    {
+        Debug.Log("Leaderboard Sent");
+    }
+
+  
+    public void GetLeaderboard()
+    {
+        var request = new GetLeaderboardRequest
+        {
+            StatisticName = "Matches Won",
+            StartPosition = 0,
+            MaxResultsCount = 10
+        };
+        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
+    }
+
+    void OnLeaderboardGet(GetLeaderboardResult result)
+    {
+        foreach (var item in result.Leaderboard)
+        {
+            Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
+        }
+    }
+    #endregion
+
+  */
+
 }
-
-
