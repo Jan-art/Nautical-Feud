@@ -2226,12 +2226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2304,6 +2304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   link: 
+  welcomeText: {fileID: 0}
+  advModeCheck: {fileID: 0}
 --- !u!1 &78928497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4247,7 +4249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5789,7 +5791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14797,9 +14799,6 @@ MonoBehaviour:
     placePanel: {fileID: 2138473471}
     shootPanel: {fileID: 1758636062}
     enemyTurn: {fileID: 1173575124}
-    winScore: 0
-    defeatScore: 0
-    killScore: 0
   - placedShipList: []
     playerType: 0
     pgb: {fileID: 1023006429}
@@ -14808,9 +14807,6 @@ MonoBehaviour:
     placePanel: {fileID: 1369750150}
     shootPanel: {fileID: 223998706}
     enemyTurn: {fileID: 1173575124}
-    winScore: 0
-    defeatScore: 0
-    killScore: 0
   gameState: 3
   WarCamPos: {fileID: 784589759}
   placingCanvas: {fileID: 1448317371}
@@ -14825,6 +14821,7 @@ MonoBehaviour:
   enemyShipsP2: {fileID: 1908997845}
   missilePrefab: {fileID: 110720253814798679, guid: 1d21b4a400285364b8f5514156fa930d, type: 3}
   isPowerUpActive: 0
+  messageText: {fileID: 0}
 --- !u!4 &572201545
 Transform:
   m_ObjectHideFlags: 0
@@ -14853,6 +14850,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   link: 
+  welcomeText: {fileID: 0}
+  advModeCheck: {fileID: 0}
 --- !u!1 &581843739
 GameObject:
   m_ObjectHideFlags: 0
@@ -28777,7 +28776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1113924401
 Transform:
   m_ObjectHideFlags: 0
@@ -35139,7 +35138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -141, y: 271}
+  m_AnchoredPosition: {x: -166, y: 307.05}
   m_SizeDelta: {x: 800, y: 278.09998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1373597560
@@ -46605,7 +46604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
