@@ -43,4 +43,9 @@ public class Menu : MonoBehaviour
      Application.Quit();
      Debug.Log("Game is exiting");
     }
+
+    public void OpenWebsite()
+    {
+        Application.OpenURL(Url); //URL needs to be changed from button : )s
+    }
 }
