@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public string link;
     
     public void ReturnToMenu()
     {
@@ -46,6 +46,6 @@ public class Menu : MonoBehaviour
 
     public void OpenWebsite()
     {
-        Application.OpenURL(Url); //URL needs to be changed from button : )s
+        Application.OpenURL(link); //URL needs to be changed from button : )
     }
 }
