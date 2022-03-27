@@ -28,8 +28,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -44,6 +42,7 @@ ScriptsOnlyBuild:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
     - TMPro.TMP_ColorGradient
+    - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
@@ -68,10 +67,14 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.RawImage
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/Scenes/Defeat.Scene.unity:
     - Class: 1
@@ -311,7 +314,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4534}
     - Class: 114
-      Script: {instanceID: 98094}
+      Script: {instanceID: 36712}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -378,6 +381,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1484}
     - Class: 114
+      Script: {instanceID: 1486}
+    - Class: 114
       Script: {instanceID: 1590}
     - Class: 114
       Script: {instanceID: 1628}
@@ -400,6 +405,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2704}
     - Class: 114
+      Script: {instanceID: 2714}
+    - Class: 114
       Script: {instanceID: 2720}
     - Class: 114
       Script: {instanceID: 2760}
@@ -409,6 +416,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 3154}
     - Class: 114
       Script: {instanceID: 3166}
+    - Class: 114
+      Script: {instanceID: 3170}
     - Class: 114
       Script: {instanceID: 3172}
     - Class: 114
@@ -426,11 +435,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4138}
     - Class: 114
+      Script: {instanceID: 4190}
+    - Class: 114
       Script: {instanceID: 4314}
     - Class: 114
       Script: {instanceID: 4340}
     - Class: 114
       Script: {instanceID: 4360}
+    - Class: 114
+      Script: {instanceID: 4364}
     - Class: 114
       Script: {instanceID: 4472}
     - Class: 114
@@ -602,7 +615,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4534}
     - Class: 114
-      Script: {instanceID: 98094}
+      Script: {instanceID: 36712}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1145,7 +1158,7 @@ ScriptsOnlyBuild:
     className: PlayerControl
   - hash:
       serializedVersion: 2
-      Hash: da3ca247e1fce10b535970bfb9f188ee
+      Hash: 8ca2580f0c31ef636a203aff32fc0673
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayFabManager
@@ -1295,7 +1308,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: c7c664fac6c293bb515b85075ce473a2
+      Hash: 9cd053c12c7cb8f1ffbd842ce811104c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LobbyManager
@@ -1649,7 +1662,7 @@ ScriptsOnlyBuild:
     className: OnClickDestroy
   - hash:
       serializedVersion: 2
-      Hash: a25a9c27787e3c10bc77ede034320071
+      Hash: bba7e73cec8c7e2ac6128885127a15a9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Menu
@@ -2423,7 +2436,7 @@ ScriptsOnlyBuild:
     className: CameraWork
   - hash:
       serializedVersion: 2
-      Hash: 86056eeae4c8df777f7edfc91056290b
+      Hash: 2c9dc16f5beea1369f5d8d8979da03a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
