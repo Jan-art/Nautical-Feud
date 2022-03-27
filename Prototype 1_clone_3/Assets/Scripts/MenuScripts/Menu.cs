@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     public string link;
+    public Text welcomeText;
+    public GameObject advModeCheck;
     
+    void Start()
+    {
+        advModeCheck = GameObject.FindGameObjectWithTag("AdvModeCheck");
+        if (advModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
+        {
+            welcomeText.text = "Welcome \n" + advModeCheck.GetComponent<AdvanceMC>().getUsername() + "!";
+        }
+    }
+
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("MainMenu");
