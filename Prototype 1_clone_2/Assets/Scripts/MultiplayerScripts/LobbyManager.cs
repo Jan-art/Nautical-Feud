@@ -16,6 +16,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     GameObject AdvModeCheck;
 
+    public Text SearchingTxt;
+
     public const string ADVANCED_MODE = "adv";
 
     void Start()
@@ -45,7 +47,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         Searching.SetActive(true);
         MainMenu.SetActive(false);
-
+        SearchingTxt.text = "S E A R C H I N G   F O R   A   R A N D O M   R O O M";
         if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC())
         {
             Debug.Log("Joining random room with advanced mode active");
@@ -64,6 +66,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("Couldn't find room. Creating own room");
+        SearchingTxt.text = "R A N D O M   R O O M   N O T   F O U N D";
         MakeRoom();
     }
 
@@ -81,7 +84,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             MaxPlayers = 2
         };
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "ADVANCED_MODE" };
-        if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC())
+        if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
         {
             roomOptions.CustomRoomProperties = new Hashtable { { "ADVANCED_MODE", 1 } };
             Debug.Log("Made custom room with property with advanced mode key linked to true");
@@ -93,6 +96,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         PhotonNetwork.CreateRoom("RoomName_" + randomRoomName, roomOptions);
         Debug.Log("Room created. Waiting for another player...");
+        SearchingTxt.text = "R O O M   C R E A T E D   W A I T I N G   F O R   O T H E R   P L A Y E R";
     }
 
     public override void OnJoinedRoom()
@@ -105,6 +109,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.CurrentRoom.PlayerCount == 2 && PhotonNetwork.IsMasterClient)
         {
+            SearchingTxt.text = "S T A R T I N G   G A M E";
             Debug.Log("Starting match");
             PhotonNetwork.LoadLevel(1);
         }
