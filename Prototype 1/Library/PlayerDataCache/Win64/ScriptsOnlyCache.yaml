@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AdvanceMC
+    - ChatManager
     - FieldControl
     - GameManager
     - GhostBehaviour
@@ -29,6 +30,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -45,6 +48,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_ColorGradient
     - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
+    - TMPro.TMP_InputField
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
@@ -52,10 +56,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -71,8 +73,10 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
+    - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.Mask
     - UnityEngine.UI.RawImage
+    - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Shadow
@@ -190,7 +194,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1522}
     - Class: 114
+      Script: {instanceID: 1570}
+    - Class: 114
       Script: {instanceID: 1616}
+    - Class: 114
+      Script: {instanceID: 1678}
     - Class: 114
       Script: {instanceID: 1776}
     - Class: 114
@@ -212,6 +220,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2950}
     - Class: 114
+      Script: {instanceID: 3156}
+    - Class: 114
       Script: {instanceID: 3164}
     - Class: 114
       Script: {instanceID: 3174}
@@ -226,9 +236,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4220}
     - Class: 114
+      Script: {instanceID: 4452}
+    - Class: 114
       Script: {instanceID: 4574}
     - Class: 114
       Script: {instanceID: 5324}
+    - Class: 114
+      Script: {instanceID: 30624}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 123
@@ -319,7 +333,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4536}
     - Class: 114
-      Script: {instanceID: 36112}
+      Script: {instanceID: 54370}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -622,7 +636,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4536}
     - Class: 114
-      Script: {instanceID: 36112}
+      Script: {instanceID: 54370}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2534,6 +2548,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
+  - hash:
+      serializedVersion: 2
+      Hash: a9e7ef1bf561151ba692fc8fc3681c15
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ChatManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

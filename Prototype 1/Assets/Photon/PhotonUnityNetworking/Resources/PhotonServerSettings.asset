@@ -15,7 +15,7 @@ MonoBehaviour:
   AppSettings:
     AppIdRealtime: b89b7380-54a5-4fc7-89fa-915ceaa668aa
     AppIdFusion: 
-    AppIdChat: 
+    AppIdChat: 35692363-a4b1-40d5-80f9-c21a434135a0
     AppIdVoice: 
     AppVersion: 1
     UseNameServer: 1
@@ -40,6 +40,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - OnTileSelected
+  - RPC_AddNewMessage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
