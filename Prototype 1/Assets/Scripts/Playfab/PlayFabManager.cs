@@ -15,14 +15,9 @@ public class PlayFabManager : MonoBehaviour
     public InputField mail;
     public InputField pass;
 
-    public GameObject AdvModeCheck;
+    
 
-    void Awake()
-    {
-        AdvModeCheck = GameObject.FindGameObjectWithTag("AdvModeCheck");
-    }
-
-    //=============================================================
+//=============================================================
     public void RegBtn()
     {
         if (pass.text.Length < 6)
@@ -43,53 +38,9 @@ public class PlayFabManager : MonoBehaviour
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
         messageText.text = "Registered & Logged in";
-        createStatistics();
     }
 
-    public void createStatistics()
-    {
-        var requestWins = new UpdatePlayerStatisticsRequest
-        {
-            Statistics = new List<StatisticUpdate>
-                    {
-                        new StatisticUpdate
-                        {
-                            StatisticName = "Matches Won",
-                            Value = 0
-                        }
-                    }
-        };
-        PlayFabClientAPI.UpdatePlayerStatistics(requestWins, OnLeaderboardUpdate, OnError);
-
-        var requestLosses = new UpdatePlayerStatisticsRequest
-        {
-            Statistics = new List<StatisticUpdate>
-                {
-                    new StatisticUpdate
-                    {
-                        StatisticName = "Matches Lost",
-                        Value = 0
-                    }
-                }
-        };
-        PlayFabClientAPI.UpdatePlayerStatistics(requestLosses, OnLeaderboardUpdate, OnError);
-
-        var requestShipsSunk = new UpdatePlayerStatisticsRequest
-        {
-            Statistics = new List<StatisticUpdate>
-                    {
-                        new StatisticUpdate
-                        {
-                            StatisticName = "Ships Sunk",
-                            Value = 0
-                        }
-                    }
-        };
-        PlayFabClientAPI.UpdatePlayerStatistics(requestShipsSunk, OnLeaderboardUpdate, OnError);
-    }
-
-
-    //=============================================================
+ //=============================================================
     public void LogBtn()
     {
         var request = new LoginWithEmailAddressRequest
@@ -105,7 +56,7 @@ public class PlayFabManager : MonoBehaviour
     {
         messageText.text = "Logged-in ! ";
         Debug.Log("Account creation Success");
-        AdvModeCheck.GetComponent<AdvanceMC>().setUsername("Bob");
+
     }
 
     //=============================================================
@@ -135,6 +86,7 @@ public class PlayFabManager : MonoBehaviour
 
     //=============================================================
 
+    /*
     public void SendLeaderboard(int Wins)
     {
         var request = new UpdatePlayerStatisticsRequest
@@ -143,7 +95,7 @@ public class PlayFabManager : MonoBehaviour
             {
                 new StatisticUpdate
                 {
-                    StatisticName = "Matches Won",
+                    StatisticName = "Wins",
                     Value = Wins
 
                 }
@@ -158,7 +110,7 @@ public class PlayFabManager : MonoBehaviour
         Debug.Log("Leaderboard Sent");
     }
 
-    public void Defeat()
+   /*ublic void Defeat()
     {
         //GameOverText.SetActive(true);
         //PlayfabManager.SendLeaderboard(maxPlatform);
@@ -168,7 +120,7 @@ public class PlayFabManager : MonoBehaviour
     {
         var request = new GetLeaderboardRequest
         {
-            StatisticName = "Matches Won",
+            StatisticName = "Wins",
             StartPosition = 0,
             MaxResultsCount = 10
         };
@@ -182,4 +134,5 @@ public class PlayFabManager : MonoBehaviour
             Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
         }
     }
+    */
 }

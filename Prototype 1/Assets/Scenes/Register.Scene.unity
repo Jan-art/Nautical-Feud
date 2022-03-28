@@ -216,7 +216,19 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 326062062}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &21088649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +461,6 @@ MonoBehaviour:
   messageText: {fileID: 1498689847}
   mail: {fileID: 341843874}
   pass: {fileID: 282512927}
-  AdvModeCheck: {fileID: 0}
 --- !u!1 &189629876
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +794,19 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 326062062}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &252968619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1383,7 +1406,19 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 326062062}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &345326467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,7 +1567,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2006,9 +2041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc402a3f8d801b4e81c273bfe96abe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: 
-  welcomeText: {fileID: 0}
-  advModeCheck: {fileID: 0}
 --- !u!4 &1128608771
 Transform:
   m_ObjectHideFlags: 0
@@ -2175,7 +2207,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: Main Menu
 --- !u!222 &1283633802
 CanvasRenderer:
   m_ObjectHideFlags: 0

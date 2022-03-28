@@ -508,7 +508,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -625,7 +625,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: Main Menu
 --- !u!222 &1039698640
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1080,9 +1080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc402a3f8d801b4e81c273bfe96abe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: 
-  welcomeText: {fileID: 0}
-  advModeCheck: {fileID: 0}
 --- !u!4 &1973956266
 Transform:
   m_ObjectHideFlags: 0

@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         public GameObject shootPanel;
         public GameObject enemyTurn;
 
+        public int winScore;
+        public int defeatScore;
+        public int killScore;
+
+
         //SHOW & HIDE SHIPS
 
         public Player()
@@ -126,13 +131,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private string alignment;
     private string hitable;
     private bool definitive;
-
-
-    private int wins;
-    private int losses;
-    private int shipsSunk;
-    private bool won;
-    private int shipsDestroyed;
 
     void Awake()
     {
@@ -709,11 +707,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             //SWITCH PLAYER
             SwitchPlayer();
-            if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
-            {
-                PowerUpToggle.SetActive(false);
-                PowerUpBar.SetActive(false);
-            }
+            PowerUpToggle.SetActive(false);
+            PowerUpBar.SetActive(false);
             PlayerShootingSwitch();
         }
         else
@@ -825,6 +820,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         if (players[rival].placedShipList.Count == 0)
         {
             Debug.Log("Victory code run");
+            LevelManager test = new LevelManager();
+            test.addXP(50);
+            Debug.Log(test.getLevel());
+            test.addXP(60);
+            Debug.Log(test.getLevel());
             //print("You Win!!");
             //LOGIC
             //players[activePlayer].WinPanel.SetActive(true);
@@ -835,11 +835,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N1");
-                if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
-                {
-                    SendStats(true, 2);
-                }
                 SceneManager.LoadScene("Win.Scene");
+                
+
 
             }
             else if (!PhotonNetwork.IsMasterClient && players[0].placedShipList.Count == 0)
@@ -849,10 +847,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N2");
-                if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
-                {
-                    SendStats(true, 2);
-                }
                 SceneManager.LoadScene("Win.Scene");
                 
                 //PlayFabManager.SendLeaderboard(winScore);
@@ -865,10 +859,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PhotonNetwork.AutomaticallySyncScene = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
-            {
-                SendStats(false, 0);
-            }
             PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene("Defeat.Scene");
         }
@@ -883,26 +873,20 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 if (activePlayer == 0)
                 {
+                    PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
                     // PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
                     players[activePlayer].shootPanel.SetActive(true);
-                    if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
-                    {
-                        PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
-                        PowerUpToggle.SetActive(true);
-                    }
+                    PowerUpToggle.SetActive(true);
                 }
             }
             else
             {
                 if (activePlayer == 1)
                 {
+                    PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
                     //PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
                     players[activePlayer].shootPanel.SetActive(true);
-                    if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
-                    {
-                        PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
-                        PowerUpToggle.SetActive(true);
-                    }
+                    PowerUpToggle.SetActive(true);
                 }
             }
         }
@@ -1027,8 +1011,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
                 {
                     PowerUpToggle.SetActive(true);
+                    hudCanvasP1.SetActive(true);
                 }
-                hudCanvasP1.SetActive(true);
 
             }
 
@@ -1039,10 +1023,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PhotonNetwork.AutomaticallySyncScene = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
-            {
-                SendStats(false, 2 - (players[activePlayer].placedShipList.Count));
-            }
             PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene("Defeat.Scene");
 
@@ -1065,7 +1045,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     #endregion
 
-
+    /*
     #region PlayFab Script
 
     public Text messageText;
@@ -1080,109 +1060,50 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     //======================================================
 
-    //Function to call for statistics from database to be gathered and set global variables based on recieved information
-    public void SendStats(bool _won, int _shipsDestroyed)
+    public void SendLeaderboard(int Wins)
     {
-        won = _won;
-        shipsDestroyed = _shipsDestroyed;
-        GetStatistics();
-    }
-
-    //Function to update the statistics on the database based on what is currently in there and the results of the match
-    public void UpdateStats()
-    {
-        if (won)
-        {
-            wins++;
-            Debug.Log("Wins after addition" + wins);
-            var requestWins = new UpdatePlayerStatisticsRequest
-            {
-                Statistics = new List<StatisticUpdate>
-                {
-                    new StatisticUpdate
-                    {
-                        StatisticName = "Matches Won",
-                        Value = wins
-                    }
-                }
-            };
-            PlayFabClientAPI.UpdatePlayerStatistics(requestWins, OnStatsUpdate, OnError);
-        }
-        else
-        {
-            losses++;
-            var requestLosses = new UpdatePlayerStatisticsRequest
-            {
-                Statistics = new List<StatisticUpdate>
-                {
-                    new StatisticUpdate
-                    {
-                        StatisticName = "Matches Lost",
-                        Value = losses
-                    }
-                }
-            };
-            PlayFabClientAPI.UpdatePlayerStatistics(requestLosses, OnStatsUpdate, OnError);
-        }
-
-        shipsSunk += shipsDestroyed;
-        var requestShipsSunk = new UpdatePlayerStatisticsRequest
+        var request = new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate>
+            {
+                new StatisticUpdate
                 {
-                    new StatisticUpdate
-                    {
-                        StatisticName = "Ships Sunk",
-                        Value = shipsSunk
-                    }
+                    StatisticName = "Matches Won",
+                    Value = Wins
+
                 }
+            }
         };
-        PlayFabClientAPI.UpdatePlayerStatistics(requestShipsSunk, OnStatsUpdate, OnError);
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnError);
+
     }
 
-    //Debug to ensure that the statistics were uploaded sucessfully
-    void OnStatsUpdate(UpdatePlayerStatisticsResult result)
+    void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result)
     {
-        Debug.Log("Stats Sent");
+        Debug.Log("Leaderboard Sent");
     }
 
-    //Gets statistics from the database
-    void GetStatistics()
+  
+    public void GetLeaderboard()
     {
-        //GetPlayerStatistics requires a list of strings if you want 
-        //to specify which statistics you want
-        List<string> statNames = new List<string>() { "Matches Won", "Matches Lost", "Ships Sunk" };
-
-        PlayFabClientAPI.GetPlayerStatistics(
-            new GetPlayerStatisticsRequest { StatisticNames = statNames },
-            OnGetStatistics,
-            error => Debug.LogError(error.GenerateErrorReport())
-        );
-    }
-
-    //Processes statistics recived and assigns them to variables
-    public void OnGetStatistics(GetPlayerStatisticsResult result)
-    {
-        foreach (var eachStat in result.Statistics)
+        var request = new GetLeaderboardRequest
         {
-            Debug.Log("Statistic (" + eachStat.StatisticName + "): " + eachStat.Value);
-            if (eachStat.StatisticName == "Matches Won")
-            {
-                wins = eachStat.Value;
-            }
-            else if (eachStat.StatisticName == "Matches Lost")
-            {
-                losses = eachStat.Value;
-            }
-            else if (eachStat.StatisticName == "Ships Sunk")
-            {
-                shipsSunk = eachStat.Value;
-            }
-        }
-        UpdateStats();
+            StatisticName = "Matches Won",
+            StartPosition = 0,
+            MaxResultsCount = 10
+        };
+        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
     }
 
+    void OnLeaderboardGet(GetLeaderboardResult result)
+    {
+        foreach (var item in result.Leaderboard)
+        {
+            Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
+        }
+    }
     #endregion
 
+  */
 
 }

@@ -9,13 +9,11 @@ public class AdvanceMC : MonoBehaviour
     GameObject AdvModeCheck;
 
     private bool AMC;
-    private string username;
 
     // Start is called before the first frame update
     void Start()
     {
         AMC = true;
-        username = "";
         DontDestroyOnLoad(AdvModeCheck);
         gameObject.tag = "AdvModeCheck";
     }
@@ -39,15 +37,5 @@ public class AdvanceMC : MonoBehaviour
     public bool getAMC()
     {
         return AMC;
-    }
-
-    public void setUsername(string _username)
-    {
-        username = _username;
-    }
-
-    public string getUsername()
-    {
-        return username;
     }
 }
