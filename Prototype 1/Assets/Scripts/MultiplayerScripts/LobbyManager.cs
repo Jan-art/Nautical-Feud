@@ -26,8 +26,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     void Start()
     {
         string randomName = $"Tester{Guid.NewGuid().ToString()}";
-        ConnectToPhoton(randomName);
 
+        AdvModeCheck = GameObject.FindGameObjectWithTag("AdvModeCheck");
         Searching.SetActive(false);
         if (PhotonNetwork.IsConnected)
         {
@@ -36,10 +36,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         else
         {
             MainMenu.SetActive(false);
-            PhotonNetwork.ConnectUsingSettings();
+            ConnectToPhoton(randomName);
         }
-
     }
+
 
     public void ConnectToPhoton(string nickName)
     {

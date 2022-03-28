@@ -60,4 +60,10 @@ public class Menu : MonoBehaviour
     {
         Application.OpenURL(link); //URL needs to be changed from button : )
     }
+
+    public void LoadScoreBoard()
+    {
+        SceneManager.LoadScene("Scoreboard");
+        Debug.Log("Loaded LeaderBoard");
+    }
 }

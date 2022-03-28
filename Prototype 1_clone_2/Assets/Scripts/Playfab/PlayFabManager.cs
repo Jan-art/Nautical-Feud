@@ -9,6 +9,8 @@ using PlayFab.ClientModels;
 
 public class PlayFabManager : MonoBehaviour
 {
+    public GameObject rowPrefab; //The Row Prefab which contain all text boxes to display the data
+    public Transform rowsParent; // Paren GameObt for RowPrefab
 
     [Header("UI")]
     public Text messageText;
@@ -20,6 +22,11 @@ public class PlayFabManager : MonoBehaviour
     void Awake()
     {
         AdvModeCheck = GameObject.FindGameObjectWithTag("AdvModeCheck");
+    }
+
+    public void start()
+    {
+        GetLeaderboard();
     }
 
     //=============================================================
@@ -45,6 +52,11 @@ public class PlayFabManager : MonoBehaviour
         messageText.text = "Registered & Logged in";
         createStatistics();
     }
+
+
+    //==============================================================
+    //    STATS CREATED FOR USER AFTER LOGIN
+    //==============================================================
 
     public void createStatistics()
     {
@@ -133,7 +145,9 @@ public class PlayFabManager : MonoBehaviour
         Debug.Log(error.GenerateErrorReport());
     }
 
-    //=============================================================
+    //==============================================================
+    //    FUNCTIONS TO SEND STATS TO GAME-BOARD
+    //==============================================================
 
     public void SendLeaderboard(int Wins)
     {
@@ -158,11 +172,6 @@ public class PlayFabManager : MonoBehaviour
         Debug.Log("Leaderboard Sent");
     }
 
-    public void Defeat()
-    {
-        //GameOverText.SetActive(true);
-        //PlayfabManager.SendLeaderboard(maxPlatform);
-    }
    
     public void GetLeaderboard()
     {
@@ -175,11 +184,29 @@ public class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
     }
 
+
+
+    // ATTEMP 1.0 AT SENDING DATA @Daniel
+    //(From My Understanding Something similar to the script below needs to be done with the script you wrote in GameManager) @Daniel
+
     void OnLeaderboardGet(GetLeaderboardResult result)
     {
+        foreach (Transform item in rowsParent)
+        {
+            Destroy(item.gameObject);
+        }
+
+
         foreach (var item in result.Leaderboard)
         {
+            GameObject newObj = Instantiate(rowPrefab, rowsParent);
+            Text[] texts = newObj.GetComponentsInChildren<Text>();
+            texts[0].text = (item.Position + 1).ToString();
+            texts[1].text = item.PlayFabId.ToString();
+            texts[2].text = item.StatValue.ToString();
+
             Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
         }
     }
+    
 }

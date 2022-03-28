@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Random = UnityEngine.Random;
+
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -22,6 +25,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        string randomName = $"Tester{Guid.NewGuid().ToString()}";
+
+        AdvModeCheck = GameObject.FindGameObjectWithTag("AdvModeCheck");
         Searching.SetActive(false);
         if (PhotonNetwork.IsConnected)
         {
@@ -30,16 +36,26 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         else
         {
             MainMenu.SetActive(false);
-            PhotonNetwork.ConnectUsingSettings();
+            ConnectToPhoton(randomName);
         }
-
     }
 
+
+    public void ConnectToPhoton(string nickName)
+    {
+        Debug.Log($" as : { nickName}");
+        PhotonNetwork.AuthValues = new AuthenticationValues(nickName);
+        PhotonNetwork.NickName = nickName;
+        PhotonNetwork.ConnectUsingSettings();
+
+    }
     //On connection to server reveals the play button to allow players to search for matches
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to photon on " + PhotonNetwork.CloudRegion + " server.");
+        Debug.Log("Connected to photon on " + PhotonNetwork.CloudRegion + " server." );
+       
         PhotonNetwork.AutomaticallySyncScene = true;
+       
         MainMenu.SetActive(true);
     }
 

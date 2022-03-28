@@ -11,14 +11,24 @@ public class AdvanceMC : MonoBehaviour
     private bool AMC;
     private string username;
 
+    private static AdvanceMC instance;
+
+    void Awake()
+    {
+        gameObject.tag = "AdvModeCheck";
+        DontDestroyOnLoad(AdvModeCheck);
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this.AdvModeCheck);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        AMC = true;
+        AMC = false;
         username = "";
-        DontDestroyOnLoad(AdvModeCheck);
-        gameObject.tag = "AdvModeCheck";
     }
+
 
     public void setAMC(bool boolTF)
     {

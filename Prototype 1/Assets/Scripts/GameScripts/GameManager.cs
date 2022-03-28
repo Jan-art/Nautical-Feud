@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     [Space]
     public GameObject PowerUpToggle;
     public GameObject AdvModeCheck;
+    public GameObject PowerUpCanvas;
     public GameObject PowerUpBar;
 
     //Game Objects related to HUD
@@ -145,7 +146,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         //Can be commented out and code should run classic mode fine
         if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
         {
-            PowerUpBar.GetComponent<PowerUps>().InitialiseUsable();
+            PowerUpCanvas.GetComponent<PowerUps>().InitialiseUsable();
             PowerUpToggle.SetActive(false);
             Debug.Log("Game loaded in advanced mode");
         }
@@ -665,11 +666,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
                 if (PhotonNetwork.IsMasterClient && activePlayer == 0)
                 {
-                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(20);
+                    PowerUpCanvas.GetComponent<PowerUps>().IncreaseScore(20);
                 }
                 else if (!(PhotonNetwork.IsMasterClient) && activePlayer == 1)
                 {
-                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(20);
+                    PowerUpCanvas.GetComponent<PowerUps>().IncreaseScore(20);
                 }
             }
             else
@@ -681,11 +682,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
                 if (PhotonNetwork.IsMasterClient && activePlayer == 0)
                 {
-                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(10);
+                    PowerUpCanvas.GetComponent<PowerUps>().IncreaseScore(10);
                 }
                 else if (!(PhotonNetwork.IsMasterClient) && activePlayer == 1)
                 {
-                    PowerUpBar.GetComponent<PowerUps>().IncreaseScore(10);
+                    PowerUpCanvas.GetComponent<PowerUps>().IncreaseScore(10);
                 }
             }
 
@@ -813,8 +814,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         PhotonNetwork.RaiseEvent(OnPowerUpUsed, content, raiseEventOptions, SendOptions.SendReliable);
 
         Debug.Log("'PowerUps.DisablePower' called");
-        PowerUpBar.GetComponent<PowerUps>().DisablePower(listPosition);
-        PowerUpBar.GetComponent<PowerUps>().ActivatePowerUp(x, z, listPosition, rival);
+        PowerUpCanvas.GetComponent<PowerUps>().DisablePower(listPosition);
+        PowerUpCanvas.GetComponent<PowerUps>().ActivatePowerUp(x, z, listPosition, rival);
     }
 
 
@@ -828,7 +829,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //players[activePlayer].WinPanel.SetActive(true);
             if (PhotonNetwork.IsMasterClient && players[1].placedShipList.Count == 0)
             {
-
+                PhotonNetwork.AutomaticallySyncScene = false;
                 object[] content = new object[0];
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
@@ -842,7 +843,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             }
             else if (!PhotonNetwork.IsMasterClient && players[0].placedShipList.Count == 0)
             {
-
+                PhotonNetwork.AutomaticallySyncScene = false;
                 object[] content = new object[0];
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
@@ -881,11 +882,10 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 if (activePlayer == 0)
                 {
-                    // PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
                     players[activePlayer].shootPanel.SetActive(true);
                     if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
                     {
-                        PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
+                        PowerUpCanvas.GetComponent<PowerUps>().SetPurchaseButtons();
                         PowerUpToggle.SetActive(true);
 
                     }
@@ -896,11 +896,10 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {
                 if (activePlayer == 1)
                 {
-                    //PowerUpBar.GetComponent<PowerUps>().TickCooldowns();
                     players[activePlayer].shootPanel.SetActive(true);
                     if (AdvModeCheck.GetComponent<AdvanceMC>().getAMC() == true)
                     {
-                        PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
+                        PowerUpCanvas.GetComponent<PowerUps>().SetPurchaseButtons();
                         PowerUpToggle.SetActive(true);
 
                     }
@@ -920,7 +919,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     public void DisablePowerUp(int listPosition)
     {
         isPowerUpActive = false;
-        //PowerUpBar.GetComponent<PowerUps>().EnableButton(listPosition);
     }
 
     public void shipTextUpdate(int index)
@@ -1052,7 +1050,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             int listPosition = (int)data[2];
             int rival = (int)data[3];
             bool definitive = (bool)data[4];
-            PowerUpBar.GetComponent<PowerUps>().ActivatePowerUp(x, z, listPosition, rival);
+            PowerUpCanvas.GetComponent<PowerUps>().ActivatePowerUp(x, z, listPosition, rival);
             if (definitive)
             {
                 SwitchPlayer();

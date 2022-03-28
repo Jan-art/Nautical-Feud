@@ -100,6 +100,10 @@ public class PowerUps : MonoBehaviour
     public int lastDisabled = -1;
     public int score;
     public Text scoreText;
+    //MISSILE
+    public GameObject missilePrefab;
+    float altitude = 3f;
+    float Timer;
 
     void Start()
     {
@@ -238,10 +242,27 @@ public class PowerUps : MonoBehaviour
         lastDisabled = -1;
     }
 
-    public void NukeFunctionality(int x, int z, int listPosition, int rival)
+    IEnumerator NukeFunctionality(int x, int z, int listPosition, int rival)
     {
-
+        Debug.Log("Nuke Functionality running");
         TileInfo info;
+
+        info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(x, z);
+        //MISSILE
+        Vector3 startPos = Vector3.zero;
+        Vector3 aimPos = info.gameObject.transform.position;
+
+        GameObject missile = Instantiate(missilePrefab, startPos, Quaternion.identity);
+
+        Debug.Log("Missile instantiated");
+        while (MoveToTile(startPos, aimPos, 0.5f, missile))
+        {
+            yield return null;
+        }
+
+        Destroy(missile);
+        Timer = 0; //Reset missile timer
+
         for (int i = x - 1; i < x + 2; i++)
         {
             if (i < 10 && i > -1)
@@ -295,6 +316,17 @@ public class PowerUps : MonoBehaviour
         lastDisabled = -1;
     }
 
+    bool MoveToTile(Vector3 startPos, Vector3 aimPos, float speed, GameObject missile)
+    {
+        Debug.Log("MoveToTile running");
+        Timer += speed * Time.deltaTime;
+        Vector3 nextPos = Vector3.Lerp(startPos, aimPos, Timer);
+        nextPos.y = altitude * Mathf.Sin(Mathf.Clamp01(Timer) * Mathf.PI);
+        missile.transform.LookAt(nextPos);
+
+        return aimPos != (missile.transform.position = Vector3.Lerp(missile.transform.position, nextPos, Timer));
+    }
+
     public void ActivatePowerUp(int x, int z, int listPosition, int rival)
     {
         if (listPosition == 1)
@@ -307,7 +339,7 @@ public class PowerUps : MonoBehaviour
         }
         else if (listPosition == 2)
         {
-            this.NukeFunctionality(x, z, listPosition, rival);
+            StartCoroutine(NukeFunctionality(x, z, listPosition, rival));
         }
     }
 
