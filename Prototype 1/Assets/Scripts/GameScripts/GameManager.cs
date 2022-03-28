@@ -158,10 +158,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         //HIDE PANELS
         HideAllPanels();
 
-        //
-
-        //players[0].WinPanel.SetActive(false);
-        //players[1].WinPanel.SetActive(false);
         placingCanvas.SetActive(false);
 
         //ACTIVATE PLACE PANEL P1
@@ -566,6 +562,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         CamMoved = false;
     }
 
+  
+
     //KILL PANEL BTN
 
     public void KillBtn()
@@ -889,7 +887,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     {
                         PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
                         PowerUpToggle.SetActive(true);
+
                     }
+                    
                 }
             }
             else
@@ -902,7 +902,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     {
                         PowerUpBar.GetComponent<PowerUps>().SetPurchaseButtons();
                         PowerUpToggle.SetActive(true);
+
                     }
+                    
                 }
             }
         }
@@ -948,10 +950,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         }
     }
 
-   /* void AddWinScore()
-    {
-        winScore++;
-    }*/
 
     #region Photon Raise Events
 
