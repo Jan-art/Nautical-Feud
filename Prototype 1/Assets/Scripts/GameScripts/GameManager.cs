@@ -837,6 +837,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     SendStats(true, 2);
                 }
+                PhotonNetwork.LeaveRoom();
                 SceneManager.LoadScene("Win.Scene");
 
             }
@@ -851,6 +852,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 {
                     SendStats(true, 2);
                 }
+                PhotonNetwork.LeaveRoom();
                 SceneManager.LoadScene("Win.Scene");
                 
                 //PlayFabManager.SendLeaderboard(winScore);

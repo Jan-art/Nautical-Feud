@@ -202,11 +202,17 @@ public class PlayFabManager : MonoBehaviour
    
     public void GetLeaderboard()
     {
+
         var request = new GetLeaderboardRequest
         {
             StatisticName = "Matches Won",
             StartPosition = 0,
-            MaxResultsCount = 10
+            MaxResultsCount = 4,
+            ProfileConstraints = new PlayerProfileViewConstraints()
+            {
+                ShowStatistics = true,
+                ShowDisplayName = true
+            }
         };
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
     }
@@ -218,23 +224,44 @@ public class PlayFabManager : MonoBehaviour
 
     void OnLeaderboardGet(GetLeaderboardResult result)
     {
-
-        foreach (Transform item in rowsParent)
-        {
-            Destroy(item.gameObject);
-        }
-
-
+        Debug.Log("OnLeaderBoardGet running");
         foreach (var item in result.Leaderboard)
         {
+            Debug.Log("item loop runnning");
             GameObject newObj = Instantiate(rowPrefab, rowsParent);
+            newObj.SetActive(true);
+            Debug.Log(newObj);
             Text[] texts = newObj.GetComponentsInChildren<Text>();
             texts[0].text = (item.Position + 1).ToString();
-            texts[1].text = item.PlayFabId.ToString();
+            texts[1].text = item.Profile.DisplayName;
             texts[2].text = item.StatValue.ToString();
-
             Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
+            foreach (var eachStat in item.Profile.Statistics)
+            {
+                Debug.Log("eachStat loop running");
+                if (eachStat.Name == "Matches Won")
+                {
+                    texts[2].text = eachStat.Value.ToString();
+                }
+                else if (eachStat.Name == "Matches Lost")
+                {
+                    texts[3].text = eachStat.Value.ToString();
+                }
+                else if (eachStat.Name == "Ships Sunk")
+                {
+                    texts[4].text = eachStat.Value.ToString();
+                }
+            }
         }
+
+
+        //foreach (Transform item in rowsParent)
+       // {
+          //  Destroy(item.gameObject);
+        //}
+
+
+        
     }
     
 }
