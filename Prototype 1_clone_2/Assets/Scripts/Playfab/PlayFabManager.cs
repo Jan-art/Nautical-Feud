@@ -18,6 +18,8 @@ public class PlayFabManager : MonoBehaviour
     public InputField pass;
 
     public GameObject AdvModeCheck;
+    public GameObject usernamePopUp;
+    public InputField user;
 
     void Awake()
     {
@@ -51,8 +53,27 @@ public class PlayFabManager : MonoBehaviour
     {
         messageText.text = "Registered & Logged in";
         createStatistics();
+        enableUsernamePanel();
     }
 
+    public void enableUsernamePanel()
+    {
+        usernamePopUp.SetActive(true);
+    }
+
+    public void UsernameBtn()
+    {
+        UpdateUserTitleDisplayNameRequest request = new UpdateUserTitleDisplayNameRequest();
+        request.DisplayName = user.text;
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnNameUpdated, OnError);
+    }
+
+    void OnNameUpdated(UpdateUserTitleDisplayNameResult result)
+    {
+        Debug.Log("Account username set");
+        AdvModeCheck.GetComponent<AdvanceMC>().setUsername(user.text);
+        usernamePopUp.SetActive(false);
+    }
 
     //==============================================================
     //    STATS CREATED FOR USER AFTER LOGIN
@@ -107,7 +128,11 @@ public class PlayFabManager : MonoBehaviour
         var request = new LoginWithEmailAddressRequest
         {
             Email = mail.text,
-            Password = pass.text
+            Password = pass.text,
+            InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
+            {
+                GetPlayerProfile = true
+            }
         };
 
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
@@ -117,8 +142,10 @@ public class PlayFabManager : MonoBehaviour
     {
         messageText.text = "Logged-in ! ";
         Debug.Log("Account creation Success");
-        AdvModeCheck.GetComponent<AdvanceMC>().setUsername("Bob");
+        AdvModeCheck.GetComponent<AdvanceMC>().setUsername(result.InfoResultPayload.PlayerProfile.DisplayName);
     }
+
+
 
     //=============================================================
 

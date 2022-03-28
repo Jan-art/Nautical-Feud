@@ -790,7 +790,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         Vector3 nextPos = Vector3.Lerp(startPos, aimPos, Timer);
         nextPos.y = altitude * Mathf.Sin(Mathf.Clamp01(Timer) * Mathf.PI);
         missile.transform.LookAt(nextPos);
-
         return aimPos != (missile.transform.position = Vector3.Lerp(missile.transform.position, nextPos, Timer));
     }
 
