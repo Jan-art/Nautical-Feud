@@ -13,7 +13,7 @@ public class Menu : MonoBehaviour
     void Start()
     {
         advModeCheck = GameObject.FindGameObjectWithTag("AdvModeCheck");
-        if (advModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
+        if (advModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
         {
             welcomeText.text = "Welcome \n" + advModeCheck.GetComponent<AdvanceMC>().getUsername() + "!";
         }

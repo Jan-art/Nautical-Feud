@@ -26,7 +26,6 @@ public class AdvanceMC : MonoBehaviour
     void Start()
     {
         AMC = false;
-        username = "";
     }
 
 

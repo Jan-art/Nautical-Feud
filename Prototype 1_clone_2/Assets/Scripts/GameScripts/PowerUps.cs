@@ -153,6 +153,11 @@ public class PowerUps : MonoBehaviour
                             info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(i, j);
                             info.ActivateTop(4, false);
                         }
+                        else
+                        {
+                            info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(i, j);
+                            info.ActivateTop(2, true);
+                        }
                     }
                 }
             }

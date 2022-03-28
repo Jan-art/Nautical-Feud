@@ -32,15 +32,20 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected)
         {
             MainMenu.SetActive(true);
-            if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
-            {
-                PhotonNetwork.NickName = AdvModeCheck.GetComponent<AdvanceMC>().getUsername();
-                Debug.Log("Photon Network nickname set");
-            }
+
         }
         else
         {
             MainMenu.SetActive(false);
+        }
+        if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
+        {
+            PhotonNetwork.AuthValues = new AuthenticationValues(AdvModeCheck.GetComponent<AdvanceMC>().getUsername());
+            PhotonNetwork.NickName = AdvModeCheck.GetComponent<AdvanceMC>().getUsername();
+            Debug.Log("Photon Network nickname set");
+        }
+        else
+        {
             ConnectToPhoton(randomName);
         }
     }

@@ -833,7 +833,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N1");
-                if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
+                if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
                 {
                     SendStats(true, 2);
                 }
@@ -847,7 +847,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.Others };
                 PhotonNetwork.RaiseEvent(OnVictory, content, raiseEventOptions, SendOptions.SendReliable);
                 Debug.Log("Called N2");
-                if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
+                if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
                 {
                     SendStats(true, 2);
                 }
@@ -863,7 +863,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PhotonNetwork.AutomaticallySyncScene = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
+            if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
             {
                 SendStats(false, 0);
             }
@@ -1034,7 +1034,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PhotonNetwork.AutomaticallySyncScene = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != "")
+            if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
             {
                 SendStats(false, 2 - (players[activePlayer].placedShipList.Count));
             }
