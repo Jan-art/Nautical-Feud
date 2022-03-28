@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
 public class Menu : MonoBehaviour
 {
@@ -21,6 +24,14 @@ public class Menu : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        if (PhotonNetwork.IsConnected)
+        {
+            if (PhotonNetwork.InRoom)
+            {
+                Debug.Log("Calling leave room via menu");
+                PhotonNetwork.LeaveRoom();
+            }
+        }
         SceneManager.LoadScene("MainMenu");
         Debug.Log("Menu Scene Loaded");
     }

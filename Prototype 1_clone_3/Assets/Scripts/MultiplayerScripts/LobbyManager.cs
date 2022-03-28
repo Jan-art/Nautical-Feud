@@ -56,7 +56,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log($" as : { nickName}");
         PhotonNetwork.AuthValues = new AuthenticationValues(nickName);
         PhotonNetwork.NickName = nickName;
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
+
 
     }
     //On connection to server reveals the play button to allow players to search for matches
@@ -128,6 +132,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Joined Room");
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     //Starts the match once another player enters the room
@@ -135,6 +140,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.CurrentRoom.PlayerCount == 2 && PhotonNetwork.IsMasterClient)
         {
+            PhotonNetwork.AutomaticallySyncScene = true;
             SearchingTxt.text = "S T A R T I N G   G A M E";
             Debug.Log("Starting match");
             PhotonNetwork.LoadLevel(1);

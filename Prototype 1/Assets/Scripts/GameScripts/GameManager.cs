@@ -164,6 +164,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         //ACTIVATE PLACE PANEL P1
         if (PhotonNetwork.IsConnected)
         {
+            PhotonNetwork.AutomaticallySyncScene = false;
             if (PhotonNetwork.IsMasterClient)
             {
                 players[activePlayer].placePanel.SetActive(true);
