@@ -225,6 +225,18 @@ public class PlayFabManager : MonoBehaviour
     void OnLeaderboardGet(GetLeaderboardResult result)
     {
         Debug.Log("OnLeaderBoardGet running");
+
+        int check = 1;
+        foreach (Transform item in rowsParent)
+        {
+            check--;
+            if (check < 0)
+            {
+                Destroy(item.gameObject);
+            }
+        }
+
+
         foreach (var item in result.Leaderboard)
         {
             Debug.Log("item loop runnning");
@@ -255,10 +267,6 @@ public class PlayFabManager : MonoBehaviour
         }
 
 
-        //foreach (Transform item in rowsParent)
-       // {
-          //  Destroy(item.gameObject);
-        //}
 
 
         
