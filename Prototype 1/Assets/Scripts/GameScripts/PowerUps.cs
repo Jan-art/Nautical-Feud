@@ -108,6 +108,8 @@ public class PowerUps : MonoBehaviour
     float altitude = 3f;
     float Timer;
 
+    public GameObject explosionPrefab;
+
     bool soundActive = false;
 
     void Start()
@@ -276,6 +278,7 @@ public class PowerUps : MonoBehaviour
 
         Destroy(missile);
         Timer = 0; //Reset missile timer
+        GameObject explosion = Instantiate(explosionPrefab, aimPos, Quaternion.identity);
 
         for (int i = x - 1; i < x + 2; i++)
         {
@@ -329,6 +332,8 @@ public class PowerUps : MonoBehaviour
                 //Pass
             }
         }
+        yield return new WaitForSeconds(1f);
+        Destroy(explosion);
         lastDisabled = -1;
         yield break;
     }

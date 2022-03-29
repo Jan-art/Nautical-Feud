@@ -116,6 +116,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     float altitude = 3f;
     float Timer;
 
+    
+    public GameObject explosionPrefab;
+
+    public GameObject WaterSplashPrefab;
+
     //ADD SPEED float
 
     bool isShooting;
@@ -650,7 +655,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
             Destroy(missile);
             Timer = 0; //Reset missile timer
-
+            GameObject explosion;
 
             //CHECK IF TILE BUSY
             if (players[rival].myGrid[x, z].IsOccupied())
@@ -659,7 +664,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 HitSound.time = 1.2f;
                 HitSound.Play();
                 Debug.Log("HitSound Playing");
-
+                explosion = Instantiate(explosionPrefab, aimPos, Quaternion.identity);
                 bool sunk = players[rival].myGrid[x, z].placedShip.AbsorbDamage();
 
                 if (sunk)
@@ -685,6 +690,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             {   //HIGHLIGHT TILE
                 //ADD [EXPLOSION + SOUND HERE]
                 //NOT HIT
+                explosion = Instantiate(WaterSplashPrefab, aimPos, Quaternion.identity);
                 Debug.Log("MissSound Playing");
                 MissSound.time = 1f;
                 MissSound.Play();
@@ -708,7 +714,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             //CHECK WIN STATUS
 
             CheckWinCondition(rival);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
+            Destroy(explosion);
+            yield return new WaitForSeconds(0.5f);
 
             //======================================================================
 

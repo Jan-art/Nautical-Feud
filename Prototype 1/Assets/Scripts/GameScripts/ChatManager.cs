@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 using Photon.Pun;
 
@@ -12,6 +14,11 @@ public class ChatManager : MonoBehaviour
     public TMP_InputField MsgInput;
     public TextMeshProUGUI MsgContent;
 
+    EventSystem system;
+    public Selectable firstInput;
+    public Button submitBtn;
+
+
     private PhotonView _photon;
 
     private List<string> _messages = new List<string>();
@@ -21,6 +28,9 @@ public class ChatManager : MonoBehaviour
     void Start()
     {
         _photon = GetComponent<PhotonView>();
+
+        system = EventSystem.current;
+        firstInput.Select();
     }
 
     [PunRPC]
@@ -82,5 +92,18 @@ public class ChatManager : MonoBehaviour
             _messages.Clear();
             MsgContent.text = "";
        }
+       
+       if(Input.GetKeyDown(KeyCode.Tab)) {
+            Selectable previous = system.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+            if(previous!=null) {
+                previous.Select();
+                Debug.Log("Went down");
+            }
+       }else if(Input.GetKeyDown(KeyCode.Return)) {
+          submitBtn.onClick.Invoke();
+          Debug.Log("Btn Pressed");
+        }
+        
     }
+
 }
