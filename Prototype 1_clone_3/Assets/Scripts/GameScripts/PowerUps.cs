@@ -261,7 +261,6 @@ public class PowerUps : MonoBehaviour
         Vector3 aimPos = info.gameObject.transform.position;
 
         GameObject missile = Instantiate(missilePrefab, startPos, Quaternion.identity);
-
         Debug.Log("Missile instantiated");
         while (MoveToTile(startPos, aimPos, 0.5f, missile))
         {
@@ -323,9 +322,10 @@ public class PowerUps : MonoBehaviour
                 //Pass
             }
         }
-
         lastDisabled = -1;
+        yield break;
     }
+
 
     bool MoveToTile(Vector3 startPos, Vector3 aimPos, float speed, GameObject missile)
     {

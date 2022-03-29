@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private int shipsSunk;
     private bool won;
     private int shipsDestroyed;
+    public bool animationCheck;
 
     void Awake()
     {
@@ -754,6 +755,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     Debug.Log("Power Up targetting anywhere on enemy board successful");
                     CallPowerUp(x, z, listPosition, info, rival, definitive);
                     validPowerUpUse = true;
+                    if (listPosition == 2)
+                    {
+                        Debug.Log("Nuke wait intiated");
+                        yield return new WaitForSeconds(2f);
+                    }
                 }
 
                 if (hitable == "notHit" && !players[rival].revealGrid[x, z] == true)
@@ -770,7 +776,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             DisablePowerUp(listPosition);
 
             CheckWinCondition(rival);
-            yield return new WaitForSeconds(1f);
 
             if (definitive && validPowerUpUse)
             {
@@ -784,6 +789,12 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         isShooting = false;
         yield break;
     }
+
+    /*IEnumerator NukePause()
+    {
+        isNukePauseRunning = true;
+        yield return new WaitForSeconds(2f);
+    }*/
 
     bool MoveToTile(Vector3 startPos, Vector3 aimPos, float speed, GameObject missile)
     {
@@ -950,7 +961,22 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         }
     }
 
-
+    IEnumerator NukeWaitPhoton()
+    {
+        if (animationCheck)
+        {
+            animationCheck = false;
+            Debug.Log("If animationCheck hit");
+            yield return new WaitForSeconds(2f);
+        }
+        if (!animationCheck)
+        {
+            Debug.Log("Else in animationCheck hit");
+            SwitchPlayer();
+            PlayerShootingSwitch();
+            yield break;
+        }
+    }
     #region Photon Raise Events
 
     public override void OnEnable()
@@ -1053,8 +1079,13 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             int rival = (int)data[3];
             bool definitive = (bool)data[4];
             PowerUpCanvas.GetComponent<PowerUps>().ActivatePowerUp(x, z, listPosition, rival);
-            if (definitive)
+            if (listPosition == 2)
             {
+                animationCheck = true;
+                StartCoroutine(NukeWaitPhoton());
+            }
+            else 
+            { 
                 SwitchPlayer();
                 PlayerShootingSwitch();
             }
