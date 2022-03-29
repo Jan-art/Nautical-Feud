@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1366
     height: 685
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Game
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 192}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 102
+  controlID: 141
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 143
+  controlID: 16
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 144
+  controlID: 64
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -431,9 +431,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 323.08423, y: 135.90878, z: -269.42953}
+    m_Target: {x: 270.56836, y: 291.49384, z: -273.8157}
     speed: 2
-    m_Value: {x: 323.08423, y: 135.90878, z: -269.42953}
+    m_Value: {x: 270.56836, y: 291.49384, z: -273.8157}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -484,9 +484,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 176.65005
+    m_Target: 192.1258
     speed: 2
-    m_Value: 176.65005
+    m_Value: 192.1258
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -541,7 +541,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 80edffff9eedfffffeedffff00f1ffff34f1ffffaef1ffff62f3ffffccf4ffff90f5ffffacf5ffffc8f5ffff40f8ffff5cf8ffff60faffff4cfbfffffa4800005e49000070490000b6490000ca2301001e24010030240100762401008e240100f82401003c25010048250100c8250100f02d0100fc2d0100ce300100c69e0100449f0100
+      m_ExpandedIDs: 4aedfffff6efffff9ef7ffff4cfbffffd84500004846000082460000c6460000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -603,13 +603,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts/MultiplayerScripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts/MultiplayerScripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Users Backup\Daniel Price\GitF\UCWX\Unity-Course-work\Prototype
     1
@@ -617,8 +617,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 285}
-    m_SelectedIDs: c4480000
-    m_LastClickedID: 18628
+    m_SelectedIDs: c6480000
+    m_LastClickedID: 18630
     m_ExpandedIDs: 00000000884800008a4800008c4800008e48000090480000924800009448000096480000984800009a48000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 74972
+  m_LastSelectedObjectID: 17880
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52

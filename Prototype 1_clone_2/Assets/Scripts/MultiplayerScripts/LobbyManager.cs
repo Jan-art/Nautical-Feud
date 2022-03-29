@@ -20,6 +20,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     GameObject AdvModeCheck;
 
     public Text SearchingTxt;
+    public Text welcomeText;
+    public GameObject LoginBtn;
+    public GameObject LogoutBtn;
 
     public const string ADVANCED_MODE = "adv";
 
@@ -43,10 +46,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             PhotonNetwork.AuthValues = new AuthenticationValues(AdvModeCheck.GetComponent<AdvanceMC>().getUsername());
             PhotonNetwork.NickName = AdvModeCheck.GetComponent<AdvanceMC>().getUsername();
             Debug.Log("Photon Network nickname set");
+            LoginBtn.SetActive(false);
+            LogoutBtn.SetActive(true);
         }
         else
         {
             ConnectToPhoton(randomName);
+
         }
     }
 
@@ -161,6 +167,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         AdvModeCheck.GetComponent<AdvanceMC>().setAMC(adv);
         FindMatch();
+    }
+
+    public void LogoutBtnPressed()
+    {
+        Debug.Log("You have been logged out");
+        AdvModeCheck.GetComponent<AdvanceMC>().setUsername(null);
+        welcomeText.text = "Welcome \nGuest!";
+        LoginBtn.SetActive(true);
+        LogoutBtn.SetActive(false);
+        string randomName = $"Tester{Guid.NewGuid().ToString()}";
+        ConnectToPhoton(randomName);
     }
 
 }
