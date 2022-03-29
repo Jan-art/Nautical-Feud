@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackgroundMusic : MonoBehaviour
 {
    private static BackgroundMusic backgroundMusic;
+    public AudioSource bgMusic;
 
    void Awake()
    {
@@ -13,13 +14,13 @@ public class BackgroundMusic : MonoBehaviour
            backgroundMusic = this;
            DontDestroyOnLoad(backgroundMusic);
        }
-
        else
        {
           Destroy(gameObject);
        }
+        //bgMusic.SetScheduledEndTime(AudioSettings.dspTime + (75));
 
-   }
+    }
 
 }
 

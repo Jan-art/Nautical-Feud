@@ -30,10 +30,16 @@ public class Menu : MonoBehaviour
             {
                 Debug.Log("Calling leave room via menu");
                 PhotonNetwork.LeaveRoom();
+                return;
             }
         }
         SceneManager.LoadScene("MainMenu");
         Debug.Log("Menu Scene Loaded");
+    }
+
+    void OnLeftRoom()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void NextSlide()
