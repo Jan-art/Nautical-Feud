@@ -51,7 +51,7 @@ public class PlayFabManager : MonoBehaviour
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        messageText.text = "Registered & Logged in";
+        messageText.text = "Registered & " + "\n" + "Logged in";
         createStatistics();
         enableUsernamePanel();
     }
