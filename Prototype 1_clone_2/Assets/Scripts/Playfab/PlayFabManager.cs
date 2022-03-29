@@ -20,6 +20,7 @@ public class PlayFabManager : MonoBehaviour
     public GameObject AdvModeCheck;
     public GameObject usernamePopUp;
     public InputField user;
+    public GameObject menu;
 
     void Awake()
     {
@@ -73,6 +74,7 @@ public class PlayFabManager : MonoBehaviour
         Debug.Log("Account username set");
         AdvModeCheck.GetComponent<AdvanceMC>().setUsername(user.text);
         usernamePopUp.SetActive(false);
+        menu.GetComponent<Menu>().ReturnToMenu();
     }
 
     //==============================================================
@@ -143,6 +145,7 @@ public class PlayFabManager : MonoBehaviour
         messageText.text = "Logged-in ! ";
         Debug.Log("Account creation Success");
         AdvModeCheck.GetComponent<AdvanceMC>().setUsername(result.InfoResultPayload.PlayerProfile.DisplayName);
+        menu.GetComponent<Menu>().ReturnToMenu();
     }
 
 
