@@ -145,18 +145,21 @@ public class PowerUps : MonoBehaviour
                 {
                     if (j < 10 && j > -1)
                     {
-                        if (GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].IsOccupied() && GameManager.GetComponent<GameManager>().players[rival].revealGrid[i, j] == false)
+                        info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(i, j);
+                        if (!info.GetHit())
                         {
-                            count++;
+                            if (GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].IsOccupied() && GameManager.GetComponent<GameManager>().players[rival].revealGrid[i, j] == false)
+                            {
+                                count++;
 
-                            //Can use activate top if a unique sprite has been made to fit it
-                            info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(i, j);
-                            info.ActivateTop(4, false);
-                        }
-                        else
-                        {
-                            info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(i, j);
-                            info.ActivateTop(2, true);
+                                //Can use activate top if a unique sprite has been made to fit it
+                                info.ActivateTop(4, false);
+                            }
+                            else
+                            {
+                                
+                                info.ActivateTop(2, true);
+                            }
                         }
                     }
                 }
@@ -279,18 +282,21 @@ public class PowerUps : MonoBehaviour
                         info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(i, j);
                         if (GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].IsOccupied())
                         {
-                            //Damage SHIP
-                            bool sunk = GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].placedShip.AbsorbDamage();
-
-                            if (sunk)
+                            if (!info.GetHit())
                             {
-                                GameManager.GetComponent<GameManager>().players[rival].placedShipList.Remove(GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].placedShip.gameObject);
-                                GameManager.GetComponent<GameManager>().shipTextUpdate(rival);
-                            }
+                                //Damage SHIP
+                                bool sunk = GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].placedShip.AbsorbDamage();
 
-                            //HIGHLIGHT TILE
-                            //ADD [EXPLOSION + SOUND HERE]
-                            info.ActivateTop(3, true);
+                                if (sunk)
+                                {
+                                    GameManager.GetComponent<GameManager>().players[rival].placedShipList.Remove(GameManager.GetComponent<GameManager>().players[rival].myGrid[i, j].placedShip.gameObject);
+                                    GameManager.GetComponent<GameManager>().shipTextUpdate(rival);
+                                }
+
+                                //HIGHLIGHT TILE
+                                //ADD [EXPLOSION + SOUND HERE]
+                                info.ActivateTop(3, true);
+                            }
 
                         }
                         else

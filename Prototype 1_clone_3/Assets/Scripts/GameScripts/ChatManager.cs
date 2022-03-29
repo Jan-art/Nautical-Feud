@@ -16,7 +16,7 @@ public class ChatManager : MonoBehaviour
 
     private List<string> _messages = new List<string>();
     private float _CreationDelay = 0f;
-    private int _maxMsg = 14;
+    private int _maxMsg = 10;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class ChatManager : MonoBehaviour
 
     public void SendChat(string msg)
     {
-         string NewMessage = PhotonNetwork.NickName + ": " + msg;
+         string NewMessage = PhotonNetwork.NickName + ": " + "\n" + msg;
         _photon.RPC("RPC_AddNewMessage", RpcTarget.All, NewMessage);
     }
 

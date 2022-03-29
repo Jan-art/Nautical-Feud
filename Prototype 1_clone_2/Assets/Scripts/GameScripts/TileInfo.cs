@@ -75,4 +75,9 @@ public class TileInfo : MonoBehaviour
         }
     }
 
+    public bool GetHit()
+    {
+        return hit;
+    }
+
 }

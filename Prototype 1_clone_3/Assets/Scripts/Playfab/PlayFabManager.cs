@@ -51,7 +51,7 @@ public class PlayFabManager : MonoBehaviour
 
     void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
-        messageText.text = "Registered & Logged in";
+        messageText.text = "Registered & " + "\n" + "Logged in";
         createStatistics();
         enableUsernamePanel();
     }
@@ -207,7 +207,7 @@ public class PlayFabManager : MonoBehaviour
         {
             StatisticName = "Matches Won",
             StartPosition = 0,
-            MaxResultsCount = 4,
+            MaxResultsCount = 100,
             ProfileConstraints = new PlayerProfileViewConstraints()
             {
                 ShowStatistics = true,
@@ -235,35 +235,42 @@ public class PlayFabManager : MonoBehaviour
                 Destroy(item.gameObject);
             }
         }
-
+        int i = 4;
 
         foreach (var item in result.Leaderboard)
         {
             Debug.Log("item loop runnning");
-            GameObject newObj = Instantiate(rowPrefab, rowsParent);
-            newObj.SetActive(true);
-            Debug.Log(newObj);
-            Text[] texts = newObj.GetComponentsInChildren<Text>();
-            texts[0].text = (item.Position + 1).ToString();
-            texts[1].text = item.Profile.DisplayName;
-            texts[2].text = item.StatValue.ToString();
-            Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
-            foreach (var eachStat in item.Profile.Statistics)
+            if (item.Position + 1 < i || item.Profile.DisplayName == AdvModeCheck.GetComponent<AdvanceMC>().getUsername())
             {
-                Debug.Log("eachStat loop running");
-                if (eachStat.Name == "Matches Won")
+                GameObject newObj = Instantiate(rowPrefab, rowsParent);
+                newObj.SetActive(true);
+                Debug.Log(newObj);
+                Text[] texts = newObj.GetComponentsInChildren<Text>();
+                texts[0].text = (item.Position + 1).ToString();
+                texts[1].text = item.Profile.DisplayName;
+                texts[2].text = item.StatValue.ToString();
+                Debug.Log(item.Position + " " + item.PlayFabId + " " + item.StatValue);
+                foreach (var eachStat in item.Profile.Statistics)
                 {
-                    texts[2].text = eachStat.Value.ToString();
+                    Debug.Log("eachStat loop running");
+                    if (eachStat.Name == "Matches Won")
+                    {
+                        texts[2].text = eachStat.Value.ToString();
+                    }
+                    else if (eachStat.Name == "Matches Lost")
+                    {
+                        texts[3].text = eachStat.Value.ToString();
+                    }
+                    else if (eachStat.Name == "Ships Sunk")
+                    {
+                        texts[4].text = eachStat.Value.ToString();
+                    }
                 }
-                else if (eachStat.Name == "Matches Lost")
+                if(item.Profile.DisplayName == AdvModeCheck.GetComponent<AdvanceMC>().getUsername())
                 {
-                    texts[3].text = eachStat.Value.ToString();
+                    i++;
                 }
-                else if (eachStat.Name == "Ships Sunk")
-                {
-                    texts[4].text = eachStat.Value.ToString();
-                }
-            }
+            } 
         }
 
 
