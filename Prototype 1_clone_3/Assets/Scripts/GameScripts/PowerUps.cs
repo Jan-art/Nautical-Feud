@@ -8,6 +8,9 @@ public class PowerUps : MonoBehaviour
 
     public GameObject GameManager;
     public GameObject PowerUpToggle;
+    public AudioSource RadarSound;
+    public AudioSource NukeSound;
+    public AudioSource SatelliteSound;
 
     [System.Serializable]
     public class PowerUp
@@ -105,6 +108,8 @@ public class PowerUps : MonoBehaviour
     float altitude = 3f;
     float Timer;
 
+    bool soundActive = false;
+
     void Start()
     {
         InitialiseUsable();
@@ -137,6 +142,7 @@ public class PowerUps : MonoBehaviour
         //Can use count if some text stating how many ships are sround it will be displayed
         TileInfo info;
         int count = 0;
+        RadarSound.Play();
         for (int i = x - 1; i < x + 2; i++)
         {
             if (i < 10 && i > -1)
@@ -173,6 +179,7 @@ public class PowerUps : MonoBehaviour
     {
         TileInfo info;
         info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(x, z);
+        SatelliteSound.Play();
         if (GameManager.GetComponent<GameManager>().players[rival].myGrid[x, z].IsOccupied())
         {
             //Damage SHIP
@@ -350,7 +357,14 @@ public class PowerUps : MonoBehaviour
         }
         else if (listPosition == 2)
         {
+            soundActive = false;
             StartCoroutine(NukeFunctionality(x, z, listPosition, rival));
+            if (!soundActive)
+            {
+                Debug.Log("if (!soundActive) running");
+                NukeSound.Play();
+                soundActive = true;
+            }
         }
     }
 

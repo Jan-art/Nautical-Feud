@@ -136,6 +136,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private int shipsDestroyed;
     public bool animationCheck;
 
+    public AudioSource HitSound;
+    public AudioSource MissSound;
+
     void Awake()
     {
         instance = this;
@@ -653,7 +656,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             if (players[rival].myGrid[x, z].IsOccupied())
             {
                 //Damage SHIP
-
+                HitSound.Play();
                 bool sunk = players[rival].myGrid[x, z].placedShip.AbsorbDamage();
 
                 if (sunk)
@@ -678,7 +681,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             else
             {   //HIGHLIGHT TILE
                 //ADD [EXPLOSION + SOUND HERE]
-
+                MissSound.Play();
                 //NOT HIT
                 info.ActivateTop(2, true);
 
@@ -1008,7 +1011,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
     //=====================================================================
 
 
-    //RUNS WHEN A EVENT IS RECIVED FROM THE NETWORK
+    //RUNS WHEN AN EVENT IS RECIVED FROM THE NETWORK
     public void OnEvent(EventData photonEvent)
     {
         //Sets the information recieved to local variables to be manipulated
