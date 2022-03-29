@@ -643,7 +643,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             Vector3 aimPos = info.gameObject.transform.position;
 
             GameObject missile = Instantiate(missilePrefab, startPos, Quaternion.identity);
-
             while (MoveToTile(startPos, aimPos, 0.5f, missile))
             {
                 yield return null;
@@ -652,11 +651,15 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             Destroy(missile);
             Timer = 0; //Reset missile timer
 
+
             //CHECK IF TILE BUSY
             if (players[rival].myGrid[x, z].IsOccupied())
             {
                 //Damage SHIP
+                HitSound.time = 1.2f;
                 HitSound.Play();
+                Debug.Log("HitSound Playing");
+
                 bool sunk = players[rival].myGrid[x, z].placedShip.AbsorbDamage();
 
                 if (sunk)
@@ -681,8 +684,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             else
             {   //HIGHLIGHT TILE
                 //ADD [EXPLOSION + SOUND HERE]
-                MissSound.Play();
                 //NOT HIT
+                Debug.Log("MissSound Playing");
+                MissSound.time = 1f;
+                MissSound.Play();
+
                 info.ActivateTop(2, true);
 
                 if (PhotonNetwork.IsMasterClient && activePlayer == 0)
