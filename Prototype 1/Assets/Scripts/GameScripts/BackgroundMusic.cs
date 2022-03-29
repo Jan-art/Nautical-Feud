@@ -18,10 +18,17 @@ public class BackgroundMusic : MonoBehaviour
        {
           Destroy(gameObject);
        }
-        //bgMusic.SetScheduledEndTime(AudioSettings.dspTime + (75));
+        bgMusic.SetScheduledEndTime(AudioSettings.dspTime + (75));
 
     }
 
+    void Update()
+    {
+        if (!bgMusic.isPlaying)
+        {
+            bgMusic.Play();
+            bgMusic.SetScheduledEndTime(AudioSettings.dspTime + (75));
+        }
+    }
 }
-
 
