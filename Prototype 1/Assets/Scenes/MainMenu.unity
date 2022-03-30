@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc402a3f8d801b4e81c273bfe96abe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  link: https://github.com/Jan-art/Unity-Course-work
+  link: https://nauticalfeud.wixsite.com/playnauticalfeud
   welcomeText: {fileID: 1291880287}
   advModeCheck: {fileID: 0}
 --- !u!114 &400706235
