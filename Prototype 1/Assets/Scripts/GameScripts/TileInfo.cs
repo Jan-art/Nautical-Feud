@@ -20,6 +20,16 @@ public class TileInfo : MonoBehaviour
 
         //COLOUR TILE
 
+        if(index == 2) 
+        {
+          sprite.color = Color.black;
+        }
+
+        if(index == 3) 
+        {
+          sprite.color = Color.yellow;
+        }
+
         if (index == 4)
         {
             radared = true;

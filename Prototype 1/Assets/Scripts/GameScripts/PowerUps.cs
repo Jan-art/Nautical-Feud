@@ -109,6 +109,7 @@ public class PowerUps : MonoBehaviour
     float Timer;
 
     public GameObject explosionPrefab;
+    public GameObject sonarPrefab;
 
     bool soundActive = false;
 
@@ -137,7 +138,7 @@ public class PowerUps : MonoBehaviour
         return powerups[listPosition];
     }
 
-    public void RadarFunctionality(int x, int z, int listPosition, int rival)
+    IEnumerator RadarFunctionality(int x, int z, int listPosition, int rival)
     {
         //Need to get correct gameboard from gamemanager so that tiles can be accessed and changed
 
@@ -145,6 +146,11 @@ public class PowerUps : MonoBehaviour
         TileInfo info;
         int count = 0;
         RadarSound.Play();
+
+        info = GameManager.GetComponent<GameManager>().players[rival].pgb.TileInfoRequest(x, z);
+        Vector3 aimPos = info.gameObject.transform.position;
+        GameObject Sonar = Instantiate(sonarPrefab, aimPos, Quaternion.identity);
+        
         for (int i = x - 1; i < x + 2; i++)
         {
             if (i < 10 && i > -1)
@@ -175,6 +181,11 @@ public class PowerUps : MonoBehaviour
         }
         Debug.Log("Number of tiles with ships detected by radar" + count);
         lastDisabled = -1;
+
+        yield return new WaitForSeconds(1f);
+        Destroy(Sonar);
+        lastDisabled = -1;
+        yield break;
     }
 
     public void SateliteFunctionality(int x, int z, int listPosition, int rival)
@@ -354,7 +365,9 @@ public class PowerUps : MonoBehaviour
     {
         if (listPosition == 1)
         {
-            this.RadarFunctionality(x, z, listPosition, rival);
+
+            StartCoroutine(RadarFunctionality(x, z, listPosition, rival));
+
         }
         else if (listPosition == 0)
         {

@@ -716,7 +716,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             CheckWinCondition(rival);
             yield return new WaitForSeconds(0.5f);
             Destroy(explosion);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
 
             //======================================================================
 
@@ -775,7 +775,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                     if (listPosition == 2)
                     {
                         Debug.Log("Nuke wait intiated");
-                        yield return new WaitForSeconds(2f);
+                        yield return new WaitForSeconds(4f);
                     }
                 }
 
