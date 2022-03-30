@@ -1,0 +1,44 @@
+[FEATURES REQUIREING IMPLEMENTATION:]
+
+Umm....
+
+
+=======================================================================================================================================================
+[FEATURES THAT HAVE BEEN IMPLEMENTED:]
+
+[FIXED]
+- Fix Win/Loss Screens
+ - Remove "Turn" TEXT from Win Screen.
+
+[FIXED]
+MAJOR FEATURE - The overlays denoting which turn it is needs to be changed to state whether its player 1's or 2's go. 
+Additionally the win and lose pop ups need to be corrected so it correctly states whether you won or not.
+
+[FIXED]
+Change overlays so that a different overlay is displayed for when the opponent is placing ships rather than the generic 'enemy turn' one.
+
+[FIXED]
+Prevent the place menu appearing on the receiving client while the main client is trying to place ships.
+
+[FIXED]
+MAJOR FEATURE - Enemy ships need to be hidden. This just requires commenting out and adding in some calls for UnhideAllShips and HideAllShips
+
+[FIXED]
+MAJOR FEATURE - There needs to be a way to prevent you acting on an enemy turn. I (Daniel) think this could be implemented by creating an overlay 
+similar to the your turn ones and using it to block player input. This would need to pop up every time your opppoent goes to shoot telling you 
+its the enemy turn and preventing any inputs from being registered. 
+Something similar would be needed to tell you your opponent is placing ships. Maybe be done in the switch case in update line 194 however no overlay has
+been added.
+
+[FIXED]
+The menu button on the victory screen does not correctly link back to the original menu as photon trys to connect again and crashes. 
+This either needs LobbyManager to be fixed or if we are going to copy and paste in the room system Jan madewe need to check it works with that.
+
+[FIXED]
+Tiles selected and ships placed get sent successfully between both clients. Basic multiplayer is functional and as long as the game isn't played by
+anyone it probably looks fine for the MVP showcase.
+
+=======================================================================================================================================================
+
+
+
