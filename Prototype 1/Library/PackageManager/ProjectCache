@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637842049049577086
-    m_Hash: 1655051040
+      ticks: 637842097219789726
+    m_Hash: 4275231533
   m_LockFileStatus:
     m_FilePath: C:/Users/alfa0/Documents/GitHub/Unity-Course-work/Prototype 1/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637842049049687108
-    m_Hash: 1706720142
+      ticks: 637842097219789726
+    m_Hash: 2225240949
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
