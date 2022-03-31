@@ -30,7 +30,9 @@ This can be found in the folder called `NauticalFeud_Setup` located in `GameBuil
 
 **NOTE**
 
-- Since this game is for a Uni-project only 2 Ship Models are currently active, as it was required for demonstration purposes.
+- Since this game is for a Uni-project only "2" Ship Models are currently active, as it was required for demonstration purposes.
+
+- `Link to Website:` https://nauticalfeud.wixsite.com/playnauticalfeud
 
 <br />
 <br />
