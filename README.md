@@ -8,5 +8,7 @@ This is for a Uni project.
 - Core of the game has been hard-scripted, whereas the Multiplayer side of the game was developed using the Network-component known as Photon.Engine PUN2.
 - Multiplayer consists of using RaiseEvents() to send data between the 2 clients.
 
+- In order to run the final game you have RUN the Installation.Setup which is an `.EXE` file that can be foun in the folder called `GameBuild` > `NauticalFeud_Setup`
+
 
 
