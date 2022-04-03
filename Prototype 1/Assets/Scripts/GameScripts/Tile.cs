@@ -12,7 +12,7 @@ public enum OccupationType
    CRUISER,
    CORVETTE
 
-   //Only Battleships & Submarine models active for presentation as there are no prefabs for the rest of ships\\\
+   //Only Battleships & Submarine models active for presentation
    
 }
 

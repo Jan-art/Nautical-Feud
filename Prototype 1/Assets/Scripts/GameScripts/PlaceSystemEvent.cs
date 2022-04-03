@@ -127,25 +127,25 @@ public class PlaceSystemEvent : PlaceSystem
             }
             else if (locations[i].Equals("CARRIER") && carrierPlaced == false)
             {
-                newShip = Instantiate(fleetList[3].shipPrefab, pos, rot);
+                newShip = Instantiate(fleetList[0].shipPrefab, pos, rot);
                 carrierPlaced = true;
                 GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
             }
             else if (locations[i].Equals("BATTLESHIP") && battleshipPlaced == false)
             {
-                newShip = Instantiate(fleetList[0].shipPrefab, pos, rot);
+                newShip = Instantiate(fleetList[1].shipPrefab, pos, rot);
                 battleshipPlaced = true;
                 GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
             }
             else if (locations[i].Equals("SUBMARINE") && submarinePlaced == false)
             {
-                newShip = Instantiate(fleetList[1].shipPrefab, pos, rot);
+                newShip = Instantiate(fleetList[2].shipPrefab, pos, rot);
                 submarinePlaced = true;
                 GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
             }
             else if (locations[i].Equals("CRUISER") && cruiserPlaced == false)
             {
-                newShip = Instantiate(fleetList[2].shipPrefab, pos, rot);
+                newShip = Instantiate(fleetList[3].shipPrefab, pos, rot);
                 cruiserPlaced = true;
                 GameManager.instance.UpdateGrid(newShip.GetComponent<Transform>(), newShip.GetComponent<ShipBehaviour>(), newShip, x, z, shipRotation);
             }
