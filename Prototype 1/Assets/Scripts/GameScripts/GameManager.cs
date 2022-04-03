@@ -439,7 +439,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     void sendOnShipPlacementFinishedEvent()
     {
-        object[] content = new object[28]; //NEEDS TO BE CHANGED FOR ACTUAL CODE
+        object[] content = new object[68]; //NEEDS TO BE CHANGED FOR ACTUAL CODE
         int index = 0;
         string rotated = "";
         Vector3 shipRotation = new Vector3(0, 0, 0);
@@ -864,7 +864,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 Debug.Log("Called N1");
                 if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
                 {
-                    SendStats(true, 2);
+                    SendStats(true, 7);
                 }
                 PhotonNetwork.LeaveRoom();
                 SceneManager.LoadScene("Win.Scene");
@@ -879,7 +879,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
                 Debug.Log("Called N2");
                 if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
                 {
-                    SendStats(true, 2);
+                    SendStats(true, 7);
                 }
                 PhotonNetwork.LeaveRoom();
                 SceneManager.LoadScene("Win.Scene");
@@ -1082,7 +1082,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PhotonNetwork.CurrentRoom.IsOpen = false;
             if (AdvModeCheck.GetComponent<AdvanceMC>().getUsername() != null)
             {
-                SendStats(false, 2 - (players[activePlayer].placedShipList.Count));
+                SendStats(false, 7 - (players[activePlayer].placedShipList.Count));
             }
             PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene("Defeat.Scene");
